@@ -57,6 +57,7 @@ jobs:
           echo "dashboard_ref=${{ inputs.reference_dashboard || github.ref_name }}" >> $GITHUB_OUTPUT
           echo "wazuh_plugins_ref=${{ inputs.reference_wazuh_plugins || 'master' }}" >> $GITHUB_OUTPUT
           echo "security_plugins_ref=${{ inputs.reference_security_plugins || 'master' }}" >> $GITHUB_OUTPUT
+          echo "tags_ref=${{ input.reference_tag_release }}" >> $GITHUB_OUTPUT
           
   setup-variables:
     needs: prepare-refs # Зависит от задачи, определяющей ветки
@@ -386,7 +387,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ needs.setup-variables.outputs.VERSION }}
+          tag_name: ${{ tags_ref }}
           name: Wazuh Dashboard ${{ needs.setup-variables.outputs.VERSION }}
           files: ${{ github.workspace }}/artifacts/output/*.deb
         env:
