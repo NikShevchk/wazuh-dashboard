@@ -1,4 +1,4 @@
-name: Manual build with plugins
+name: Manual build with plugins Dev
 
 on:
   workflow_dispatch:
@@ -22,16 +22,25 @@ on:
         default: '1'
       reference_dashboard:
         type: string
-        description: 'Branch/tag of wazuh-dashboard repo. If empty, uses the branch this workflow is on.'
+        description: 'Branch/tag of wazuh-dashboard repo. If empty, uses the branch this workflow is on'
         required: false # Сделали необязательным
       reference_security_plugins:
         type: string
-        description: 'Branch/tag/commit of wazuh-security-dashboards-plugin. If empty, uses master.'
+        description: 'Branch/tag/commit of wazuh-security-dashboards-plugin. If empty, uses master'
         required: false
       reference_wazuh_plugins:
         type: string
-        description: 'Branch/tag/commit of wazuh-dashboard-plugins. If empty, uses master.'
+        description: 'Branch/tag/commit of wazuh-dashboard-plugins. If empty, uses master'
         required: false
+      reference_tag_release:
+        type: string
+        description: 'Release tag name'
+        required: true
+        options:
+          - dev
+          - testing
+          - prod
+        default: 'prod'
 
 jobs:
   prepare-refs:
