@@ -361,33 +361,43 @@ jobs:
             -b file://${{ github.workspace }}/artifacts/dashboard-package.zip \
             --commit-sha ${{needs.setup-variables.outputs.COMMIT_SHA}}-${{needs.setup-variables.outputs.PLUGINS_SHA}}-${{needs.setup-variables.outputs.SECURITY_SHA}} \
             --${{ inputs.system }} ${{ needs.setup-variables.outputs.PRODUCTION }} --debug
-      - name: Export variables to env
+            
+      - name: Find and Rename Package to Remove SHAs
+        id: package-info
         run: |
-          echo "VERSION=${{ needs.setup-variables.outputs.VERSION }}" >> $GITHUB_ENV
-          echo "ARTIFACT_BUILD_NAME=${{ needs.setup-variables.outputs.PACKAGE_NAME }}" >> $GITHUB_ENV
-      - name: Move generated .deb to artifacts folder
-        run: |
-          mkdir -p ${{ github.workspace }}/artifacts/output
-          mv ${{ github.workspace }}/dev-tools/build-packages/output/*.deb ${{ github.workspace }}/artifacts/output/
-      - name: List target artifacts
-        run: |
-            ls -lh ${{ github.workspace }}/artifacts/
-            ls -lh ${{ github.workspace }}/artifacts/output/
-      
-      - name: Upload artifact
+          set -e 
+          OUTPUT_DIR="${{ github.workspace }}/wazuh-dashboard/dev-tools/build-packages/output"
+          OLD_PACKAGE_PATH=$(find $OUTPUT_DIR -name "wazuh-dashboard_*_${{ inputs.architecture }}_*.${{ inputs.system }}" | head -n 1)
+          
+          if [ -z "$OLD_PACKAGE_PATH" ]; then
+            echo "::warning::Could not find a package with SHA hashes. Looking for a package without them..."
+            OLD_PACKAGE_PATH=$(find $OUTPUT_DIR -name "wazuh-dashboard_*_${{ inputs.architecture }}.${{ inputs.system }}" | head -n 1)
+          fi
+          if [ -z "$OLD_PACKAGE_PATH" ]; then
+            echo "::error::Generated package not found in $OUTPUT_DIR!"
+            ls -R $OUTPUT_DIR
+            exit 1
+          fi          
+          echo "Original package found: $OLD_PACKAGE_PATH"
+          NEW_PACKAGE_NAME=$(basename "$OLD_PACKAGE_PATH" | sed -E 's/_[a-f0-9]{7,}-[a-f0-9]{7,}-[a-f0-9]{7,}\.(deb|rpm)$/.\1/')
+          NEW_PACKAGE_PATH="$OUTPUT_DIR/$NEW_PACKAGE_NAME"
+          echo "New package name will be: $NEW_PACKAGE_NAME"
+          mv "$OLD_PACKAGE_PATH" "$NEW_PACKAGE_PATH"
+          echo "path=$NEW_PACKAGE_PATH" >> $GITHUB_OUTPUT
+          echo "name=$NEW_PACKAGE_NAME" >> $GITHUB_OUTPUT
+          
+      - name: Upload final package as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ needs.setup-variables.outputs.PACKAGE_NAME }}
-          path: ${{ github.workspace }}/artifacts/output/${{ needs.setup-variables.outputs.PACKAGE_NAME }}
+          name: ${{ steps.package-info.outputs.name }}
+          path: ${{ steps.package-info.outputs.path }}
           retention-days: 30
-          overwrite: true
-
+          
       - name: Create GitHub Release
+        if: inputs.release_tag != 'dev-build'
         uses: softprops/action-gh-release@v2
-        if: github.event.inputs.reference_tag_release != 'dev-build' # Don't create releases for every dev build
         with:
-          tag_name: ${{ needs.prepare-refs.outputs.release_tag }}
-          name: Wazuh Dashboard Release ${{ needs.prepare-refs.outputs.release_tag }}
-          files: ${{ github.workspace }}/artifacts/output/*.deb
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: ${{ inputs.release_tag }}
+          name: Wazuh Dashboard Release ${{ inputs.release_tag }}
+          files: ${{ steps.package-info.outputs.path }}
+          token: ${{ secrets.GITHUB_TOKEN }}
