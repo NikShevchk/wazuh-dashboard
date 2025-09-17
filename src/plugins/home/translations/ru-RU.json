@@ -4047,6 +4047,24 @@
   "wz-app-category-server-management": "Управление сервером",
   "wz-app-category-dashboard-management": "Управление дашбордами",
   "wazuhCheckUpdates.dismissNotificationCheck.checkText": "Отключить уведомления об обновлениях",
-  "wazuhCheckUpdates.dismissNotificationCheck.checkHelp": "Эта настройка определяет, будет ли появляться уведомление каждый раз при выходе обновления"
+  "wazuhCheckUpdates.dismissNotificationCheck.checkHelp": "Эта настройка определяет, будет ли появляться уведомление каждый раз при выходе обновления",
+  "reporting.extendedInformation.pathColumn": "Путь",
+  "reporting.extendedInformation.dateColumn": "Дата",
+  "reporting.extendedInformation.noHiddenProcesses": "У агентов нет скрытых процессов",
+  "reporting.extendedInformation.mostCommonPciDssAlerts": "Наиболее частые предупреждения о соответствии требованиям PCI DSS",
+  "reporting.extendedInformation.requirement": "Требование {item}",
+  "reporting.extendedInformation.mostCommonTscAlerts": "Наиболее частые предупреждения о соответствии требованиям TSC",
+  "reporting.extendedInformation.mostCommonGdprAlerts": "Наиболее частые предупреждения о соответствии требованиям GDPR",
+  "reporting.extendedInformation.suspiciousFimActivity": "Агенты с подозрительной активностью FIM",
+  "reporting.extendedInformation.suspiciousFimDescription": "Топ 3 агента с наибольшим количеством предупреждений FIM с 7 по 15 уровень. Обратите на них внимание.",
+  "reporting.extendedInformation.criticalSeverity": "Критическая степень тяжести",
+  "reporting.extendedInformation.criticalVulnerabilitiesWarning": "Эти уязвимости являются критическими, пожалуйста, проверьте вашего агента. Нажмите на каждую ссылку, чтобы узнать больше о найденной уязвимости.",
+  "reporting.extendedInformation.highSeverity": "Высокая степень тяжести",
+  "reporting.extendedInformation.highVulnerabilitiesWarning": "Нажмите на каждую ссылку, чтобы узнать больше о найденной уязвимости.",
+  "reporting.extendedInformation.rootkitDescription": "Руткиты - это набор программных инструментов, которые позволяют несанкционированному пользователю получить контроль над компьютерной системой, оставаясь незамеченным.",
+  "reporting.extendedInformation.agentsWithHiddenPorts": "{hiddenPorts} из {totalAgents} агентов имеют скрытые порты",
+  "reporting.extendedInformation.noAgentsWithHiddenPorts": "У агентов нет скрытых портов",
+  "reporting.extendedInformation.agentsWithFailedSudo": "Агенты с большим количеством неудачных команд sudo",
+  "reporting.extendedInformation.agentsWithHiddenProcesses": "{hiddenPids} из {totalAgents} агентов имеют скрытые процессы"
   }
 }
