@@ -1,4 +1,4 @@
-name: Manual build with plugins Dev
+name: Manual build with plugins
 
 on:
   workflow_dispatch:
