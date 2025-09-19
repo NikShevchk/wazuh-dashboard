@@ -15,11 +15,6 @@ on:
         description: 'Architecture (amd64 or arm64)'
         required: true
         default: 'amd64'
-      revision:
-        type: string
-        description: 'Package revision'
-        required: true
-        default: '1'
       reference_dashboard:
         type: string
         description: 'Branch/tag of wazuh-dashboard repo. If empty, uses the branch this workflow is on.'
@@ -55,14 +50,14 @@ jobs:
           echo "wazuh_plugins_ref=${{ inputs.reference_wazuh_plugins || 'master' }}" >> $GITHUB_OUTPUT
           echo "security_plugins_ref=${{ inputs.reference_security_plugins || 'master' }}" >> $GITHUB_OUTPUT
           echo "release_tag=${{ inputs.reference_tag_release }}" >> $GITHUB_OUTPUT
-          
+
   setup-variables:
     needs: prepare-refs # Зависит от задачи, определяющей ветки
     runs-on: ubuntu-latest
     name: Setup all variables reliably
     # Объявляем ВСЕ outputs, которые мы будем создавать
     outputs:
-    
+
       COMMIT_SHA: ${{ steps.export-vars.outputs.COMMIT_SHA }}
       PLUGINS_SHA: ${{ steps.export-vars.outputs.PLUGINS_SHA }}
       SECURITY_SHA: ${{ steps.export-vars.outputs.SECURITY_SHA }}
@@ -94,14 +89,14 @@ jobs:
           repository: ivmerk/wazuh-security-dashboards-plugin
           ref: ${{ needs.prepare-refs.outputs.security_plugins_ref }}
           path: ./wazuh-security-plugin
-      
+
       # Этот шаг будет вычислять ВСЕ переменные и экспортировать их.
       - name: Calculate and Export All Variables
         id: export-vars
         run: |
           # set -e заставит скрипт упасть, если какая-то команда не сработает
           set -e
-          
+
           # --- Получаем SHAs ---
           COMMIT_SHA=$(cd ./wazuh-dashboard && git rev-parse --short HEAD)
           PLUGINS_SHA=$(cd ./wazuh-dashboard-plugins && git rev-parse --short HEAD)
@@ -109,7 +104,7 @@ jobs:
           echo "Dashboard SHA: $COMMIT_SHA"
           echo "Plugins SHA: $PLUGINS_SHA"
           echo "Security SHA: $SECURITY_SHA"
-          
+
           # --- Получаем версии из файлов ---
           DASHBOARD_VERSION=$(jq -r '.version' ./wazuh-dashboard/VERSION.json)
           DASHBOARD_REVISION=$(jq -r '.stage' ./wazuh-dashboard/VERSION.json)
@@ -129,25 +124,25 @@ jobs:
           # --- Рассчитываем имя финального пакета (PACKAGE_NAME) ---
           if [ "${{ inputs.system }}" = "deb" ]; then
             if [ "${{ inputs.is_stage }}" = "true" ]; then
-              PACKAGE_NAME="wazuh-dashboard_${DASHBOARD_VERSION}-${{ inputs.revision }}_${{ inputs.architecture }}.deb"
+              PACKAGE_NAME="wazuh-dashboard_${DASHBOARD_VERSION}-${{ github.run_number }}_${{ inputs.architecture }}.deb"
             else
-              PACKAGE_NAME="wazuh-dashboard_${DASHBOARD_VERSION}-${{ inputs.revision }}_${{ inputs.architecture }}_${COMMIT_SHA}-${PLUGINS_SHA}-${SECURITY_SHA}.deb"
+              PACKAGE_NAME="wazuh-dashboard_${DASHBOARD_VERSION}-${{ github.run_number }}_${{ inputs.architecture }}_${COMMIT_SHA}-${PLUGINS_SHA}-${SECURITY_SHA}.deb"
             fi
           else # rpm
             if [ "${{ inputs.is_stage }}" = "true" ]; then
-              PACKAGE_NAME="wazuh-dashboard-${DASHBOARD_VERSION}-${{ inputs.revision }}.${{ inputs.architecture }}.rpm"
+              PACKAGE_NAME="wazuh-dashboard-${DASHBOARD_VERSION}-${{ github.run_number }}.${{ inputs.architecture }}.rpm"
             else
-              PACKAGE_NAME="wazuh-dashboard_${DASHBOARD_VERSION}-${{ inputs.revision }}_${{ inputs.architecture }}_${COMMIT_SHA}-${PLUGINS_SHA}-${SECURITY_SHA}.rpm"
+              PACKAGE_NAME="wazuh-dashboard_${DASHBOARD_VERSION}-${{ github.run_number }}_${{ inputs.architecture }}_${COMMIT_SHA}-${PLUGINS_SHA}-${SECURITY_SHA}.rpm"
             fi
           fi
-          
+
           # --- Рассчитываем флаги ---
           if [[ "${{ inputs.architecture }}" == "x86_64" || "${{ inputs.architecture }}" == "amd64" ]]; then
             ARCHITECTURE_FLAG=""
           else
             ARCHITECTURE_FLAG="--arm"
           fi
-          
+
           if [ "${{ inputs.is_stage }}" = "true" ]; then
             PRODUCTION="--production"
           else
@@ -166,7 +161,7 @@ jobs:
           echo "WAZUH_PLUGINS_CHECK_UPDATES=$WAZUH_PLUGINS_CHECK_UPDATES" >> $GITHUB_OUTPUT
           echo "ARCHITECTURE_FLAG=$ARCHITECTURE_FLAG" >> $GITHUB_OUTPUT
           echo "PRODUCTION=$PRODUCTION" >> $GITHUB_OUTPUT
-          
+
   build-base:
     needs: [prepare-refs, setup-variables]
     runs-on: ubuntu-latest
@@ -226,7 +221,7 @@ jobs:
       - name: Set WAZUH_DASHBOARD_SLIM env
         run: |
           echo "WAZUH_DASHBOARD_SLIM=${{ env.ARTIFACT_BUILD_NAME }}" >> $GITHUB_ENV
-      
+
       # ШАГ 7: Bootstrap (из reusable workflow)
       - name: Run bootstrap
         run: yarn osd bootstrap
@@ -253,7 +248,7 @@ jobs:
       - name: Export artifact name as job output
         id: export-name
         run: echo "value=${{ env.ARTIFACT_BUILD_NAME }}" >> $GITHUB_OUTPUT
-          
+
   build-main-plugins:
     needs: [prepare-refs, setup-variables]
     name: Build Main Plugins
@@ -285,7 +280,7 @@ jobs:
     runs-on: ${{ (inputs.architecture == 'arm64' || inputs.architecture == 'aarch64') && 'wz-linux-arm64' || 'ubuntu-22.04' }}
     name: Generate packages
     steps:
-    
+
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -294,7 +289,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           registry-url: 'https://registry.npmjs.org'
-      
+
       - name: Download dashboard artifact
         uses: actions/download-artifact@v4
         with:
@@ -314,21 +309,21 @@ jobs:
           pattern: wazuh-dashboard-plugins_wazuh_4.12.0-03*.zip
           path: ${{ github.workspace }}/artifacts/plugins
           merge-multiple: true
-          
+
       - name: Download core plugin's artifact
         uses: actions/download-artifact@v4
         with:
           pattern: wazuh-dashboard-plugins_wazuh-core_4.12.0-03*.zip
           path: ${{ github.workspace }}/artifacts/plugins
           merge-multiple: true
-          
+
       - name: Download check update plugin's artifact
         uses: actions/download-artifact@v4
         with:
           pattern: wazuh-dashboard-plugins_wazuh-check-updates_4.12.0-03*.zip
           path: ${{ github.workspace }}/artifacts/plugins
           merge-multiple: true
-     
+
       - name: Debug artifacts
         run: |
           echo "::group::Contents of artifacts/"
@@ -350,18 +345,18 @@ jobs:
         run: |
           git clone --depth=1 https://github.com/ivmerk/wazuh-dashboard.git temp-dashboard
           cp -r temp-dashboard/dev-tools ${{ github.workspace }}
-      
+
       - name: Build package
         run: |
           cd ${{ github.workspace }}/dev-tools/build-packages
           bash ./build-packages.sh \
-            -r ${{ inputs.revision }} ${{ needs.setup-variables.outputs.ARCHITECTURE_FLAG }} \
+            -r ${{ github.run_number }} ${{ needs.setup-variables.outputs.ARCHITECTURE_FLAG }} \
             -a file://${{ github.workspace }}/artifacts/wazuh-package.zip \
             -s file://${{ github.workspace }}/artifacts/security-package.zip \
             -b file://${{ github.workspace }}/artifacts/dashboard-package.zip \
             --commit-sha ${{needs.setup-variables.outputs.COMMIT_SHA}}-${{needs.setup-variables.outputs.PLUGINS_SHA}}-${{needs.setup-variables.outputs.SECURITY_SHA}} \
             --${{ inputs.system }} ${{ needs.setup-variables.outputs.PRODUCTION }} --debug
-            
+
       - name: Find and Rename Package
         id: package-info
         run: |
@@ -369,9 +364,9 @@ jobs:
 
           # Правильный путь к директории с результатами
           OUTPUT_DIR="${{ github.workspace }}/dev-tools/build-packages/output"
-          
+
           echo "Searching for package in: $OUTPUT_DIR"
-          
+
           # Находим исходный пакет по шаблону с SHA
           # Используем find, чтобы не зависеть от точного имени
           OLD_PACKAGE_PATH=$(find "$OUTPUT_DIR" -name "wazuh-dashboard_*_${{ inputs.architecture }}_*.${{ inputs.system }}" | head -n 1)
@@ -389,10 +384,10 @@ jobs:
           NEW_PACKAGE_PATH="$OUTPUT_DIR/$NEW_PACKAGE_NAME"
 
           echo "Renaming to: $NEW_PACKAGE_NAME"
-          
+
           # Переименовываем файл
           mv "$OLD_PACKAGE_PATH" "$NEW_PACKAGE_PATH"
-          
+
           # Экспортируем правильные пути для следующих шагов
           echo "path=$NEW_PACKAGE_PATH" >> $GITHUB_OUTPUT
           echo "name=$NEW_PACKAGE_NAME" >> $GITHUB_OUTPUT
