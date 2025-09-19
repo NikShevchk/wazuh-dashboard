@@ -15,10 +15,6 @@ on:
         description: 'Architecture (amd64 or arm64)'
         required: true
         default: 'amd64'
-      reference_dashboard:
-        type: string
-        description: 'Branch/tag of wazuh-dashboard repo. If empty, uses the branch this workflow is on.'
-        required: false # Сделали необязательным
       reference_security_plugins:
         type: string
         description: 'Branch/tag/commit of wazuh-security-dashboards-plugin. If empty, uses master.'
@@ -38,7 +34,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Prepare References
     outputs:
-      dashboard_ref: ${{ steps.set-refs.outputs.dashboard_ref }}
       wazuh_plugins_ref: ${{ steps.set-refs.outputs.wazuh_plugins_ref }}
       security_plugins_ref: ${{ steps.set-refs.outputs.security_plugins_ref }}
       release_tag: ${{ steps.set-refs.outputs.release_tag }}
@@ -46,7 +41,6 @@ jobs:
       - name: Set effective refs
         id: set-refs
         run: |
-          echo "dashboard_ref=${{ inputs.reference_dashboard || github.ref_name }}" >> $GITHUB_OUTPUT
           echo "wazuh_plugins_ref=${{ inputs.reference_wazuh_plugins || 'master' }}" >> $GITHUB_OUTPUT
           echo "security_plugins_ref=${{ inputs.reference_security_plugins || 'master' }}" >> $GITHUB_OUTPUT
           echo "release_tag=${{ inputs.reference_tag_release }}" >> $GITHUB_OUTPUT
@@ -72,8 +66,6 @@ jobs:
       - name: Checkout ALL source repositories
         uses: actions/checkout@v4
         with:
-          repository: ivmerk/wazuh-dashboard
-          ref: ${{ needs.prepare-refs.outputs.dashboard_ref }}
           path: ./wazuh-dashboard
 
       - uses: actions/checkout@v4
@@ -157,9 +149,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          repository: ivmerk/wazuh-dashboard
           path: ./artifacts # Клонируем в поддиректорию
-          ref: ${{ needs.prepare-refs.outputs.dashboard_ref }} # Используем динамическую ветку
 
       # ШАГ 2: Setup Node (из reusable workflow)
       - name: Setup Node
