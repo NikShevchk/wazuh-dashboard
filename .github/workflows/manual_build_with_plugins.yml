@@ -62,13 +62,11 @@ jobs:
       PLUGINS_SHA: ${{ steps.export-vars.outputs.PLUGINS_SHA }}
       SECURITY_SHA: ${{ steps.export-vars.outputs.SECURITY_SHA }}
       PACKAGE_NAME: ${{ steps.export-vars.outputs.PACKAGE_NAME }}
-      WAZUH_DASHBOARD_SLIM: ${{ steps.export-vars.outputs.WAZUH_DASHBOARD_SLIM }}
       WAZUH_SECURITY_PLUGIN: ${{ steps.export-vars.outputs.WAZUH_SECURITY_PLUGIN }}
       WAZUH_PLUGINS_WAZUH: ${{ steps.export-vars.outputs.WAZUH_PLUGINS_WAZUH }}
       WAZUH_PLUGINS_CORE: ${{ steps.export-vars.outputs.WAZUH_PLUGINS_CORE }}
       WAZUH_PLUGINS_CHECK_UPDATES: ${{ steps.export-vars.outputs.WAZUH_PLUGINS_CHECK_UPDATES }}
       ARCHITECTURE_FLAG: ${{ steps.export-vars.outputs.ARCHITECTURE_FLAG }}
-      PRODUCTION: ${{ steps.export-vars.outputs.PRODUCTION }}
 
     steps:
       - name: Checkout ALL source repositories
@@ -107,7 +105,6 @@ jobs:
 
           # --- Получаем версии из файлов ---
           DASHBOARD_VERSION=$(jq -r '.version' ./wazuh-dashboard/VERSION.json)
-          DASHBOARD_REVISION=$(jq -r '.stage' ./wazuh-dashboard/VERSION.json)
           SECURITY_PLUGIN_VERSION=$(jq -r '.wazuh.version' ./wazuh-security-plugin/package.json)
           SECURITY_PLUGIN_REVISION=$(jq -r '.wazuh.revision' ./wazuh-security-plugin/package.json)
           MAIN_PLUGINS_VERSION=$(jq -r '.version' ./wazuh-dashboard-plugins/plugins/main/package.json)
@@ -116,24 +113,15 @@ jobs:
           ARCH_SHORT=$([[ "${{ inputs.architecture }}" == "x86_64" || "${{ inputs.architecture }}" == "amd64" ]] && echo "x64" || echo "arm64")
           SECURITY_PLUGIN_REF=$(echo ${{ needs.prepare-refs.outputs.security_plugins_ref }} | sed 's/\//-/g')
           MAIN_PLUGINS_REF=$(echo ${{ needs.prepare-refs.outputs.wazuh_plugins_ref }} | sed 's/\//-/g')
-          WAZUH_DASHBOARD_SLIM="wazuh-dashboard_${DASHBOARD_VERSION}-${DASHBOARD_REVISION}_${ARCH_SHORT}.tar.gz"
           WAZUH_SECURITY_PLUGIN="wazuh-security-dashboards-plugin_${SECURITY_PLUGIN_VERSION}-${SECURITY_PLUGIN_REVISION}_${SECURITY_PLUGIN_REF}.zip"
           WAZUH_PLUGINS_WAZUH="wazuh-dashboard-plugins_wazuh_${MAIN_PLUGINS_VERSION}-${MAIN_PLUGINS_REVISION}_${MAIN_PLUGINS_REF}.zip"
           WAZUH_PLUGINS_CORE="wazuh-dashboard-plugins_wazuh-core_${MAIN_PLUGINS_VERSION}-${MAIN_PLUGINS_REVISION}_${MAIN_PLUGINS_REF}.zip"
           WAZUH_PLUGINS_CHECK_UPDATES="wazuh-dashboard-plugins_wazuh-check-updates_${MAIN_PLUGINS_VERSION}-${MAIN_PLUGINS_REVISION}_${MAIN_PLUGINS_REF}.zip"
           # --- Рассчитываем имя финального пакета (PACKAGE_NAME) ---
           if [ "${{ inputs.system }}" = "deb" ]; then
-            if [ "${{ inputs.is_stage }}" = "true" ]; then
-              PACKAGE_NAME="wazuh-dashboard_${DASHBOARD_VERSION}-${{ github.run_number }}_${{ inputs.architecture }}.deb"
-            else
-              PACKAGE_NAME="wazuh-dashboard_${DASHBOARD_VERSION}-${{ github.run_number }}_${{ inputs.architecture }}_${COMMIT_SHA}-${PLUGINS_SHA}-${SECURITY_SHA}.deb"
-            fi
+            PACKAGE_NAME="wazuh-dashboard_${DASHBOARD_VERSION}-${{ github.run_number }}_${{ inputs.architecture }}.deb"
           else # rpm
-            if [ "${{ inputs.is_stage }}" = "true" ]; then
-              PACKAGE_NAME="wazuh-dashboard-${DASHBOARD_VERSION}-${{ github.run_number }}.${{ inputs.architecture }}.rpm"
-            else
-              PACKAGE_NAME="wazuh-dashboard_${DASHBOARD_VERSION}-${{ github.run_number }}_${{ inputs.architecture }}_${COMMIT_SHA}-${PLUGINS_SHA}-${SECURITY_SHA}.rpm"
-            fi
+            PACKAGE_NAME="wazuh-dashboard-${DASHBOARD_VERSION}-${{ github.run_number }}.${{ inputs.architecture }}.rpm"
           fi
 
           # --- Рассчитываем флаги ---
@@ -143,24 +131,17 @@ jobs:
             ARCHITECTURE_FLAG="--arm"
           fi
 
-          if [ "${{ inputs.is_stage }}" = "true" ]; then
-            PRODUCTION="--production"
-          else
-            PRODUCTION=""
-          fi
           # --- Выводим все переменные в GITHUB_OUTPUT ---
           echo "--- Exporting all variables to outputs ---"
           echo "COMMIT_SHA=$COMMIT_SHA" >> $GITHUB_OUTPUT
           echo "PLUGINS_SHA=$PLUGINS_SHA" >> $GITHUB_OUTPUT
           echo "SECURITY_SHA=$SECURITY_SHA" >> $GITHUB_OUTPUT
           echo "PACKAGE_NAME=$PACKAGE_NAME" >> $GITHUB_OUTPUT
-          echo "WAZUH_DASHBOARD_SLIM=$WAZUH_DASHBOARD_SLIM" >> $GITHUB_OUTPUT
           echo "WAZUH_SECURITY_PLUGIN=$WAZUH_SECURITY_PLUGIN" >> $GITHUB_OUTPUT
           echo "WAZUH_PLUGINS_WAZUH=$WAZUH_PLUGINS_WAZUH" >> $GITHUB_OUTPUT
           echo "WAZUH_PLUGINS_CORE=$WAZUH_PLUGINS_CORE" >> $GITHUB_OUTPUT
           echo "WAZUH_PLUGINS_CHECK_UPDATES=$WAZUH_PLUGINS_CHECK_UPDATES" >> $GITHUB_OUTPUT
           echo "ARCHITECTURE_FLAG=$ARCHITECTURE_FLAG" >> $GITHUB_OUTPUT
-          echo "PRODUCTION=$PRODUCTION" >> $GITHUB_OUTPUT
 
   build-base:
     needs: [prepare-refs, setup-variables]
@@ -218,9 +199,6 @@ jobs:
         run: |
           ARCH_SUFFIX=$([[ "${{ inputs.architecture }}" == "x86_64" || "${{ inputs.architecture }}" == "amd64" ]] && echo "x64" || echo "arm64")
           echo "ARTIFACT_BUILD_NAME=wazuh-dashboard_${{ env.WZD_VERSION }}-${{ env.WZD_REVISION }}_${ARCH_SUFFIX}.tar.gz" >> $GITHUB_ENV
-      - name: Set WAZUH_DASHBOARD_SLIM env
-        run: |
-          echo "WAZUH_DASHBOARD_SLIM=${{ env.ARTIFACT_BUILD_NAME }}" >> $GITHUB_ENV
 
       # ШАГ 7: Bootstrap (из reusable workflow)
       - name: Run bootstrap
@@ -355,7 +333,7 @@ jobs:
             -s file://${{ github.workspace }}/artifacts/security-package.zip \
             -b file://${{ github.workspace }}/artifacts/dashboard-package.zip \
             --commit-sha ${{needs.setup-variables.outputs.COMMIT_SHA}}-${{needs.setup-variables.outputs.PLUGINS_SHA}}-${{needs.setup-variables.outputs.SECURITY_SHA}} \
-            --${{ inputs.system }} ${{ needs.setup-variables.outputs.PRODUCTION }} --debug
+            --${{ inputs.system }} --debug
 
       - name: Find and Rename Package
         id: package-info
