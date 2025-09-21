@@ -42,6 +42,7 @@ jobs:
       PLUGINS_SHA: ${{ steps.export-vars.outputs.PLUGINS_SHA }}
       SECURITY_SHA: ${{ steps.export-vars.outputs.SECURITY_SHA }}
       ARCHITECTURE_FLAG: ${{ steps.export-vars.outputs.ARCHITECTURE_FLAG }}
+      PACKAGE_NAME: ${{ steps.export-vars.outputs.PACKAGE_NAME }}
 
     steps:
       - name: Checkout ALL source repositories
@@ -76,26 +77,8 @@ jobs:
           echo "Plugins SHA: $PLUGINS_SHA"
           echo "Security SHA: $SECURITY_SHA"
 
-          # --- Получаем версии из файлов ---
-          DASHBOARD_VERSION=$(jq -r '.version' ./wazuh-dashboard/VERSION.json)
-          SECURITY_PLUGIN_VERSION=$(jq -r '.wazuh.version' ./wazuh-security-plugin/package.json)
-          SECURITY_PLUGIN_REVISION=$(jq -r '.wazuh.revision' ./wazuh-security-plugin/package.json)
-          MAIN_PLUGINS_VERSION=$(jq -r '.version' ./wazuh-dashboard-plugins/plugins/main/package.json)
-          MAIN_PLUGINS_REVISION=$(jq -r '.revision' ./wazuh-dashboard-plugins/plugins/main/package.json)
-          # --- Рассчитываем имена артефактов ---
-          ARCH_SHORT=$([[ "${{ inputs.architecture }}" == "x86_64" || "${{ inputs.architecture }}" == "amd64" ]] && echo "x64" || echo "arm64")
-          SECURITY_PLUGIN_REF=$(echo ${{ inputs.reference_security_plugins }} | sed 's/\//-/g')
-          MAIN_PLUGINS_REF=$(echo ${{ inputs.reference_wazuh_plugins }} | sed 's/\//-/g')
-          WAZUH_SECURITY_PLUGIN="wazuh-security-dashboards-plugin_${SECURITY_PLUGIN_VERSION}-${SECURITY_PLUGIN_REVISION}_${SECURITY_PLUGIN_REF}.zip"
-          WAZUH_PLUGINS_WAZUH="wazuh-dashboard-plugins_wazuh_${MAIN_PLUGINS_VERSION}-${MAIN_PLUGINS_REVISION}_${MAIN_PLUGINS_REF}.zip"
-          WAZUH_PLUGINS_CORE="wazuh-dashboard-plugins_wazuh-core_${MAIN_PLUGINS_VERSION}-${MAIN_PLUGINS_REVISION}_${MAIN_PLUGINS_REF}.zip"
-          WAZUH_PLUGINS_CHECK_UPDATES="wazuh-dashboard-plugins_wazuh-check-updates_${MAIN_PLUGINS_VERSION}-${MAIN_PLUGINS_REVISION}_${MAIN_PLUGINS_REF}.zip"
           # --- Рассчитываем имя финального пакета (PACKAGE_NAME) ---
-          if [ "${{ inputs.system }}" = "deb" ]; then
-            PACKAGE_NAME="wazuh-dashboard_${DASHBOARD_VERSION}-${{ github.run_number }}_${{ inputs.architecture }}.deb"
-          else # rpm
-            PACKAGE_NAME="wazuh-dashboard-${DASHBOARD_VERSION}-${{ github.run_number }}.${{ inputs.architecture }}.rpm"
-          fi
+          PACKAGE_NAME="wazuh-dashboard_4.12.0_${{ inputs.architecture }}.${{ inputs.system }}"
 
           # --- Рассчитываем флаги ---
           if [[ "${{ inputs.architecture }}" == "x86_64" || "${{ inputs.architecture }}" == "amd64" ]]; then
@@ -110,10 +93,6 @@ jobs:
           echo "PLUGINS_SHA=$PLUGINS_SHA" >> $GITHUB_OUTPUT
           echo "SECURITY_SHA=$SECURITY_SHA" >> $GITHUB_OUTPUT
           echo "PACKAGE_NAME=$PACKAGE_NAME" >> $GITHUB_OUTPUT
-          echo "WAZUH_SECURITY_PLUGIN=$WAZUH_SECURITY_PLUGIN" >> $GITHUB_OUTPUT
-          echo "WAZUH_PLUGINS_WAZUH=$WAZUH_PLUGINS_WAZUH" >> $GITHUB_OUTPUT
-          echo "WAZUH_PLUGINS_CORE=$WAZUH_PLUGINS_CORE" >> $GITHUB_OUTPUT
-          echo "WAZUH_PLUGINS_CHECK_UPDATES=$WAZUH_PLUGINS_CHECK_UPDATES" >> $GITHUB_OUTPUT
           echo "ARCHITECTURE_FLAG=$ARCHITECTURE_FLAG" >> $GITHUB_OUTPUT
 
   build-base:
@@ -128,13 +107,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          path: ./artifacts # Клонируем в поддиректорию
+          path: ./artifacts
 
       # ШАГ 2: Setup Node (из reusable workflow)
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version-file: './artifacts/.nvmrc' # Путь к файлу теперь включает поддиректорию
+          node-version-file: './artifacts/.nvmrc'
           registry-url: 'https://registry.npmjs.org'
 
       # ШАГ 3: Setup Yarn (из reusable workflow)
@@ -143,10 +122,10 @@ jobs:
           npm uninstall -g yarn
           npm i -g yarn@1.22.10
           yarn config set network-timeout 1000000 -g
+
       # ШАГ 4: Caching (из reusable workflow)
       - name: Configure Yarn Cache
         id: yarn-cache-dir-path
-        # working-directory не применяется к этому шагу, так как он не 'run'
         run: echo "dir=$(yarn --cwd ./artifacts cache dir)" >> $GITHUB_OUTPUT
 
       - name: Initialize Yarn Cache
@@ -156,18 +135,19 @@ jobs:
           key: yarn-${{ hashFiles('./artifacts/yarn.lock') }}
           restore-keys: |
             yarn-
+
       # ШАГ 5: Get versions (из reusable workflow)
       - name: Get package version
         run: |
           echo "VERSION=$(yarn --silent pkg-version)" >> $GITHUB_ENV
           echo "WZD_VERSION=$(yarn --silent wzd-version)" >> $GITHUB_ENV
-          echo "WZD_REVISION=$(yarn --silent wzd-revision)" >> $GITHUB_ENV
+
       # ШАГ 6: Get artifact name (из reusable workflow, убрали matrix)
       - name: Get artifact build name
         id: get-artifact-name
         run: |
           ARCH_SUFFIX=$([[ "${{ inputs.architecture }}" == "x86_64" || "${{ inputs.architecture }}" == "amd64" ]] && echo "x64" || echo "arm64")
-          echo "ARTIFACT_BUILD_NAME=wazuh-dashboard_${{ env.WZD_VERSION }}-${{ env.WZD_REVISION }}_${ARCH_SUFFIX}.tar.gz" >> $GITHUB_ENV
+          echo "ARTIFACT_BUILD_NAME=wazuh-dashboard_${{ env.WZD_VERSION }}_${ARCH_SUFFIX}.tar.gz" >> $GITHUB_ENV
 
       # ШАГ 7: Bootstrap (из reusable workflow)
       - name: Run bootstrap
@@ -192,10 +172,6 @@ jobs:
           retention-days: 30
           overwrite: true
 
-      - name: Export artifact name as job output
-        id: export-name
-        run: echo "value=${{ env.ARTIFACT_BUILD_NAME }}" >> $GITHUB_OUTPUT
-
   build-main-plugins:
     needs: [setup-variables]
     name: Build Main Plugins
@@ -204,8 +180,6 @@ jobs:
       reference: ${{ inputs.reference_wazuh_plugins }}
       command: 'yarn build'
       artifact_name: 'wazuh-dashboard-plugins'
-
-
 
   build-security-plugin:
     needs: [setup-variables]
@@ -216,7 +190,6 @@ jobs:
       command: 'yarn build'
       artifact_name: 'wazuh-security-dashboards-plugin'
       artifact_path: 'wazuh-security-plugin/build'
-
 
   build-and-test-package:
     needs: [setup-variables, build-base, build-main-plugins, build-security-plugin]
@@ -236,7 +209,7 @@ jobs:
       - name: Download dashboard artifact
         uses: actions/download-artifact@v4
         with:
-          name: wazuh-dashboard_4.12.0-03_x64.tar.gz
+          name: wazuh-dashboard_4.12.0_x64.tar.gz
           path: ${{ github.workspace }}/artifacts/dashboard
 
       - name: Download security plugin artifact
@@ -249,21 +222,21 @@ jobs:
       - name: Download main plugin's artifact
         uses: actions/download-artifact@v4
         with:
-          pattern: wazuh-dashboard-plugins_wazuh_4.12.0-03*.zip
+          pattern: wazuh-dashboard-plugins_wazuh_4.12.0.zip
           path: ${{ github.workspace }}/artifacts/plugins
           merge-multiple: true
 
       - name: Download core plugin's artifact
         uses: actions/download-artifact@v4
         with:
-          pattern: wazuh-dashboard-plugins_wazuh-core_4.12.0-03*.zip
+          pattern: wazuh-dashboard-plugins_wazuh-core_4.12.0.zip
           path: ${{ github.workspace }}/artifacts/plugins
           merge-multiple: true
 
       - name: Download check update plugin's artifact
         uses: actions/download-artifact@v4
         with:
-          pattern: wazuh-dashboard-plugins_wazuh-check-updates_4.12.0-03*.zip
+          pattern: wazuh-dashboard-plugins_wazuh-check-updates_4.12.0.zip
           path: ${{ github.workspace }}/artifacts/plugins
           merge-multiple: true
 
@@ -276,7 +249,7 @@ jobs:
         run: |
           zip -r -j ${{ github.workspace }}/artifacts/wazuh-package.zip ${{ github.workspace }}/artifacts/plugins
           zip -r -j ${{ github.workspace }}/artifacts/security-package.zip ${{ github.workspace }}/artifacts/security-plugin
-          zip -r -j ${{ github.workspace }}/artifacts/dashboard-package.zip ${{ github.workspace }}/artifacts/dashboard/wazuh-dashboard_4.12.0-03_x64.tar.gz
+          zip -r -j ${{ github.workspace }}/artifacts/dashboard-package.zip ${{ github.workspace }}/artifacts/dashboard/wazuh-dashboard_4.12.0_x64.tar.gz
       - name: Debug current dir contents
         run: |
           echo "Current DIR: ${{ github.workspace }}"
@@ -293,7 +266,7 @@ jobs:
         run: |
           cd ${{ github.workspace }}/dev-tools/build-packages
           bash ./build-packages.sh \
-            -r ${{ github.run_number }} ${{ needs.setup-variables.outputs.ARCHITECTURE_FLAG }} \
+            -r ${{ needs.setup-variables.outputs.ARCHITECTURE_FLAG }} \
             -a file://${{ github.workspace }}/artifacts/wazuh-package.zip \
             -s file://${{ github.workspace }}/artifacts/security-package.zip \
             -b file://${{ github.workspace }}/artifacts/dashboard-package.zip \
@@ -321,19 +294,10 @@ jobs:
           fi
 
           echo "Original package found: $OLD_PACKAGE_PATH"
+          mv "$OLD_PACKAGE_PATH" "$OUTPUT_DIR/${{ needs.setup-variables.outputs.PACKAGE_NAME }}"
 
-          # Создаем новое имя, удаляя часть с SHA
-          NEW_PACKAGE_NAME=$(basename "$OLD_PACKAGE_PATH" | sed -E 's/_[a-f0-9]{7,}-[a-f0-9]{7,}-[a-f0-9]{7,}\.(deb|rpm)$/.\1/')
-          NEW_PACKAGE_PATH="$OUTPUT_DIR/$NEW_PACKAGE_NAME"
-
-          echo "Renaming to: $NEW_PACKAGE_NAME"
-
-          # Переименовываем файл
-          mv "$OLD_PACKAGE_PATH" "$NEW_PACKAGE_PATH"
-
-          # Экспортируем правильные пути для следующих шагов
-          echo "path=$NEW_PACKAGE_PATH" >> $GITHUB_OUTPUT
-          echo "name=$NEW_PACKAGE_NAME" >> $GITHUB_OUTPUT
+          echo "path=$OUTPUT_DIR/${{ needs.setup-variables.outputs.PACKAGE_NAME }}" >> $GITHUB_OUTPUT
+          echo "name=${{ needs.setup-variables.outputs.PACKAGE_NAME }}" >> $GITHUB_OUTPUT
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
