@@ -248,7 +248,7 @@
     "core.euiSelectable.noMatchingOptions": "{searchValue} не соответствует ни одному из вариантов",
     "discover.discoverAppName": "Обнаружить",
     "dashboard.dashboardAppName": "Панели мониторинга",
-    "core.explore.visualizeTitle": "Визуализировать",
+    "visualize.visualizeAppName": "Визуализировать",
     "core.notifications.unableUpdateUISettingNotificationMessageTitle": "Не удалось обновить настройку пользовательского интерфейса",
     "core.notifications.errorToast.closeModal": "Закрыть",
     "core.toasts.errorToast.seeFullError": "Посмотреть полную ошибку",
