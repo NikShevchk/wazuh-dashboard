@@ -262,7 +262,9 @@ export class DiscoverPlugin
 
     core.application.register({
       id: PLUGIN_ID,
-      title: 'Discover',
+      title: i18n.translate('discover.discoverAppName', {
+        defaultMessage: 'Discover',
+      }),
       updater$: this.appStateUpdater.asObservable(),
       order: 100,
       euiIconType: 'inputOutput',
