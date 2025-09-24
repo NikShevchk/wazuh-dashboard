@@ -705,6 +705,7 @@
     "dashboard.listing.noItemsMessage": "Похоже, у вас нет дашбордов.",
     "dashboard.listing.createNewDashboard.title": "Создайте свой первый дашборд",
     "dashboard.listing.createNewDashboard.combineDataViewFromOpenSearchDashboardsAppDescription": "Вы можете объединять представления данных из любого приложения {appName} в один дашборд и видеть все в одном месте.",
+    "dashboard.listing.createNewDashboard.newToOpenSearchDashboardsDescription": "Недавно в {appName}? {sampleDataInstallLink}, чтобы попробовать в действии.",
     "dashboard.listing.createNewDashboard.sampleDataInstallLinkText": "Установите некоторые образцы данных",
     "dashboard.listing.createNewDashboard.createButtonLabel": "Создать новый дашборд",
     "dashboard.listing.table.titleColumnName": "Название",
