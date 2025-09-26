@@ -53,11 +53,13 @@ export class SharePlugin implements Plugin {
         schema: schema.string(),
       },
       [CSV_QUOTE_VALUES_SETTING]: {
-        name: i18n.translate('share.advancedSettings.csv.quoteValuesTitle', {
+        name: JSON.stringify({
+          i18nKey: 'share.advancedSettings.csv.quoteValuesTitle',
           defaultMessage: 'Quote CSV values',
         }),
         value: true,
-        description: i18n.translate('share.advancedSettings.csv.quoteValuesText', {
+        description: JSON.stringify({
+          i18nKey: 'share.advancedSettings.csv.quoteValuesText',
           defaultMessage: 'Should values be quoted in csv exports?',
         }),
         schema: schema.boolean(),
