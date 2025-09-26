@@ -58,7 +58,6 @@ import {
 } from '@elastic/eui';
 import { i18n } from '@osd/i18n';
 import { FormattedMessage } from '@osd/i18n/react';
-import { translateDynamic } from '../../../../utils/translate_dynamic';
 import { FieldSetting, FieldState } from '../../types';
 import { isDefaultValue } from '../../lib';
 import {
@@ -73,7 +72,8 @@ function translateMetaField(raw: string) {
   try {
     const parsed: { i18nKey: string; defaultMessage: string } = JSON.parse(raw);
     if (typeof parsed === 'object') {
-      return translateDynamic(parsed.i18nKey, parsed.defaultMessage);
+      const t = i18n.translate;
+      return t(parsed.i18nKey, { defaultMessage: parsed.defaultMessage });
     }
   } catch (_) {
     // Ignore parsing errors and return the raw string
