@@ -43,11 +43,13 @@ export class SharePlugin implements Plugin {
     core.savedObjects.registerType(url);
     core.uiSettings.register({
       [CSV_SEPARATOR_SETTING]: {
-        name: i18n.translate('share.advancedSettings.csv.separatorTitle', {
+        name: JSON.stringify({
+          i18nKey: 'share.advancedSettings.csv.separatorTitle',
           defaultMessage: 'CSV separator',
         }),
         value: ',',
-        description: i18n.translate('share.advancedSettings.csv.separatorText', {
+        description: JSON.stringify({
+          i18nKey: 'share.advancedSettings.csv.separatorText',
           defaultMessage: 'Separate exported values with this string',
         }),
         schema: schema.string(),
