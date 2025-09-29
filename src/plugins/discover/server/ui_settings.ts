@@ -61,11 +61,13 @@ export const uiSettings: Record<string, UiSettingsParams> = {
     schema: schema.arrayOf(schema.string()),
   },
   [SAMPLE_SIZE_SETTING]: {
-    name: i18n.translate('discover.advancedSettings.sampleSizeTitle', {
+    name: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.sampleSizeTitle',
       defaultMessage: 'Number of rows',
     }),
     value: 500,
-    description: i18n.translate('discover.advancedSettings.sampleSizeText', {
+    description: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.sampleSizeText',
       defaultMessage: 'The number of rows to show in the table',
     }),
     category: ['discover'],
@@ -88,7 +90,8 @@ export const uiSettings: Record<string, UiSettingsParams> = {
     schema: schema.number(),
   },
   [SORT_DEFAULT_ORDER_SETTING]: {
-    name: i18n.translate('discover.advancedSettings.sortDefaultOrderTitle', {
+    name: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.sortDefaultOrderTitle',
       defaultMessage: 'Default sort direction',
     }),
     value: 'desc',
@@ -102,7 +105,8 @@ export const uiSettings: Record<string, UiSettingsParams> = {
       }),
     },
     type: 'select',
-    description: i18n.translate('discover.advancedSettings.sortDefaultOrderText', {
+    description: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.sortDefaultOrderText',
       defaultMessage:
         'Controls the default sort direction for time based index patterns in the Discover app.',
     }),
@@ -110,12 +114,14 @@ export const uiSettings: Record<string, UiSettingsParams> = {
     schema: schema.oneOf([schema.literal('desc'), schema.literal('asc')]),
   },
   [SEARCH_ON_PAGE_LOAD_SETTING]: {
-    name: i18n.translate('discover.advancedSettings.searchOnPageLoadTitle', {
+    name: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.searchOnPageLoadTitle',
       defaultMessage: 'Search on page load',
     }),
     value: true,
     type: 'boolean',
-    description: i18n.translate('discover.advancedSettings.searchOnPageLoadText', {
+    description: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.searchOnPageLoadText',
       defaultMessage:
         'Controls whether a search is executed when Discover first loads. This setting does not ' +
         'have an effect when loading a saved search.',
@@ -124,11 +130,13 @@ export const uiSettings: Record<string, UiSettingsParams> = {
     schema: schema.boolean(),
   },
   [DOC_HIDE_TIME_COLUMN_SETTING]: {
-    name: i18n.translate('discover.advancedSettings.docTableHideTimeColumnTitle', {
+    name: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.docTableHideTimeColumnTitle',
       defaultMessage: "Hide 'Time' column",
     }),
     value: false,
-    description: i18n.translate('discover.advancedSettings.docTableHideTimeColumnText', {
+    description: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.docTableHideTimeColumnText',
       defaultMessage: "Hide the 'Time' column in Discover and in all Saved Searches on Dashboards.",
     }),
     category: ['discover'],

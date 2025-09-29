@@ -1822,6 +1822,8 @@
     "discover.discoverDescription": "Интерактивно исследуйте свои данные, запрашивая и фильтруя необработанные документы.",
     "discover.advancedSettings.defaultColumnsTitle": "Столбцы по умолчанию",
     "discover.advancedSettings.defaultColumnsText": "Столбцы, отображаемые по умолчанию на вкладке Discover",
+    "discover.advancedSettings.docTableHideTimeColumnTitle": "Скрыть столбец 'Время'",
+    "discover.advancedSettings.docTableHideTimeColumnText": "Скрыть столбец 'Время' в Discover и во всех сохраненных поисках на панелях мониторинга.",
     "discover.advancedSettings.sampleSizeTitle": "Количество строк",
     "discover.advancedSettings.sampleSizeText": "Количество строк для отображения в таблице",
     "discover.advancedSettings.aggsTermsSizeTitle": "Количество терминов",

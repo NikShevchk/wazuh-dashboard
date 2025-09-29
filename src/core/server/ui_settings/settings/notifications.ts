@@ -35,12 +35,14 @@ import { UiSettingsParams } from '../../../types';
 export const getNotificationsSettings = (): Record<string, UiSettingsParams> => {
   return {
     'notifications:banner': {
-      name: i18n.translate('core.ui_settings.params.notifications.bannerTitle', {
+      name: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.notifications.bannerTitle',
         defaultMessage: 'Custom banner notification',
       }),
       value: '',
       type: 'markdown',
-      description: i18n.translate('core.ui_settings.params.notifications.bannerText', {
+      description: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.notifications.bannerText',
         defaultMessage:
           'A custom banner intended for temporary notices to all users. {markdownLink}.',
         description:

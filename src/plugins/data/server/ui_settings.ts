@@ -101,11 +101,13 @@ export function getUiSettings(
       schema: schema.arrayOf(schema.string()),
     },
     [UI_SETTINGS.DOC_HIGHLIGHT]: {
-      name: i18n.translate('data.advancedSettings.docTableHighlightTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.docTableHighlightTitle',
         defaultMessage: 'Highlight results',
       }),
       value: true,
-      description: i18n.translate('data.advancedSettings.docTableHighlightText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.docTableHighlightText',
         defaultMessage:
           'Highlight results in Discover and Saved Searches Dashboard. ' +
           'Highlighting makes requests slow when working on big documents.',
