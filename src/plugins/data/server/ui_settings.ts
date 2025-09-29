@@ -584,7 +584,8 @@ export function getUiSettings(
       schema: schema.boolean(),
     },
     [UI_SETTINGS.TIMEPICKER_REFRESH_INTERVAL_DEFAULTS]: {
-      name: i18n.translate('data.advancedSettings.timepicker.refreshIntervalDefaultsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.timepicker.refreshIntervalDefaultsTitle',
         defaultMessage: 'Time filter refresh interval',
       }),
       value: `{
@@ -592,7 +593,8 @@ export function getUiSettings(
   "value": 0
 }`,
       type: 'json',
-      description: i18n.translate('data.advancedSettings.timepicker.refreshIntervalDefaultsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.timepicker.refreshIntervalDefaultsText',
         defaultMessage: `The timefilter's default refresh interval. The "value" needs to be specified in milliseconds.`,
       }),
       requiresPageReload: true,
@@ -602,7 +604,8 @@ export function getUiSettings(
       }),
     },
     [UI_SETTINGS.TIMEPICKER_TIME_DEFAULTS]: {
-      name: i18n.translate('data.advancedSettings.timepicker.timeDefaultsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.timepicker.timeDefaultsTitle',
         defaultMessage: 'Time filter defaults',
       }),
       value: `{
@@ -610,7 +613,8 @@ export function getUiSettings(
   "to": "now"
 }`,
       type: 'json',
-      description: i18n.translate('data.advancedSettings.timepicker.timeDefaultsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.timepicker.timeDefaultsText',
         defaultMessage:
           'The timefilter selection to use when OpenSearch Dashboards is started without one',
       }),
@@ -621,7 +625,8 @@ export function getUiSettings(
       }),
     },
     [UI_SETTINGS.TIMEPICKER_QUICK_RANGES]: {
-      name: i18n.translate('data.advancedSettings.timepicker.quickRangesTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.timepicker.quickRangesTitle',
         defaultMessage: 'Time filter quick ranges',
       }),
       value: JSON.stringify(
@@ -701,7 +706,8 @@ export function getUiSettings(
         2
       ),
       type: 'json',
-      description: i18n.translate('data.advancedSettings.timepicker.quickRangesText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.timepicker.quickRangesText',
         defaultMessage:
           'The list of ranges to show in the Quick section of the time filter. This should be an array of objects, ' +
           'with each object containing "from", "to" (see {acceptedFormatsLink}), and ' +
