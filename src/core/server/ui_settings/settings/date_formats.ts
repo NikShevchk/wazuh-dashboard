@@ -133,11 +133,13 @@ export const getDateFormatSettings = (): Record<string, UiSettingsParams> => {
       schema: schema.string(),
     },
     'dateFormat:dow': {
-      name: i18n.translate('core.ui_settings.params.dateFormat.dayOfWeekTitle', {
+      name: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.dateFormat.dayOfWeekTitle',
         defaultMessage: 'Day of week',
       }),
       value: defaultWeekday,
-      description: i18n.translate('core.ui_settings.params.dateFormat.dayOfWeekText', {
+      description: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.dateFormat.dayOfWeekText',
         defaultMessage: 'What day should weeks start on?',
       }),
       type: 'select',
