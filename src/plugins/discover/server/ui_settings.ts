@@ -48,11 +48,13 @@ import {
 
 export const uiSettings: Record<string, UiSettingsParams> = {
   [DEFAULT_COLUMNS_SETTING]: {
-    name: i18n.translate('discover.advancedSettings.defaultColumnsTitle', {
+    name: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.defaultColumnsTitle',
       defaultMessage: 'Default columns',
     }),
     value: ['_source'],
-    description: i18n.translate('discover.advancedSettings.defaultColumnsText', {
+    description: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.defaultColumnsText',
       defaultMessage: 'Columns displayed by default in the Discovery tab',
     }),
     category: ['discover'],
@@ -70,12 +72,14 @@ export const uiSettings: Record<string, UiSettingsParams> = {
     schema: schema.number(),
   },
   [AGGS_TERMS_SIZE_SETTING]: {
-    name: i18n.translate('discover.advancedSettings.aggsTermsSizeTitle', {
+    name: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.aggsTermsSizeTitle',
       defaultMessage: 'Number of terms',
     }),
     value: 20,
     type: 'number',
-    description: i18n.translate('discover.advancedSettings.aggsTermsSizeText', {
+    description: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.aggsTermsSizeText',
       defaultMessage:
         'Determines how many terms will be visualized when clicking the "visualize" ' +
         'button, in the field drop downs, in the discover sidebar.',
@@ -143,33 +147,39 @@ export const uiSettings: Record<string, UiSettingsParams> = {
     schema: schema.number(),
   },
   [CONTEXT_DEFAULT_SIZE_SETTING]: {
-    name: i18n.translate('discover.advancedSettings.context.defaultSizeTitle', {
+    name: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.context.defaultSizeTitle',
       defaultMessage: 'Context size',
     }),
     value: 5,
-    description: i18n.translate('discover.advancedSettings.context.defaultSizeText', {
+    description: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.context.defaultSizeText',
       defaultMessage: 'The number of surrounding entries to show in the context view',
     }),
     category: ['discover'],
     schema: schema.number(),
   },
   [CONTEXT_STEP_SETTING]: {
-    name: i18n.translate('discover.advancedSettings.context.sizeStepTitle', {
+    name: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.context.sizeStepTitle',
       defaultMessage: 'Context size step',
     }),
     value: 5,
-    description: i18n.translate('discover.advancedSettings.context.sizeStepText', {
+    description: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.context.sizeStepText',
       defaultMessage: 'The step size to increment or decrement the context size by',
     }),
     category: ['discover'],
     schema: schema.number(),
   },
   [CONTEXT_TIE_BREAKER_FIELDS_SETTING]: {
-    name: i18n.translate('discover.advancedSettings.context.tieBreakerFieldsTitle', {
+    name: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.context.tieBreakerFieldsTitle',
       defaultMessage: 'Tie breaker fields',
     }),
     value: ['_doc'],
-    description: i18n.translate('discover.advancedSettings.context.tieBreakerFieldsText', {
+    description: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.context.tieBreakerFieldsText',
       defaultMessage:
         'A comma-separated list of fields to use for tie-breaking between documents that have the same timestamp value. ' +
         'From this list the first field that is present and sortable in the current index pattern is used.',
@@ -178,11 +188,13 @@ export const uiSettings: Record<string, UiSettingsParams> = {
     schema: schema.arrayOf(schema.string()),
   },
   [MODIFY_COLUMNS_ON_SWITCH]: {
-    name: i18n.translate('discover.advancedSettings.discover.modifyColumnsOnSwitchTitle', {
+    name: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.discover.modifyColumnsOnSwitchTitle',
       defaultMessage: 'Modify columns when changing index patterns',
     }),
     value: true,
-    description: i18n.translate('discover.advancedSettings.discover.modifyColumnsOnSwitchText', {
+    description: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.discover.modifyColumnsOnSwitchText',
       defaultMessage: 'Remove columns that not available in the new index pattern.',
     }),
     category: ['discover'],

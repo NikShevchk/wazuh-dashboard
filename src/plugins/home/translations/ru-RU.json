@@ -299,6 +299,7 @@
     "core.ui_settings.params.storeUrlText": "URL-адрес иногда может стать слишком большим для обработки некоторыми браузерами.",
     "core.ui_settings.params.darkModeTitle": "Темный режим",
     "core.ui_settings.params.themeVersionTitle": "Версия темы",
+    "core.ui_settings.params.themeVersionText": "<p>Переключение между темами, используемыми в текущей и следующих версиях OpenSearch Dashboards. Для применения изменений требуется обновление страницы.</p><p><a href=\"{href}\">{linkText}</a></p>",
     "core.ui.exploreNavList.label": "Исследовать",
     "core.ui.opensearchDashboardsNavList.label": "OpenSearch Dashboards",
     "core.ui.enterpriseSearchNavList.label": "Корпоративный поиск",

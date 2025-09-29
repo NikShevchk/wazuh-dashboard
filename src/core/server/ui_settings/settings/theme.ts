@@ -44,11 +44,13 @@ const THEME_OPTIONS = THEME_VERSIONS.map((v) => (v !== 'v8' ? v : themeVersionLa
 export const getThemeSettings = (): Record<string, UiSettingsParams> => {
   return {
     'theme:darkMode': {
-      name: i18n.translate('core.ui_settings.params.darkModeTitle', {
+      name: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.darkModeTitle',
         defaultMessage: 'Dark mode',
       }),
       value: false,
-      description: i18n.translate('core.ui_settings.params.darkModeText', {
+      description: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.darkModeText',
         defaultMessage: `Enable a dark mode for the OpenSearch Dashboards UI. A page refresh is required for the setting to be applied.`,
       }),
       requiresPageReload: true,
@@ -56,7 +58,8 @@ export const getThemeSettings = (): Record<string, UiSettingsParams> => {
       schema: schema.boolean(),
     },
     'theme:version': {
-      name: i18n.translate('core.ui_settings.params.themeVersionTitle', {
+      name: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.themeVersionTitle',
         defaultMessage: 'Theme version',
       }),
       value:
@@ -66,7 +69,8 @@ export const getThemeSettings = (): Record<string, UiSettingsParams> => {
       type: 'select',
       options: THEME_OPTIONS,
       optionLabels: themeVersionLabelMap,
-      description: i18n.translate('core.ui_settings.params.themeVersionText', {
+      description: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.themeVersionText',
         defaultMessage: `<p>Switch between the themes used for the current and next versions of OpenSearch Dashboards. A page refresh is required for the setting to be applied.</p><p><a href="{href}">{linkText}</a></p>`,
         values: {
           href: 'https://forum.opensearch.org/t/feedback-on-dark-mode-experience/15725',

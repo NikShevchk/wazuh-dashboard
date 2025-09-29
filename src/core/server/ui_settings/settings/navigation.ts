@@ -62,11 +62,13 @@ export const getNavigationSettings = (): Record<string, UiSettingsParams> => {
       }),
     },
     pageNavigation: {
-      name: i18n.translate('core.ui_settings.params.pageNavigationName', {
+      name: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.pageNavigationName',
         defaultMessage: 'Side nav style',
       }),
       value: 'modern',
-      description: i18n.translate('core.ui_settings.params.pageNavigationDesc', {
+      description: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.pageNavigationDesc',
         defaultMessage: 'Change the style of navigation',
       }),
       type: 'select',

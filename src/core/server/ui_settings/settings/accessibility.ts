@@ -29,17 +29,18 @@
  */
 
 import { schema } from '@osd/config-schema';
-import { i18n } from '@osd/i18n';
 import { UiSettingsParams } from '../../../types';
 
 export const getAccessibilitySettings = (): Record<string, UiSettingsParams> => {
   return {
     'accessibility:disableAnimations': {
-      name: i18n.translate('core.ui_settings.params.disableAnimationsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.disableAnimationsTitle',
         defaultMessage: 'Disable Animations',
       }),
       value: false,
-      description: i18n.translate('core.ui_settings.params.disableAnimationsText', {
+      description: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.disableAnimationsText',
         defaultMessage:
           'Turn off all unnecessary animations in the OpenSearch Dashboards UI. Refresh the page to apply the changes.',
       }),
