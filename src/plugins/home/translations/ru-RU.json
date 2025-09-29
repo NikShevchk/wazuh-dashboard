@@ -1428,6 +1428,7 @@
     "data.advancedSettings.format.formattingLocaleTitle": "Локаль форматирования",
     "data.advancedSettings.format.formattingLocale.numeralLanguageLinkText": "Numeral Language",
     "data.advancedSettings.data.withLongNumeralsTitle": "Расширить точность чисел",
+    "data.advancedSettings.data.withLongNumeralsText": "Включите для точной работы с очень большими числами. Отключите для оптимизации производительности, когда высокая точность для больших значений не требуется.",
     "data.advancedSettings.timepicker.refreshIntervalDefaultsTitle": "Интервал обновления временного фильтра",
     "data.advancedSettings.timepicker.timeDefaultsTitle": "Настройки времени по умолчанию",
     "data.advancedSettings.timepicker.timeDefaultsText": "Выбор временного фильтра, который будет использоваться при запуске OpenSearch Dashboards без него",

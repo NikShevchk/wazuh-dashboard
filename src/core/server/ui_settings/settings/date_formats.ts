@@ -48,7 +48,8 @@ export const getDateFormatSettings = (): Record<string, UiSettingsParams> => {
 
   return {
     dateFormat: {
-      name: i18n.translate('core.ui_settings.params.dateFormatTitle', {
+      name: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.dateFormatTitle',
         defaultMessage: 'Date format',
       }),
       value: 'MMM D, YYYY @ HH:mm:ss.SSS',

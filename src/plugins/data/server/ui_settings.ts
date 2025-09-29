@@ -536,13 +536,16 @@ export function getUiSettings(
       schema: schema.string(),
     },
     [UI_SETTINGS.DATA_WITH_LONG_NUMERALS]: {
-      name: i18n.translate('data.advancedSettings.data.withLongNumeralsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.data.withLongNumeralsTitle',
         defaultMessage: 'Extend Numeric Precision',
       }),
       value: true,
-      description: i18n.translate('data.advancedSettings.data.withLongNumeralsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.data.withLongNumeralsText',
         defaultMessage:
-          "Turn on for precise handling of extremely large numbers. Turn off to optimize performance when high precision for large values isn't required.",
+          'Turn on for precise handling of extremely large numbers. ' +
+          "Turn off to optimize performance when high precision for large values isn't required.",
       }),
       schema: schema.boolean(),
     },
