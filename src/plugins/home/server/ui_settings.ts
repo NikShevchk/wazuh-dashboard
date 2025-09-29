@@ -21,11 +21,13 @@ import { SEARCH_WORKSPACE_DISMISS_GET_STARTED, USE_NEW_HOME_PAGE } from '../comm
 // export const uiSettings: Record<string, UiSettingsParams> = {
 export const uiSettings: Record<string, UiSettingsParams> = {
   [USE_NEW_HOME_PAGE]: {
-    name: i18n.translate('home.ui_settings.useNewHomePage.label', {
+    name: JSON.stringify({
+      i18nKey: 'home.ui_settings.useNewHomePage.label',
       defaultMessage: 'Use New Home Page',
     }),
     value: false,
-    description: i18n.translate('home.ui_settings.useNewHomePage.description', {
+    description: JSON.stringify({
+      i18nKey: 'home.ui_settings.useNewHomePage.description',
       defaultMessage: 'Try the new home page',
     }),
     schema: schema.boolean(),

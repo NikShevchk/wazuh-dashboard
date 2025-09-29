@@ -324,33 +324,39 @@ export function getUiSettings(
       schema: schema.boolean(),
     },
     [UI_SETTINGS.HISTOGRAM_BAR_TARGET]: {
-      name: i18n.translate('data.advancedSettings.histogram.barTargetTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.histogram.barTargetTitle',
         defaultMessage: 'Target bars',
       }),
       value: 50,
-      description: i18n.translate('data.advancedSettings.histogram.barTargetText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.histogram.barTargetText',
         defaultMessage:
           'Attempt to generate around this many bars when using "auto" interval in date histograms',
       }),
       schema: schema.number(),
     },
     [UI_SETTINGS.HISTOGRAM_MAX_BARS]: {
-      name: i18n.translate('data.advancedSettings.histogram.maxBarsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.histogram.maxBarsTitle',
         defaultMessage: 'Maximum bars',
       }),
       value: 100,
-      description: i18n.translate('data.advancedSettings.histogram.maxBarsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.histogram.maxBarsText',
         defaultMessage:
           'Never show more than this many bars in date histograms, scale values if needed',
       }),
       schema: schema.number(),
     },
     [UI_SETTINGS.HISTORY_LIMIT]: {
-      name: i18n.translate('data.advancedSettings.historyLimitTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.historyLimitTitle',
         defaultMessage: 'History limit',
       }),
       value: 10,
-      description: i18n.translate('data.advancedSettings.historyLimitText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.historyLimitText',
         defaultMessage:
           'In fields that have history (e.g. query inputs), show this many recent values',
       }),
@@ -367,7 +373,8 @@ export function getUiSettings(
       schema: schema.boolean(),
     },
     [UI_SETTINGS.FORMAT_DEFAULT_TYPE_MAP]: {
-      name: i18n.translate('data.advancedSettings.format.defaultTypeMapTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.defaultTypeMapTitle',
         defaultMessage: 'Field type format name',
       }),
       value: `{
@@ -380,7 +387,8 @@ export function getUiSettings(
   "_default_": { "id": "string", "params": {} }
 }`,
       type: 'json',
-      description: i18n.translate('data.advancedSettings.format.defaultTypeMapText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.defaultTypeMapText',
         defaultMessage:
           'Map of the format name to use by default for each field type. ' +
           '{defaultFormat} is used if the field type is not mentioned explicitly',
@@ -421,12 +429,14 @@ export function getUiSettings(
       }),
     },
     [UI_SETTINGS.FORMAT_NUMBER_DEFAULT_PATTERN]: {
-      name: i18n.translate('data.advancedSettings.format.numberFormatTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.numberFormatTitle',
         defaultMessage: 'Number format',
       }),
       value: '0,0.[000]',
       type: 'string',
-      description: i18n.translate('data.advancedSettings.format.numberFormatText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.numberFormatText',
         defaultMessage: 'Default {numeralFormatLink} for the "number" format',
         description:
           'Part of composite text: data.advancedSettings.format.numberFormatText + ' +
@@ -443,12 +453,14 @@ export function getUiSettings(
       schema: schema.string(),
     },
     [UI_SETTINGS.FORMAT_PERCENT_DEFAULT_PATTERN]: {
-      name: i18n.translate('data.advancedSettings.format.percentFormatTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.percentFormatTitle',
         defaultMessage: 'Percent format',
       }),
       value: '0,0.[000]%',
       type: 'string',
-      description: i18n.translate('data.advancedSettings.format.percentFormatText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.percentFormatText',
         defaultMessage: 'Default {numeralFormatLink} for the "percent" format',
         description:
           'Part of composite text: data.advancedSettings.format.percentFormatText + ' +
@@ -513,7 +525,8 @@ export function getUiSettings(
       schema: schema.string(),
     },
     [UI_SETTINGS.FORMAT_NUMBER_DEFAULT_LOCALE]: {
-      name: i18n.translate('data.advancedSettings.format.formattingLocaleTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.formattingLocaleTitle',
         defaultMessage: 'Formatting locale',
       }),
       value: 'en',
@@ -522,7 +535,8 @@ export function getUiSettings(
       optionLabels: Object.fromEntries(
         numeralLanguages.map((language: Record<string, any>) => [language.id, language.name])
       ),
-      description: i18n.translate('data.advancedSettings.format.formattingLocaleText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.formattingLocaleText',
         defaultMessage: `{numeralLanguageLink} locale`,
         description:
           'Part of composite text: data.advancedSettings.format.formattingLocale.numeralLanguageLinkText + ' +
