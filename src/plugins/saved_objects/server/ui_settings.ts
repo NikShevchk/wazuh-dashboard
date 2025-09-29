@@ -28,7 +28,6 @@
  * under the License.
  */
 
-import { i18n } from '@osd/i18n';
 import { schema } from '@osd/config-schema';
 
 import { UiSettingsParams } from 'opensearch-dashboards/server';
@@ -41,23 +40,27 @@ import {
 
 export const uiSettings: Record<string, UiSettingsParams> = {
   [PER_PAGE_SETTING]: {
-    name: i18n.translate('savedObjects.advancedSettings.perPageTitle', {
+    name: JSON.stringify({
+      i18nKey: 'savedObjects.advancedSettings.perPageTitle',
       defaultMessage: 'Objects per page',
     }),
     value: PER_PAGE_VALUE,
     type: 'number',
-    description: i18n.translate('savedObjects.advancedSettings.perPageText', {
+    description: JSON.stringify({
+      i18nKey: 'savedObjects.advancedSettings.perPageText',
       defaultMessage: 'Number of objects to show per page in the load dialog',
     }),
     schema: schema.number(),
   },
   [LISTING_LIMIT_SETTING]: {
-    name: i18n.translate('savedObjects.advancedSettings.listingLimitTitle', {
+    name: JSON.stringify({
+      i18nKey: 'savedObjects.advancedSettings.listingLimitTitle',
       defaultMessage: 'Objects listing limit',
     }),
     type: 'number',
     value: LISTING_LIMIT_VALUE,
-    description: i18n.translate('savedObjects.advancedSettings.listingLimitText', {
+    description: JSON.stringify({
+      i18nKey: 'savedObjects.advancedSettings.listingLimitText',
       defaultMessage: 'Number of objects to fetch for the listing pages',
     }),
     schema: schema.number(),
