@@ -225,11 +225,13 @@ export function getUiSettings(
       scope: workspaceEnabled ? UiSettingScope.WORKSPACE : UiSettingScope.GLOBAL,
     },
     [UI_SETTINGS.COURIER_IGNORE_FILTER_IF_FIELD_NOT_IN_INDEX]: {
-      name: i18n.translate('data.advancedSettings.courier.ignoreFilterTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.ignoreFilterTitle',
         defaultMessage: 'Ignore filter(s)',
       }),
       value: false,
-      description: i18n.translate('data.advancedSettings.courier.ignoreFilterText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.ignoreFilterText',
         defaultMessage:
           'This configuration enhances support for dashboards containing visualizations accessing dissimilar indexes. ' +
           'When disabled, all filters are applied to all visualizations. ' +
@@ -240,14 +242,16 @@ export function getUiSettings(
       schema: schema.boolean(),
     },
     [UI_SETTINGS.COURIER_SET_REQUEST_PREFERENCE]: {
-      name: i18n.translate('data.advancedSettings.courier.requestPreferenceTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.requestPreferenceTitle',
         defaultMessage: 'Request preference',
       }),
       value: 'sessionId',
       options: ['sessionId', 'custom', 'none'],
       optionLabels: requestPreferenceOptionLabels,
       type: 'select',
-      description: i18n.translate('data.advancedSettings.courier.requestPreferenceText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.requestPreferenceText',
         defaultMessage: `Allows you to set which shards handle your search requests.
           <ul>
             <li><strong>{sessionId}:</strong> restricts operations to execute all search requests on the same shards.
@@ -268,12 +272,14 @@ export function getUiSettings(
       schema: schema.string(),
     },
     [UI_SETTINGS.COURIER_CUSTOM_REQUEST_PREFERENCE]: {
-      name: i18n.translate('data.advancedSettings.courier.customRequestPreferenceTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.customRequestPreferenceTitle',
         defaultMessage: 'Custom request preference',
       }),
       value: '_local',
       type: 'string',
-      description: i18n.translate('data.advancedSettings.courier.customRequestPreferenceText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.customRequestPreferenceText',
         defaultMessage:
           '{requestPreferenceLink} used when {setRequestReferenceSetting} is set to {customSettingValue}.',
         description:
@@ -297,12 +303,14 @@ export function getUiSettings(
       schema: schema.string(),
     },
     [UI_SETTINGS.COURIER_MAX_CONCURRENT_SHARD_REQUESTS]: {
-      name: i18n.translate('data.advancedSettings.courier.maxRequestsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.maxRequestsTitle',
         defaultMessage: 'Max Concurrent Shard Requests',
       }),
       value: 0,
       type: 'number',
-      description: i18n.translate('data.advancedSettings.courier.maxRequestsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.maxRequestsText',
         defaultMessage:
           'Controls the {maxRequestsLink} setting used for _msearch requests sent by OpenSearch Dashboards. ' +
           'Set to 0 to disable this config and use the OpenSearch default.',
@@ -315,12 +323,14 @@ export function getUiSettings(
       schema: schema.number(),
     },
     [UI_SETTINGS.COURIER_BATCH_SEARCHES]: {
-      name: i18n.translate('data.advancedSettings.courier.batchSearchesTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.batchSearchesTitle',
         defaultMessage: 'Batch concurrent searches',
       }),
       value: false,
       type: 'boolean',
-      description: i18n.translate('data.advancedSettings.courier.batchSearchesText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.batchSearchesText',
         defaultMessage: `When disabled, dashboard panels will load individually, and search requests will terminate when users navigate
            away or update the query. When enabled, dashboard panels will load together when all of the data is loaded, and
            searches will not terminate.`,
@@ -329,10 +339,16 @@ export function getUiSettings(
       schema: schema.boolean(),
     },
     [UI_SETTINGS.SEARCH_INCLUDE_FROZEN]: {
-      name: 'Search in frozen indices',
-      description: `Will include <a href="https://opensearch.org/docs/latest/opensearch/index-data"
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.inFrozenSearchesTitle',
+        defaultMessage: 'Search in frozen indices',
+      }),
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.inFrozenSearchesText',
+        defaultMessage: `Will include <a href="https://opensearch.org/docs/latest/opensearch/index-data"
         target="_blank" rel="noopener noreferrer">frozen indices</a> in results if enabled. Searching through frozen indices
         might increase the search time.`,
+      }),
       value: false,
       category: ['search'],
       schema: schema.boolean(),
@@ -775,11 +791,13 @@ export function getUiSettings(
       schema: schema.boolean(),
     },
     [UI_SETTINGS.QUERY_ENHANCEMENTS_ENABLED]: {
-      name: i18n.translate('data.advancedSettings.query.enhancements.enableTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.query.enhancements.enableTitle',
         defaultMessage: 'Enable query enhancements',
       }),
       value: false,
-      description: i18n.translate('data.advancedSettings.query.enhancements.enableText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.query.enhancements.enableText',
         defaultMessage: `
           <strong>Experimental</strong>:
           Allows users to query data using enhancements where available. If disabled,
@@ -790,14 +808,16 @@ export function getUiSettings(
       schema: schema.boolean(),
     },
     [UI_SETTINGS.QUERY_DATAFRAME_HYDRATION_STRATEGY]: {
-      name: i18n.translate('data.advancedSettings.query.dataFrameHydrationStrategyTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.query.dataFrameHydrationStrategyTitle',
         defaultMessage: 'Data frame hydration strategy',
       }),
       value: 'perSource',
       options: ['perSource', 'perQuery'],
       optionLabels: dataFrameHydrationStrategyOptionLabels,
       type: 'select',
-      description: i18n.translate('data.advancedSettings.dataFrameHydrationStrategyText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.dataFrameHydrationStrategyText',
         defaultMessage: `Allows you to set how often the data frame schema is updated.
           <ul>
             <li><strong>{perSource}:</strong> hydrates the schema when the data source changes.
@@ -834,11 +854,13 @@ export function getUiSettings(
       schema: schema.arrayOf(schema.string()),
     },
     [UI_SETTINGS.SEARCH_INCLUDE_ALL_FIELDS]: {
-      name: i18n.translate('data.advancedSettings.searchIncludeAllFieldsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.searchIncludeAllFieldsTitle',
         defaultMessage: 'Include all fields in search request',
       }),
       value: false,
-      description: i18n.translate('data.advancedSettings.searchIncludeAllFieldsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.searchIncludeAllFieldsText',
         defaultMessage: `
         <strong>Experimental</strong>:
         Adds the <code>"fields": ["*"]</code> property to search request body`,
@@ -847,7 +869,8 @@ export function getUiSettings(
       category: ['search'],
     },
     [UI_SETTINGS.SEARCH_MAX_RECENT_DATASETS]: {
-      name: i18n.translate('data.advancedSettings.searchMaxRecentDatasets', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.searchMaxRecentDatasets',
         defaultMessage: 'Maximum datasets in recents list',
       }),
       value: 4,
