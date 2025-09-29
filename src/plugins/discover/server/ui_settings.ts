@@ -131,11 +131,13 @@ export const uiSettings: Record<string, UiSettingsParams> = {
     schema: schema.boolean(),
   },
   [FIELDS_LIMIT_SETTING]: {
-    name: i18n.translate('discover.advancedSettings.fieldsPopularLimitTitle', {
+    name: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.fieldsPopularLimitTitle',
       defaultMessage: 'Popular fields limit',
     }),
     value: 10,
-    description: i18n.translate('discover.advancedSettings.fieldsPopularLimitText', {
+    description: JSON.stringify({
+      i18nKey: 'discover.advancedSettings.fieldsPopularLimitText',
       defaultMessage: 'The top N most popular fields to show',
     }),
     schema: schema.number(),

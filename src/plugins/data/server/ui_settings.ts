@@ -717,12 +717,14 @@ export function getUiSettings(
       schema: schema.boolean(),
     },
     [UI_SETTINGS.FILTERS_EDITOR_SUGGEST_VALUES]: {
-      name: i18n.translate('data.advancedSettings.suggestFilterValuesTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.suggestFilterValuesTitle',
         defaultMessage: 'Filter editor suggest values',
         description: '"Filter editor" refers to the UI you create filters in.',
       }),
       value: true,
-      description: i18n.translate('data.advancedSettings.suggestFilterValuesText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.suggestFilterValuesText',
         defaultMessage:
           'Set this property to false to prevent the filter editor from suggesting values for fields.',
       }),

@@ -36,7 +36,8 @@ import { UiSettingsParams } from '../../../types';
 export const getNavigationSettings = (): Record<string, UiSettingsParams> => {
   return {
     defaultRoute: {
-      name: i18n.translate('core.ui_settings.params.defaultRoute.defaultRouteTitle', {
+      name: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.defaultRoute.defaultRouteTitle',
         defaultMessage: 'Default route',
       }),
       value: '/app/home',
@@ -52,7 +53,8 @@ export const getNavigationSettings = (): Record<string, UiSettingsParams> => {
           }
         },
       }),
-      description: i18n.translate('core.ui_settings.params.defaultRoute.defaultRouteText', {
+      description: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.defaultRoute.defaultRouteText',
         defaultMessage:
           'This setting specifies the default route when opening OpenSearch Dashboards, ' +
           'You can use this setting to modify the landing page when opening OpenSearch Dashboards, ' +
