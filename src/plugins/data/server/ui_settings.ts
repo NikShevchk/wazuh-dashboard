@@ -197,12 +197,14 @@ export function getUiSettings(
       }),
     },
     defaultIndex: {
-      name: i18n.translate('data.advancedSettings.defaultIndexTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.defaultIndexTitle',
         defaultMessage: 'Default index',
       }),
       value: null,
       type: 'string',
-      description: i18n.translate('data.advancedSettings.defaultIndexText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.defaultIndexText',
         defaultMessage: 'The index to access if no index is set',
       }),
       schema: schema.nullable(schema.string()),

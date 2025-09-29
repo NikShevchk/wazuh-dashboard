@@ -70,10 +70,19 @@ import {
 
 function translateMetaField(raw: string) {
   try {
-    const parsed: { i18nKey: string; defaultMessage: string } = JSON.parse(raw);
+    const parsed: {
+      i18nKey: string;
+      defaultMessage: string;
+      values: any;
+      description: string;
+    } = JSON.parse(raw);
     if (typeof parsed === 'object') {
       const t = i18n.translate;
-      return t(parsed.i18nKey, { defaultMessage: parsed.defaultMessage });
+      return t(parsed.i18nKey, {
+        defaultMessage: parsed.defaultMessage,
+        values: parsed.values,
+        description: parsed.description,
+      });
     }
   } catch (_) {
     // Ignore parsing errors and return the raw string
