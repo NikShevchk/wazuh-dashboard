@@ -465,12 +465,14 @@ export function getUiSettings(
       schema: schema.string(),
     },
     [UI_SETTINGS.FORMAT_BYTES_DEFAULT_PATTERN]: {
-      name: i18n.translate('data.advancedSettings.format.bytesFormatTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.bytesFormatTitle',
         defaultMessage: 'Bytes format',
       }),
       value: '0,0.[0]b',
       type: 'string',
-      description: i18n.translate('data.advancedSettings.format.bytesFormatText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.bytesFormatText',
         defaultMessage: 'Default {numeralFormatLink} for the "bytes" format',
         description:
           'Part of composite text: data.advancedSettings.format.bytesFormatText + ' +
@@ -487,12 +489,14 @@ export function getUiSettings(
       schema: schema.string(),
     },
     [UI_SETTINGS.FORMAT_CURRENCY_DEFAULT_PATTERN]: {
-      name: i18n.translate('data.advancedSettings.format.currencyFormatTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.currencyFormatTitle',
         defaultMessage: 'Currency format',
       }),
       value: '($0,0.[00])',
       type: 'string',
-      description: i18n.translate('data.advancedSettings.format.currencyFormatText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.currencyFormatText',
         defaultMessage: 'Default {numeralFormatLink} for the "currency" format',
         description:
           'Part of composite text: data.advancedSettings.format.currencyFormatText + ' +
@@ -707,11 +711,13 @@ export function getUiSettings(
       schema: schema.string(),
     },
     [UI_SETTINGS.FILTERS_PINNED_BY_DEFAULT]: {
-      name: i18n.translate('data.advancedSettings.pinFiltersTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.pinFiltersTitle',
         defaultMessage: 'Pin filters by default',
       }),
       value: false,
-      description: i18n.translate('data.advancedSettings.pinFiltersText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.pinFiltersText',
         defaultMessage: 'Whether the filters should have a global state (be pinned) by default',
       }),
       schema: schema.boolean(),
