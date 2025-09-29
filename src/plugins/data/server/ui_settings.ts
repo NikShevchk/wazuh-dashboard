@@ -162,9 +162,13 @@ export function getUiSettings(
       schema: schema.boolean(),
     },
     [UI_SETTINGS.SEARCH_QUERY_LANGUAGE]: {
-      name: queryLanguageSettingName,
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.searchQueryLanguageTitle',
+        defaultMessage: 'Query language',
+      }),
       value: DEFAULT_QUERY_LANGUAGE,
-      description: i18n.translate('data.advancedSettings.searchQueryLanguageText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.searchQueryLanguageText',
         defaultMessage:
           'Query language used by the query bar. DQL is a new language built specifically for OpenSearch Dashboards.',
       }),
@@ -805,11 +809,13 @@ export function getUiSettings(
       schema: schema.string(),
     },
     [UI_SETTINGS.SEARCH_QUERY_LANGUAGE_BLOCKLIST]: {
-      name: i18n.translate('data.advancedSettings.searchQueryLanguageBlocklistTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.searchQueryLanguageBlocklistTitle',
         defaultMessage: 'Additional query languages blocklist',
       }),
       value: ['none'],
-      description: i18n.translate('data.advancedSettings.searchQueryLanguageBlocklistText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.searchQueryLanguageBlocklistText',
         defaultMessage: `Additional languages that are blocked from being used in the query editor.
          <strong>Note</strong>: DQL and Lucene will not be blocked even if set.`,
       }),

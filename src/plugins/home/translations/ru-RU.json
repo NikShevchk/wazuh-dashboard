@@ -1454,6 +1454,7 @@
     "data.advancedSettings.query.enhancements.enableTitle": "Включить улучшения запросов",
     "data.advancedSettings.query.dataFrameHydrationStrategyTitle": "Стратегия гидратации кадра данных",
     "data.advancedSettings.searchQueryLanguageBlocklistTitle": "Черный список дополнительных языков запросов",
+    "data.advancedSettings.searchQueryLanguageBlocklistText": "Дополнительные языки, которые будут заблокированы в редакторе запросов.\n<strong>Примечание</strong>: DQL и Lucene не будут заблокированы, даже если выбраны.",
     "data.advancedSettings.searchIncludeAllFieldsTitle": "Включать все поля в поисковый запрос",
     "data.advancedSettings.searchMaxRecentDatasets": "Максимальное количество наборов данных в списке недавних",
     "dataExplorer.noView.title": "Представление не найдено",
