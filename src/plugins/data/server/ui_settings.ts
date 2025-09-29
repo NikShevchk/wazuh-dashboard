@@ -88,11 +88,13 @@ export function getUiSettings(
 ): Record<string, UiSettingsParams<unknown>> {
   return {
     [UI_SETTINGS.META_FIELDS]: {
-      name: i18n.translate('data.advancedSettings.metaFieldsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.metaFieldsTitle',
         defaultMessage: 'Meta fields',
       }),
       value: ['_source', '_id', '_type', '_index', '_score'],
-      description: i18n.translate('data.advancedSettings.metaFieldsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.metaFieldsText',
         defaultMessage:
           'Fields that exist outside of _source to merge into our document when displaying it',
       }),
@@ -112,11 +114,13 @@ export function getUiSettings(
       schema: schema.boolean(),
     },
     [UI_SETTINGS.QUERY_STRING_OPTIONS]: {
-      name: i18n.translate('data.advancedSettings.query.queryStringOptionsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.query.queryStringOptionsTitle',
         defaultMessage: 'Query string options',
       }),
       value: '{ "analyze_wildcard": true }',
-      description: i18n.translate('data.advancedSettings.query.queryStringOptionsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.query.queryStringOptionsText',
         defaultMessage:
           '{optionsLink} for the lucene query string parser. Is only used when "{queryLanguage}" is set ' +
           'to {luceneLanguage}.',
@@ -140,11 +144,13 @@ export function getUiSettings(
       }),
     },
     [UI_SETTINGS.QUERY_ALLOW_LEADING_WILDCARDS]: {
-      name: i18n.translate('data.advancedSettings.query.allowWildcardsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.query.allowWildcardsTitle',
         defaultMessage: 'Allow leading wildcards in query',
       }),
       value: true,
-      description: i18n.translate('data.advancedSettings.query.allowWildcardsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.query.allowWildcardsText',
         defaultMessage:
           'When set, * is allowed as the first character in a query clause. ' +
           'Currently only applies when experimental query features are enabled in the query bar. ' +
@@ -714,11 +720,13 @@ export function getUiSettings(
       ),
     },
     [UI_SETTINGS.INDEXPATTERN_PLACEHOLDER]: {
-      name: i18n.translate('data.advancedSettings.indexPatternPlaceholderTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.indexPatternPlaceholderTitle',
         defaultMessage: 'Index pattern placeholder',
       }),
       value: '',
-      description: i18n.translate('data.advancedSettings.indexPatternPlaceholderText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.indexPatternPlaceholderText',
         defaultMessage:
           'The placeholder for the "Index pattern name" field in "Management > Index Patterns > Create Index Pattern".',
       }),
