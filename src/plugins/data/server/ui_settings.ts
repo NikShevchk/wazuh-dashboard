@@ -183,11 +183,13 @@ export function getUiSettings(
       schema: schema.string(),
     },
     [UI_SETTINGS.SORT_OPTIONS]: {
-      name: i18n.translate('data.advancedSettings.sortOptionsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.sortOptionsTitle',
         defaultMessage: 'Sort options',
       }),
       value: '{ "unmapped_type": "boolean" }',
-      description: i18n.translate('data.advancedSettings.sortOptionsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.sortOptionsText',
         defaultMessage: '{optionsLink} for the OpenSearch sort parameter',
         description:
           'Part of composite text: data.advancedSettings.sortOptions.optionsLinkText + ' +
@@ -373,11 +375,13 @@ export function getUiSettings(
       schema: schema.number(),
     },
     [UI_SETTINGS.SHORT_DOTS_ENABLE]: {
-      name: i18n.translate('data.advancedSettings.shortenFieldsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.shortenFieldsTitle',
         defaultMessage: 'Shorten fields',
       }),
       value: false,
-      description: i18n.translate('data.advancedSettings.shortenFieldsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.shortenFieldsText',
         defaultMessage: 'Shorten long fields, for example, instead of foo.bar.baz, show f.b.baz',
       }),
       schema: schema.boolean(),

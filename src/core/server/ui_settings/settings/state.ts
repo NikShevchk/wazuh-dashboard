@@ -29,17 +29,18 @@
  */
 
 import { schema } from '@osd/config-schema';
-import { i18n } from '@osd/i18n';
 import { UiSettingsParams } from '../../../types';
 
 export const getStateSettings = (): Record<string, UiSettingsParams> => {
   return {
     'state:storeInSessionStorage': {
-      name: i18n.translate('core.ui_settings.params.storeUrlTitle', {
+      name: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.storeUrlTitle',
         defaultMessage: 'Store URLs in session storage',
       }),
       value: false,
-      description: i18n.translate('core.ui_settings.params.storeUrlText', {
+      description: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.storeUrlText',
         defaultMessage:
           'The URL can sometimes grow to be too large for some browsers to handle. ' +
           'To counter-act this we are testing if storing parts of the URL in session storage could help. ' +
