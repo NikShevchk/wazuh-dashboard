@@ -2983,6 +2983,7 @@
     "visBuilder.pie.groupTitle": "Разделить сектора",
     "visBuilder.pie.splitTitle": "Разделить диаграмму",
     "visBuilder.advancedSettings.visbuilderEnableVegaTitle": "Включить преобразование Vega в VisBuilder",
+    "visBuilder.advancedSettings.visbuilderEnableVegaText": "Позволить VisBuilder отображать визуализации через Vega.",
     "visDefaultEditor.metrics.wrongLastBucketTypeErrorMessage": "Последняя агрегация группы должна быть \"Гистограмма по дате\" или \"Гистограмма\" при использовании метрической агрегации \"type\".",
     "visDefaultEditor.agg.errorsAriaLabel": "В агрегации есть ошибки",
     "visDefaultEditor.agg.disableAggButtonTooltip": "Отключить агрегацию",

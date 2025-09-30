@@ -3,7 +3,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { i18n } from '@osd/i18n';
 import { schema } from '@osd/config-schema';
 import {
   PluginInitializerContext,
@@ -37,11 +36,13 @@ export class VisBuilderPlugin implements Plugin<VisBuilderPluginSetup, VisBuilde
     // Register settings
     uiSettings.register({
       [VISBUILDER_ENABLE_VEGA_SETTING]: {
-        name: i18n.translate('visBuilder.advancedSettings.visbuilderEnableVegaTitle', {
+        name: JSON.stringify({
+          i18nKey: 'visBuilder.advancedSettings.visbuilderEnableVegaTitle',
           defaultMessage: 'Enable vega transformation in visbuilder',
         }),
         value: false,
-        description: i18n.translate('visBuilder.advancedSettings.visbuilderEnableVegaText', {
+        description: JSON.stringify({
+          i18nKey: 'visBuilder.advancedSettings.visbuilderEnableVegaText',
           defaultMessage: `Allow visbuilder to render visualizations via vega.`,
         }),
         requiresPageReload: true,
