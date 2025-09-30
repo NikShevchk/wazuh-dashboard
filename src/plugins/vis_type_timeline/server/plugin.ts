@@ -31,8 +31,6 @@
 import { i18n } from '@osd/i18n';
 import { first } from 'rxjs/operators';
 import { TypeOf, schema } from '@osd/config-schema';
-import { RecursiveReadonly } from '@osd/utility-types';
-import { deepFreeze } from '@osd/std';
 
 import { DataSourcePluginSetup } from 'src/plugins/data_source/server';
 import { PluginStart } from '../../data/server';
@@ -63,7 +61,7 @@ export interface TimelinePluginStartDeps {
 export class Plugin {
   constructor(private readonly initializerContext: PluginInitializerContext) {}
 
-  public async setup(core: CoreSetup, { dataSource }: TimelinePluginSetupDeps): void {
+  public async setup(core: CoreSetup, { dataSource }: TimelinePluginSetupDeps): Promise<void> {
     const config = await this.initializerContext.config
       .create<TypeOf<typeof configSchema>>()
       .pipe(first())
@@ -106,11 +104,13 @@ export class Plugin {
 
     core.uiSettings.register({
       'timeline:es.timefield': {
-        name: i18n.translate('timeline.uiSettings.timeFieldLabel', {
+        name: JSON.stringify({
+          i18nKey: 'timeline.uiSettings.timeFieldLabel',
           defaultMessage: 'Time field',
         }),
         value: '@timestamp',
-        description: i18n.translate('timeline.uiSettings.timeFieldDescription', {
+        description: JSON.stringify({
+          i18nKey: 'timeline.uiSettings.timeFieldDescription',
           defaultMessage: 'Default field containing a timestamp when using {opensearchParam}',
           values: { opensearchParam: '.opensearch()' },
         }),
@@ -118,11 +118,13 @@ export class Plugin {
         schema: schema.string(),
       },
       'timeline:es.default_index': {
-        name: i18n.translate('timeline.uiSettings.defaultIndexLabel', {
+        name: JSON.stringify({
+          i18nKey: 'timeline.uiSettings.defaultIndexLabel',
           defaultMessage: 'Default index',
         }),
         value: '_all',
-        description: i18n.translate('timeline.uiSettings.defaultIndexDescription', {
+        description: JSON.stringify({
+          i18nKey: 'timeline.uiSettings.defaultIndexDescription',
           defaultMessage: 'Default opensearch index to search with {opensearchParam}',
           values: { opensearchParam: '.opensearch()' },
         }),
@@ -130,33 +132,39 @@ export class Plugin {
         schema: schema.string(),
       },
       'timeline:target_buckets': {
-        name: i18n.translate('timeline.uiSettings.targetBucketsLabel', {
+        name: JSON.stringify({
+          i18nKey: 'timeline.uiSettings.targetBucketsLabel',
           defaultMessage: 'Target buckets',
         }),
         value: 200,
-        description: i18n.translate('timeline.uiSettings.targetBucketsDescription', {
+        description: JSON.stringify({
+          i18nKey: 'timeline.uiSettings.targetBucketsDescription',
           defaultMessage: 'The number of buckets to shoot for when using auto intervals',
         }),
         category: ['timeline'],
         schema: schema.number(),
       },
       'timeline:max_buckets': {
-        name: i18n.translate('timeline.uiSettings.maximumBucketsLabel', {
+        name: JSON.stringify({
+          i18nKey: 'timeline.uiSettings.maximumBucketsLabel',
           defaultMessage: 'Maximum buckets',
         }),
         value: 2000,
-        description: i18n.translate('timeline.uiSettings.maximumBucketsDescription', {
+        description: JSON.stringify({
+          i18nKey: 'timeline.uiSettings.maximumBucketsDescription',
           defaultMessage: 'The maximum number of buckets a single datasource can return',
         }),
         category: ['timeline'],
         schema: schema.number(),
       },
       'timeline:min_interval': {
-        name: i18n.translate('timeline.uiSettings.minimumIntervalLabel', {
+        name: JSON.stringify({
+          i18nKey: 'timeline.uiSettings.minimumIntervalLabel',
           defaultMessage: 'Minimum interval',
         }),
         value: '1ms',
-        description: i18n.translate('timeline.uiSettings.minimumIntervalDescription', {
+        description: JSON.stringify({
+          i18nKey: 'timeline.uiSettings.minimumIntervalDescription',
           defaultMessage: 'The smallest interval that will be calculated when using "auto"',
           description:
             '"auto" is a technical value in that context, that should not be translated.',
@@ -165,7 +173,8 @@ export class Plugin {
         schema: schema.string(),
       },
       'timeline:graphite.url': {
-        name: i18n.translate('timeline.uiSettings.graphiteURLLabel', {
+        name: JSON.stringify({
+          i18nKey: 'timeline.uiSettings.graphiteURLLabel',
           defaultMessage: 'Graphite URL',
           description:
             'The URL should be in the form of https://www.hostedgraphite.com/UID/ACCESS_KEY/graphite',
@@ -174,7 +183,8 @@ export class Plugin {
           config.graphiteAllowedUrls && config.graphiteAllowedUrls.length
             ? config.graphiteAllowedUrls[0]
             : null,
-        description: i18n.translate('timeline.uiSettings.graphiteURLDescription', {
+        description: JSON.stringify({
+          i18nKey: 'timeline.uiSettings.graphiteURLDescription',
           defaultMessage: '{experimentalLabel} The URL of your graphite host',
           values: { experimentalLabel: `<em>[${experimentalLabel}]</em>` },
         }),
@@ -182,11 +192,13 @@ export class Plugin {
         schema: schema.nullable(schema.string()),
       },
       'timeline:quandl.key': {
-        name: i18n.translate('timeline.uiSettings.quandlKeyLabel', {
+        name: JSON.stringify({
+          i18nKey: 'timeline.uiSettings.quandlKeyLabel',
           defaultMessage: 'Quandl key',
         }),
         value: 'someKeyHere',
-        description: i18n.translate('timeline.uiSettings.quandlKeyDescription', {
+        description: JSON.stringify({
+          i18nKey: 'timeline.uiSettings.quandlKeyDescription',
           defaultMessage: '{experimentalLabel} Your API key from www.quandl.com',
           values: { experimentalLabel: `<em>[${experimentalLabel}]</em>` },
         }),
