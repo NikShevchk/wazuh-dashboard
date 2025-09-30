@@ -35,37 +35,37 @@ import { schema } from '@osd/config-schema';
 export function getUiSettings(): Record<string, UiSettingsParams<unknown>> {
   return {
     'visualization:tileMap:maxPrecision': {
-      name: i18n.translate('maps_legacy.advancedSettings.visualization.tileMap.maxPrecisionTitle', {
+      name: JSON.stringify({
+        i18nKey: 'maps_legacy.advancedSettings.visualization.tileMap.maxPrecisionTitle',
         defaultMessage: 'Maximum tile map precision',
       }),
       value: 7,
-      description: i18n.translate(
-        'maps_legacy.advancedSettings.visualization.tileMap.maxPrecisionText',
-        {
-          defaultMessage:
-            'The maximum geoHash precision displayed on tile maps: 7 is high, 10 is very high, 12 is the max. {cellDimensionsLink}',
-          description:
-            'Part of composite text: maps_legacy.advancedSettings.visualization.tileMap.maxPrecisionText + ' +
-            'maps_legacy.advancedSettings.visualization.tileMap.maxPrecision.cellDimensionsLinkText',
-          values: {
-            cellDimensionsLink:
-              `<a href="https://opensearch.org/docs/latest/aggregations/bucket/geohash-grid/"
-            target="_blank" rel="noopener noreferrer">` +
-              i18n.translate(
-                'maps_legacy.advancedSettings.visualization.tileMap.maxPrecision.cellDimensionsLinkText',
-                {
-                  defaultMessage: 'Explanation of cell dimensions',
-                }
-              ) +
-              '</a>',
-          },
-        }
-      ),
+      description: JSON.stringify({
+        i18nKey: 'maps_legacy.advancedSettings.visualization.tileMap.maxPrecisionText',
+        defaultMessage:
+          'The maximum geoHash precision displayed on tile maps: 7 is high, 10 is very high, 12 is the max. {cellDimensionsLink}',
+        description:
+          'Part of composite text: maps_legacy.advancedSettings.visualization.tileMap.maxPrecisionText + ' +
+          'maps_legacy.advancedSettings.visualization.tileMap.maxPrecision.cellDimensionsLinkText',
+        values: {
+          cellDimensionsLink:
+            `<a href="https://opensearch.org/docs/latest/aggregations/bucket/geohash-grid/"
+          target="_blank" rel="noopener noreferrer">` +
+            i18n.translate(
+              'maps_legacy.advancedSettings.visualization.tileMap.maxPrecision.cellDimensionsLinkText',
+              {
+                defaultMessage: 'Explanation of cell dimensions',
+              }
+            ) +
+            '</a>',
+        },
+      }),
       schema: schema.number(),
       category: ['visualization'],
     },
     'visualization:tileMap:WMSdefaults': {
-      name: i18n.translate('maps_legacy.advancedSettings.visualization.tileMap.wmsDefaultsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'maps_legacy.advancedSettings.visualization.tileMap.wmsDefaultsTitle',
         defaultMessage: 'Default WMS properties',
       }),
       value: JSON.stringify(
@@ -85,27 +85,25 @@ export function getUiSettings(): Record<string, UiSettingsParams<unknown>> {
         2
       ),
       type: 'json',
-      description: i18n.translate(
-        'maps_legacy.advancedSettings.visualization.tileMap.wmsDefaultsText',
-        {
-          defaultMessage:
-            'Default {propertiesLink} for the WMS map server support in the coordinate map',
-          description:
-            'Part of composite text: maps_legacy.advancedSettings.visualization.tileMap.wmsDefaultsText + ' +
-            'maps_legacy.advancedSettings.visualization.tileMap.wmsDefaults.propertiesLinkText',
-          values: {
-            propertiesLink:
-              '<a href="https://leafletjs.com/reference.html#tilelayer-wms" target="_blank" rel="noopener noreferrer">' +
-              i18n.translate(
-                'maps_legacy.advancedSettings.visualization.tileMap.wmsDefaults.propertiesLinkText',
-                {
-                  defaultMessage: 'properties',
-                }
-              ) +
-              '</a>',
-          },
-        }
-      ),
+      description: JSON.stringify({
+        i18nKey: 'maps_legacy.advancedSettings.visualization.tileMap.wmsDefaultsText',
+        defaultMessage:
+          'Default {propertiesLink} for the WMS map server support in the coordinate map',
+        description:
+          'Part of composite text: maps_legacy.advancedSettings.visualization.tileMap.wmsDefaultsText + ' +
+          'maps_legacy.advancedSettings.visualization.tileMap.wmsDefaults.propertiesLinkText',
+        values: {
+          propertiesLink:
+            '<a href="https://leafletjs.com/reference.html#tilelayer-wms" target="_blank" rel="noopener noreferrer">' +
+            i18n.translate(
+              'maps_legacy.advancedSettings.visualization.tileMap.wmsDefaults.propertiesLinkText',
+              {
+                defaultMessage: 'properties',
+              }
+            ) +
+            '</a>',
+        },
+      }),
       schema: schema.object({
         enabled: schema.boolean(),
         url: schema.string(),

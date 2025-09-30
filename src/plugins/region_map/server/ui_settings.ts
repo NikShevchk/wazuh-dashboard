@@ -28,7 +28,6 @@
  * under the License.
  */
 
-import { i18n } from '@osd/i18n';
 import { UiSettingsParams } from 'opensearch-dashboards/server';
 import { schema } from '@osd/config-schema';
 import { CUSTOM_VECTOR_MAP_MAX_SIZE_SETTING } from '../common';
@@ -36,32 +35,30 @@ import { CUSTOM_VECTOR_MAP_MAX_SIZE_SETTING } from '../common';
 export function getUiSettings(): Record<string, UiSettingsParams<unknown>> {
   return {
     'visualization:regionmap:showWarnings': {
-      name: i18n.translate('regionMap.advancedSettings.visualization.showRegionMapWarningsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'regionMap.advancedSettings.visualization.showRegionMapWarningsTitle',
         defaultMessage: 'Show region map warning',
       }),
       value: true,
-      description: i18n.translate(
-        'regionMap.advancedSettings.visualization.showRegionMapWarningsText',
-        {
-          defaultMessage:
-            'Whether the region map shows a warning when terms cannot be joined to a shape on the map.',
-        }
-      ),
+      description: JSON.stringify({
+        i18nKey: 'regionMap.advancedSettings.visualization.showRegionMapWarningsText',
+        defaultMessage:
+          'Whether the region map shows a warning when terms cannot be joined to a shape on the map.',
+      }),
       schema: schema.boolean(),
       category: ['visualization'],
     },
     [CUSTOM_VECTOR_MAP_MAX_SIZE_SETTING]: {
-      name: i18n.translate('regionMap.advancedSettings.visualization.customVectorMapDefaultSize', {
+      name: JSON.stringify({
+        i18nKey: 'regionMap.advancedSettings.visualization.customVectorMapDefaultSize',
         defaultMessage: 'Custom vector map size',
       }),
       value: 1000,
-      description: i18n.translate(
-        'regionMap.advancedSettings.visualization.customVectorMapDefaultSizeText',
-        {
-          defaultMessage:
-            'The maximum number of features to load from custom vector map. A higher number might have negative impact on browser rendering performance.',
-        }
-      ),
+      description: JSON.stringify({
+        i18nKey: 'regionMap.advancedSettings.visualization.customVectorMapDefaultSizeText',
+        defaultMessage:
+          'The maximum number of features to load from custom vector map. A higher number might have negative impact on browser rendering performance.',
+      }),
       schema: schema.number(),
       category: ['visualization'],
     },
