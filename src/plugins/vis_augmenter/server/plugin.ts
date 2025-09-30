@@ -3,7 +3,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { i18n } from '@osd/i18n';
 import { schema } from '@osd/config-schema';
 import { Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
@@ -53,29 +52,30 @@ export class VisAugmenterPlugin
     if (isAugmentationEnabled) {
       core.uiSettings.register({
         [PLUGIN_AUGMENTATION_ENABLE_SETTING]: {
-          name: i18n.translate('visAugmenter.enablePluginAugmentationTitle', {
+          name: JSON.stringify({
+            i18nKey: 'visAugmenter.enablePluginAugmentationTitle',
             defaultMessage: 'Enable plugin augmentation',
           }),
           value: true,
-          description: i18n.translate('visAugmenter.enablePluginAugmentationText', {
+          description: JSON.stringify({
+            i18nKey: 'visAugmenter.enablePluginAugmentationText',
             defaultMessage: 'Plugin functionality can be accessed from line chart visualizations',
           }),
           category: ['visualization'],
           schema: schema.boolean(),
         },
         [PLUGIN_AUGMENTATION_MAX_OBJECTS_SETTING]: {
-          name: i18n.translate('visAugmenter.enablePluginAugmentation.maxPluginObjectsTitle', {
+          name: JSON.stringify({
+            i18nKey: 'visAugmenter.enablePluginAugmentation.maxPluginObjectsTitle',
             defaultMessage: 'Max number of associated augmentations',
           }),
           value: 10,
-          description: i18n.translate(
-            'visAugmenter.enablePluginAugmentation.maxPluginObjectsText',
-            {
-              defaultMessage:
-                'Associating more than 10 plugin resources per visualization can lead to performance ' +
-                'issues and increase the cost of running clusters.',
-            }
-          ),
+          description: JSON.stringify({
+            i18nKey: 'visAugmenter.enablePluginAugmentation.maxPluginObjectsText',
+            defaultMessage:
+              'Associating more than 10 plugin resources per visualization can lead to performance ' +
+              'issues and increase the cost of running clusters.',
+          }),
           category: ['visualization'],
           schema: schema.number({ min: 0 }),
         },

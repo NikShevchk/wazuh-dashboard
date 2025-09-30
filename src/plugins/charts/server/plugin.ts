@@ -28,7 +28,6 @@
  * under the License.
  */
 
-import { i18n } from '@osd/i18n';
 import { schema } from '@osd/config-schema';
 import { CoreSetup, Plugin } from 'opensearch-dashboards/server';
 import { COLOR_MAPPING_SETTING } from '../common';
@@ -37,14 +36,16 @@ export class ChartsServerPlugin implements Plugin<object, object> {
   public setup(core: CoreSetup) {
     core.uiSettings.register({
       [COLOR_MAPPING_SETTING]: {
-        name: i18n.translate('charts.advancedSettings.visualization.colorMappingTitle', {
+        name: JSON.stringify({
+          i18nKey: 'charts.advancedSettings.visualization.colorMappingTitle',
           defaultMessage: 'Color mapping',
         }),
         value: JSON.stringify({
           Count: '#54B399',
         }),
         type: 'json',
-        description: i18n.translate('charts.advancedSettings.visualization.colorMappingText', {
+        description: JSON.stringify({
+          i18nKey: 'charts.advancedSettings.visualization.colorMappingText',
           defaultMessage: 'Maps values to specified colors within visualizations',
         }),
         category: ['visualization'],
