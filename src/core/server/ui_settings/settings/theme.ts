@@ -29,7 +29,6 @@
  */
 
 import { schema } from '@osd/config-schema';
-import { i18n } from '@osd/i18n';
 import { themeVersionLabelMap } from '@osd/ui-shared-deps';
 import type { Type } from '@osd/config-schema';
 import { UiSettingsParams } from '../../../types';

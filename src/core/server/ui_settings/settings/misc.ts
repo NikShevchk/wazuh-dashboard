@@ -28,7 +28,6 @@
  * under the License.
  */
 
-import { i18n } from '@osd/i18n';
 import { schema } from '@osd/config-schema';
 import { UiSettingsParams } from '../types';
 
