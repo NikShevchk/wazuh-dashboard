@@ -1806,6 +1806,7 @@
     "discover.topNav.openSearchPanel.openSearchTitle": "Открыть поиск",
     "discover.topNav.openSearchPanel.noSearchesFoundDescription": "Соответствующих поисков не найдено.",
     "discover.topNav.openSearchPanel.manageSearchesButtonLabel": "Управление поисками",
+    "discover.options.legacySwitchLabel": "Активировать старый режим Discover",
     "discover.uninitializedTitle": "Начать поиск",
     "discover.uninitializedText": "Напишите запрос, добавьте фильтры или просто нажмите \"Обновить\", чтобы получить результаты для текущего запроса.",
     "discover.uninitializedRefreshButtonText": "Обновить данные",
