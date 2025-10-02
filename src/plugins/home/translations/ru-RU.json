@@ -2826,6 +2826,8 @@
     "security.account.resetPassword.resetPasswordMenu.newPasswordHelpText": "Пароль должен содержать не менее 8 символов и включать как минимум одну заглавную букву, одну строчную букву, одну цифру и один специальный символ",
     "security.account.resetPassword.resetPasswordMenu.reEnterNewPasswordLabel": "Повтор нового пароля",
     "security.account.resetPassword.resetPasswordMenu.reEnterNewPasswordHelpText": "Пароль должен совпадать с тем, что вы ввели выше",
+    "security.account.resetPassword.resetPasswordMenu.cancelButton": "Отмена",
+    "security.account.resetPassword.resetPasswordMenu.resetButton": "Сбросить",
     "share.contextMenu.permalinkPanelTitle": "Постоянная ссылка",
     "share.contextMenu.permalinksLabel": "Постоянные ссылки",
     "share.contextMenu.embedCodePanelTitle": "Код для встраивания",
