@@ -1,4 +1,4 @@
-FROM rockylinux:9
+FROM rockylinux:8.8
 
 # Install all the necessary tools to build the packages
 RUN yum clean all && yum update -y
