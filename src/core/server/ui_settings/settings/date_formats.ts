@@ -48,11 +48,13 @@ export const getDateFormatSettings = (): Record<string, UiSettingsParams> => {
 
   return {
     dateFormat: {
-      name: i18n.translate('core.ui_settings.params.dateFormatTitle', {
+      name: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.dateFormatTitle',
         defaultMessage: 'Date format',
       }),
       value: 'MMM D, YYYY @ HH:mm:ss.SSS',
-      description: i18n.translate('core.ui_settings.params.dateFormatText', {
+      description: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.dateFormatText',
         defaultMessage: 'When displaying a pretty formatted date, use this {formatLink}',
         description:
           'Part of composite text: core.ui_settings.params.dateFormatText + ' +
@@ -69,11 +71,13 @@ export const getDateFormatSettings = (): Record<string, UiSettingsParams> => {
       schema: schema.string(),
     },
     'dateFormat:tz': {
-      name: i18n.translate('core.ui_settings.params.dateFormat.timezoneTitle', {
+      name: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.dateFormat.timezoneTitle',
         defaultMessage: 'Timezone for date formatting',
       }),
       value: 'Browser',
-      description: i18n.translate('core.ui_settings.params.dateFormat.timezoneText', {
+      description: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.dateFormat.timezoneText',
         defaultMessage:
           'Which timezone should be used. {defaultOption} will use the timezone detected by your browser.',
         values: {
@@ -100,7 +104,8 @@ export const getDateFormatSettings = (): Record<string, UiSettingsParams> => {
       }),
     },
     'dateFormat:scaled': {
-      name: i18n.translate('core.ui_settings.params.dateFormat.scaledTitle', {
+      name: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.dateFormat.scaledTitle',
         defaultMessage: 'Scaled date format',
       }),
       type: 'json',
@@ -112,7 +117,8 @@ export const getDateFormatSettings = (): Record<string, UiSettingsParams> => {
   ["P1DT", "YYYY-MM-DD"],
   ["P1YT", "YYYY"]
 ]`,
-      description: i18n.translate('core.ui_settings.params.dateFormat.scaledText', {
+      description: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.dateFormat.scaledText',
         defaultMessage:
           'Values that define the format used in situations where time-based ' +
           'data is rendered in order, and formatted timestamps should adapt to the ' +
@@ -132,11 +138,13 @@ export const getDateFormatSettings = (): Record<string, UiSettingsParams> => {
       schema: schema.string(),
     },
     'dateFormat:dow': {
-      name: i18n.translate('core.ui_settings.params.dateFormat.dayOfWeekTitle', {
+      name: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.dateFormat.dayOfWeekTitle',
         defaultMessage: 'Day of week',
       }),
       value: defaultWeekday,
-      description: i18n.translate('core.ui_settings.params.dateFormat.dayOfWeekText', {
+      description: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.dateFormat.dayOfWeekText',
         defaultMessage: 'What day should weeks start on?',
       }),
       type: 'select',
@@ -158,11 +166,13 @@ export const getDateFormatSettings = (): Record<string, UiSettingsParams> => {
       }),
     },
     dateNanosFormat: {
-      name: i18n.translate('core.ui_settings.params.dateNanosFormatTitle', {
+      name: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.dateNanosFormatTitle',
         defaultMessage: 'Date with nanoseconds format',
       }),
       value: 'MMM D, YYYY @ HH:mm:ss.SSSSSSSSS',
-      description: i18n.translate('core.ui_settings.params.dateNanosFormatText', {
+      description: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.dateNanosFormatText',
         defaultMessage: 'Used for the {dateNanosLink} datatype of OpenSearch',
         values: {
           dateNanosLink:

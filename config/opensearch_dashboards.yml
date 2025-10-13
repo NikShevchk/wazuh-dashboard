@@ -1,10 +1,10 @@
 # OpenSearch Dashboards is served by a back end server. This setting specifies the port to use.
-#server.port: 5601
+server.port: 5601
 
 # Specifies the address to which the OpenSearch Dashboards server will bind. IP addresses and host names are both valid values.
 # The default is 'localhost', which usually means remote machines will not be able to connect.
 # To allow connections from remote users, set this parameter to a non-loopback address.
-#server.host: "localhost"
+server.host: 0.0.0.0
 
 # Enables you to specify a path to mount OpenSearch Dashboards at if you are running behind a proxy.
 # Use the `server.rewriteBasePath` setting to tell OpenSearch Dashboards if it should remove the basePath
@@ -23,11 +23,17 @@
 #server.name: "your-hostname"
 
 # The URLs of the OpenSearch instances to use for all your queries.
-opensearch.hosts: ["https://localhost:9200"]
+#opensearch.hosts: ["https://localhost:9200"]
+#opensearch.username: "admin"
+#opensearch.password: "S7uP3r@eCur3Pa@@"
+#opensearch.ssl.verificationMode: none
+
+opensearch.hosts: ["https://45.136.16.242:9200"]
 opensearch.username: "admin"
-opensearch.password: "S7uP3r@eCur3Pa@@"
+opensearch.password: "s?7oP.EGeRDiNroQ2VvCd.ZluWE.hqwk"
 opensearch.ssl.verificationMode: none
 
+logging.verbose: true
 # OpenSearch Dashboards uses an index in OpenSearch to store saved searches, visualizations and
 # dashboards. OpenSearch Dashboards creates a new index if the index doesn't already exist.
 #opensearchDashboards.index: ".opensearch_dashboards"
@@ -158,6 +164,10 @@ opensearch.ssl.verificationMode: none
 # When set to true, the 'ENOSPC' error message will not cause the OpenSearch Dashboards process to crash. Otherwise,
 # the original behavior will be maintained.
 #logging.ignoreEnospcError: false
+# Enable development mode CSP settings
+csp.rules: ["script-src 'unsafe-inline' 'unsafe-eval' 'self' localhost:5601 localhost:9200"]
+
+
 
 # Set the value of this setting to true to suppress all logging output.
 #logging.silent: false

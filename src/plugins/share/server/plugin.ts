@@ -28,7 +28,6 @@
  * under the License.
  */
 
-import { i18n } from '@osd/i18n';
 import { schema } from '@osd/config-schema';
 import { CoreSetup, Plugin, PluginInitializerContext } from 'opensearch-dashboards/server';
 import { createRoutes } from './routes/create_routes';
@@ -43,21 +42,25 @@ export class SharePlugin implements Plugin {
     core.savedObjects.registerType(url);
     core.uiSettings.register({
       [CSV_SEPARATOR_SETTING]: {
-        name: i18n.translate('share.advancedSettings.csv.separatorTitle', {
+        name: JSON.stringify({
+          i18nKey: 'share.advancedSettings.csv.separatorTitle',
           defaultMessage: 'CSV separator',
         }),
         value: ',',
-        description: i18n.translate('share.advancedSettings.csv.separatorText', {
+        description: JSON.stringify({
+          i18nKey: 'share.advancedSettings.csv.separatorText',
           defaultMessage: 'Separate exported values with this string',
         }),
         schema: schema.string(),
       },
       [CSV_QUOTE_VALUES_SETTING]: {
-        name: i18n.translate('share.advancedSettings.csv.quoteValuesTitle', {
+        name: JSON.stringify({
+          i18nKey: 'share.advancedSettings.csv.quoteValuesTitle',
           defaultMessage: 'Quote CSV values',
         }),
         value: true,
-        description: i18n.translate('share.advancedSettings.csv.quoteValuesText', {
+        description: JSON.stringify({
+          i18nKey: 'share.advancedSettings.csv.quoteValuesText',
           defaultMessage: 'Should values be quoted in csv exports?',
         }),
         schema: schema.boolean(),

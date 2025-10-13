@@ -28,18 +28,19 @@
  * under the License.
  */
 
-import { i18n } from '@osd/i18n';
 import { schema } from '@osd/config-schema';
 import { UiSettingsParams } from '../types';
 
 export const getMiscUiSettings = (): Record<string, UiSettingsParams> => {
   return {
     'truncate:maxHeight': {
-      name: i18n.translate('core.ui_settings.params.maxCellHeightTitle', {
+      name: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.maxCellHeightTitle',
         defaultMessage: 'Maximum table cell height',
       }),
       value: 115,
-      description: i18n.translate('core.ui_settings.params.maxCellHeightText', {
+      description: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.maxCellHeightText',
         defaultMessage:
           'The maximum height that a cell in a table should occupy. Set to 0 to disable truncation',
       }),

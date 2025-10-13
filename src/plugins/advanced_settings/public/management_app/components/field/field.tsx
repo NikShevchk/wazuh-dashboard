@@ -68,6 +68,28 @@ import {
   ToastsStart,
 } from '../../../../../../core/public';
 
+function translateMetaField(raw: string) {
+  try {
+    const parsed: {
+      i18nKey: string;
+      defaultMessage: string;
+      values: any;
+      description: string;
+    } = JSON.parse(raw);
+    if (typeof parsed === 'object') {
+      const t = i18n.translate;
+      return t(parsed.i18nKey, {
+        defaultMessage: parsed.defaultMessage,
+        values: parsed.values,
+        description: parsed.description,
+      });
+    }
+  } catch (_) {
+    // Ignore parsing errors and return the raw string
+  }
+  return raw;
+}
+
 interface FieldProps {
   setting: FieldSetting;
   handleChange: (name: string, value: FieldState) => void;
@@ -464,7 +486,7 @@ export class Field extends PureComponent<FieldProps> {
   renderTitle(setting: FieldSetting) {
     const { unsavedChanges } = this.props;
     const isInvalid = unsavedChanges?.isInvalid;
-
+    const title = translateMetaField(setting.displayName);
     const unsavedIconLabel = unsavedChanges
       ? isInvalid
         ? i18n.translate('advancedSettings.field.invalidIconLabel', {
@@ -477,9 +499,7 @@ export class Field extends PureComponent<FieldProps> {
 
     return (
       <h3>
-        <span className="mgtAdvancedSettings__fieldTitle">
-          {setting.displayName || setting.name}
-        </span>
+        <span className="mgtAdvancedSettings__fieldTitle">{title || setting.name}</span>
         {setting.isCustom ? (
           <EuiIconTip
             type="asterisk"
@@ -549,15 +569,17 @@ export class Field extends PureComponent<FieldProps> {
     if (React.isValidElement(setting.description)) {
       description = setting.description;
     } else {
-      description = (
-        <div
-          /*
-           * Justification for dangerouslySetInnerHTML:
-           * Setting description may contain formatting and links to documentation.
-           */
-          dangerouslySetInnerHTML={{ __html: setting.description || '' }} // eslint-disable-line react/no-danger
-        />
-      );
+      if (typeof setting.description === 'string') {
+        description = (
+          <div
+            /*
+             * Justification for dangerouslySetInnerHTML:
+             * Setting description may contain formatting and links to documentation.
+             */
+            dangerouslySetInnerHTML={{ __html: translateMetaField(setting.description) || '' }} // eslint-disable-line react/no-danger
+          />
+        );
+      }
     }
 
     return (

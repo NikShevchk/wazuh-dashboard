@@ -28,7 +28,6 @@
  * under the License.
  */
 
-import { i18n } from '@osd/i18n';
 import { schema } from '@osd/config-schema';
 import { Observable } from 'rxjs';
 import { UsageCollectionSetup } from 'src/plugins/usage_collection/server';
@@ -67,11 +66,13 @@ export class VisualizationsPlugin
 
     core.uiSettings.register({
       [VISUALIZE_ENABLE_LABS_SETTING]: {
-        name: i18n.translate('visualizations.advancedSettings.visualizeEnableLabsTitle', {
+        name: JSON.stringify({
+          i18nKey: 'visualizations.advancedSettings.visualizeEnableLabsTitle',
           defaultMessage: 'Enable experimental visualizations',
         }),
         value: true,
-        description: i18n.translate('visualizations.advancedSettings.visualizeEnableLabsText', {
+        description: JSON.stringify({
+          i18nKey: 'visualizations.advancedSettings.visualizeEnableLabsText',
           defaultMessage: `Allows users to create, view, and edit experimental visualizations. If disabled,
             only visualizations that are considered production-ready are available to the user.`,
         }),
@@ -79,17 +80,16 @@ export class VisualizationsPlugin
         schema: schema.boolean(),
       },
       [VISUALIZE_DISABLE_BUCKET_AGG_SETTING]: {
-        name: i18n.translate('visualizations.advancedSettings.visualizeDisableBucketAgg', {
+        name: JSON.stringify({
+          i18nKey: 'visualizations.advancedSettings.visualizeDisableBucketAgg',
           defaultMessage: 'Disable visualizations bucket aggregation types',
         }),
         value: [],
-        description: i18n.translate(
-          'visualizations.advancedSettings.visualizeDisableBucketAgg.description',
-          {
-            defaultMessage: `A comma-separated list of bucket aggregations' names. e.g. significant_terms, terms.
+        description: JSON.stringify({
+          i18nKey: 'visualizations.advancedSettings.visualizeDisableBucketAgg.description',
+          defaultMessage: `A comma-separated list of bucket aggregations' names. e.g. significant_terms, terms.
             Deactivates the specified bucket aggregations from visualizations.`,
-          }
-        ),
+        }),
         category: ['visualization'],
         schema: schema.arrayOf(schema.string()),
       },

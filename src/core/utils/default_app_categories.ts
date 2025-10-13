@@ -35,122 +35,154 @@ import { AppCategory } from '../types';
 export const DEFAULT_APP_CATEGORIES: Record<string, AppCategory> = Object.freeze({
   explore: {
     id: 'explore',
-    label: i18n.translate('core.ui.exploreNavList.label', {
-      defaultMessage: 'Explore',
-    }),
+    get label() {
+      return i18n.translate('core.ui.exploreNavList.label', {
+        defaultMessage: 'Explore',
+      });
+    },
     order: 100,
     euiIconType: 'search',
   },
   opensearchDashboards: {
     id: 'opensearchDashboards',
-    label: i18n.translate('core.ui.opensearchDashboardsNavList.label', {
-      defaultMessage: 'OpenSearch Dashboards',
-    }),
+    get label() {
+      return i18n.translate('core.ui.opensearchDashboardsNavList.label', {
+        defaultMessage: 'OpenSearch Dashboards',
+      });
+    },
     euiIconType: 'inputOutput',
     order: 1000,
   },
   enterpriseSearch: {
     id: 'enterpriseSearch',
-    label: i18n.translate('core.ui.enterpriseSearchNavList.label', {
-      defaultMessage: 'Enterprise Search',
-    }),
+    get label() {
+      return i18n.translate('core.ui.enterpriseSearchNavList.label', {
+        defaultMessage: 'Enterprise Search',
+      });
+    },
     order: 2000,
     euiIconType: 'logoEnterpriseSearch',
   },
   observability: {
     id: 'observability',
-    label: i18n.translate('core.ui.observabilityNavList.label', {
-      defaultMessage: 'Observability',
-    }),
+    get label() {
+      return i18n.translate('core.ui.observabilityNavList.label', {
+        defaultMessage: 'Observability',
+      });
+    },
     euiIconType: 'logoObservability',
     order: 3000,
   },
   security: {
     id: 'securitySolution',
-    label: i18n.translate('core.ui.securityNavList.label', {
-      defaultMessage: 'Security',
-    }),
+    get label() {
+      return i18n.translate('core.ui.securityNavList.label', {
+        defaultMessage: 'Security',
+      });
+    },
     order: 4000,
     euiIconType: 'logoSecurity',
   },
   management: {
     id: 'management',
-    label: i18n.translate('core.ui.managementNavList.label', {
-      defaultMessage: 'Indexer management',
-    }),
+    get label() {
+      return i18n.translate('core.ui.managementNavList.label', {
+        defaultMessage: 'Indexer management',
+      });
+    },
     order: 5000,
     euiIconType: 'managementApp',
   },
   dashboardManagement: {
     id: 'wz-category-dashboard-management',
-    label: i18n.translate('core.ui.dashboardManagementNavList.label', {
-      defaultMessage: 'Dashboard management',
-    }),
+    get label() {
+      return i18n.translate('core.ui.dashboardManagementNavList.label', {
+        defaultMessage: 'Dashboard management',
+      });
+    },
     order: 6000,
     euiIconType: 'dashboardApp',
   },
   investigate: {
     id: 'investigate',
-    label: i18n.translate('core.ui.investigate.label', {
-      defaultMessage: 'Investigate',
-    }),
+    get label() {
+      return i18n.translate('core.ui.investigate.label', {
+        defaultMessage: 'Investigate',
+      });
+    },
     order: 2000,
   },
   // TODO remove this default category
   dashboardAndReport: {
     id: 'visualizeAndReport',
-    label: i18n.translate('core.ui.visualizeAndReport.label', {
-      defaultMessage: 'Visualize and report',
-    }),
+    get label() {
+      return i18n.translate('core.ui.visualizeAndReport.label', {
+        defaultMessage: 'Visualize and report',
+      });
+    },
     order: 2000,
   },
   visualizeAndReport: {
     id: 'visualizeAndReport',
-    label: i18n.translate('core.ui.visualizeAndReport.label', {
-      defaultMessage: 'Visualize and report',
-    }),
+    get label() {
+      return i18n.translate('core.ui.visualizeAndReport.label', {
+        defaultMessage: 'Visualize and report',
+      });
+    },
     order: 1000,
   },
   analyzeSearch: {
     id: 'analyzeSearch',
-    label: i18n.translate('core.ui.analyzeSearch.label', {
-      defaultMessage: 'Analyze search',
-    }),
+    get label() {
+      return i18n.translate('core.ui.analyzeSearch.label', {
+        defaultMessage: 'Analyze search',
+      });
+    },
     order: 4000,
   },
   detect: {
     id: 'detect',
-    label: i18n.translate('core.ui.detect.label', {
-      defaultMessage: 'Detect',
-    }),
+    get label() {
+      return i18n.translate('core.ui.detect.label', {
+        defaultMessage: 'Detect',
+      });
+    },
     order: 8000,
   },
   configure: {
     id: 'configure',
-    label: i18n.translate('core.ui.configure.label', {
-      defaultMessage: 'Configure',
-    }),
+    get label() {
+      return i18n.translate('core.ui.configure.label', {
+        defaultMessage: 'Configure',
+      });
+    },
     order: 3000,
   },
   manage: {
     id: 'manage',
-    label: i18n.translate('core.ui.manageNav.label', {
-      defaultMessage: 'Manage',
-    }),
+    get label() {
+      return i18n.translate('core.ui.manageNav.label', {
+        defaultMessage: 'Manage',
+      });
+    },
     order: 8000,
   },
   manageData: {
     id: 'manageData',
-    label: i18n.translate('core.ui.manageDataNav.label', {
-      defaultMessage: 'Manage data',
-    }),
+    get label() {
+      return i18n.translate('core.ui.manageDataNav.label', {
+        defaultMessage: 'Manage data',
+      });
+    },
     order: 1000,
   },
   manageWorkspace: {
     id: 'manageWorkspace',
-    label: i18n.translate('core.ui.manageWorkspaceNav.label', {
-      defaultMessage: 'Manage workspace',
-    }),
+    get label() {
+      return i18n.translate('core.ui.manageWorkspaceNav.label', {
+        defaultMessage: 'Manage workspace',
+      });
+    },
     order: 9000,
   },
 });

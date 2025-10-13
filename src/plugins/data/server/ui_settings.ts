@@ -88,22 +88,26 @@ export function getUiSettings(
 ): Record<string, UiSettingsParams<unknown>> {
   return {
     [UI_SETTINGS.META_FIELDS]: {
-      name: i18n.translate('data.advancedSettings.metaFieldsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.metaFieldsTitle',
         defaultMessage: 'Meta fields',
       }),
       value: ['_source', '_id', '_type', '_index', '_score'],
-      description: i18n.translate('data.advancedSettings.metaFieldsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.metaFieldsText',
         defaultMessage:
           'Fields that exist outside of _source to merge into our document when displaying it',
       }),
       schema: schema.arrayOf(schema.string()),
     },
     [UI_SETTINGS.DOC_HIGHLIGHT]: {
-      name: i18n.translate('data.advancedSettings.docTableHighlightTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.docTableHighlightTitle',
         defaultMessage: 'Highlight results',
       }),
       value: true,
-      description: i18n.translate('data.advancedSettings.docTableHighlightText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.docTableHighlightText',
         defaultMessage:
           'Highlight results in Discover and Saved Searches Dashboard. ' +
           'Highlighting makes requests slow when working on big documents.',
@@ -112,11 +116,13 @@ export function getUiSettings(
       schema: schema.boolean(),
     },
     [UI_SETTINGS.QUERY_STRING_OPTIONS]: {
-      name: i18n.translate('data.advancedSettings.query.queryStringOptionsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.query.queryStringOptionsTitle',
         defaultMessage: 'Query string options',
       }),
       value: '{ "analyze_wildcard": true }',
-      description: i18n.translate('data.advancedSettings.query.queryStringOptionsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.query.queryStringOptionsText',
         defaultMessage:
           '{optionsLink} for the lucene query string parser. Is only used when "{queryLanguage}" is set ' +
           'to {luceneLanguage}.',
@@ -140,11 +146,13 @@ export function getUiSettings(
       }),
     },
     [UI_SETTINGS.QUERY_ALLOW_LEADING_WILDCARDS]: {
-      name: i18n.translate('data.advancedSettings.query.allowWildcardsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.query.allowWildcardsTitle',
         defaultMessage: 'Allow leading wildcards in query',
       }),
       value: true,
-      description: i18n.translate('data.advancedSettings.query.allowWildcardsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.query.allowWildcardsText',
         defaultMessage:
           'When set, * is allowed as the first character in a query clause. ' +
           'Currently only applies when experimental query features are enabled in the query bar. ' +
@@ -156,9 +164,13 @@ export function getUiSettings(
       schema: schema.boolean(),
     },
     [UI_SETTINGS.SEARCH_QUERY_LANGUAGE]: {
-      name: queryLanguageSettingName,
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.searchQueryLanguageTitle',
+        defaultMessage: 'Query language',
+      }),
       value: DEFAULT_QUERY_LANGUAGE,
-      description: i18n.translate('data.advancedSettings.searchQueryLanguageText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.searchQueryLanguageText',
         defaultMessage:
           'Query language used by the query bar. DQL is a new language built specifically for OpenSearch Dashboards.',
       }),
@@ -173,11 +185,13 @@ export function getUiSettings(
       schema: schema.string(),
     },
     [UI_SETTINGS.SORT_OPTIONS]: {
-      name: i18n.translate('data.advancedSettings.sortOptionsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.sortOptionsTitle',
         defaultMessage: 'Sort options',
       }),
       value: '{ "unmapped_type": "boolean" }',
-      description: i18n.translate('data.advancedSettings.sortOptionsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.sortOptionsText',
         defaultMessage: '{optionsLink} for the OpenSearch sort parameter',
         description:
           'Part of composite text: data.advancedSettings.sortOptions.optionsLinkText + ' +
@@ -197,23 +211,27 @@ export function getUiSettings(
       }),
     },
     defaultIndex: {
-      name: i18n.translate('data.advancedSettings.defaultIndexTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.defaultIndexTitle',
         defaultMessage: 'Default index',
       }),
       value: null,
       type: 'string',
-      description: i18n.translate('data.advancedSettings.defaultIndexText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.defaultIndexText',
         defaultMessage: 'The index to access if no index is set',
       }),
       schema: schema.nullable(schema.string()),
       scope: workspaceEnabled ? UiSettingScope.WORKSPACE : UiSettingScope.GLOBAL,
     },
     [UI_SETTINGS.COURIER_IGNORE_FILTER_IF_FIELD_NOT_IN_INDEX]: {
-      name: i18n.translate('data.advancedSettings.courier.ignoreFilterTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.ignoreFilterTitle',
         defaultMessage: 'Ignore filter(s)',
       }),
       value: false,
-      description: i18n.translate('data.advancedSettings.courier.ignoreFilterText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.ignoreFilterText',
         defaultMessage:
           'This configuration enhances support for dashboards containing visualizations accessing dissimilar indexes. ' +
           'When disabled, all filters are applied to all visualizations. ' +
@@ -224,14 +242,16 @@ export function getUiSettings(
       schema: schema.boolean(),
     },
     [UI_SETTINGS.COURIER_SET_REQUEST_PREFERENCE]: {
-      name: i18n.translate('data.advancedSettings.courier.requestPreferenceTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.requestPreferenceTitle',
         defaultMessage: 'Request preference',
       }),
       value: 'sessionId',
       options: ['sessionId', 'custom', 'none'],
       optionLabels: requestPreferenceOptionLabels,
       type: 'select',
-      description: i18n.translate('data.advancedSettings.courier.requestPreferenceText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.requestPreferenceText',
         defaultMessage: `Allows you to set which shards handle your search requests.
           <ul>
             <li><strong>{sessionId}:</strong> restricts operations to execute all search requests on the same shards.
@@ -252,12 +272,14 @@ export function getUiSettings(
       schema: schema.string(),
     },
     [UI_SETTINGS.COURIER_CUSTOM_REQUEST_PREFERENCE]: {
-      name: i18n.translate('data.advancedSettings.courier.customRequestPreferenceTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.customRequestPreferenceTitle',
         defaultMessage: 'Custom request preference',
       }),
       value: '_local',
       type: 'string',
-      description: i18n.translate('data.advancedSettings.courier.customRequestPreferenceText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.customRequestPreferenceText',
         defaultMessage:
           '{requestPreferenceLink} used when {setRequestReferenceSetting} is set to {customSettingValue}.',
         description:
@@ -281,12 +303,14 @@ export function getUiSettings(
       schema: schema.string(),
     },
     [UI_SETTINGS.COURIER_MAX_CONCURRENT_SHARD_REQUESTS]: {
-      name: i18n.translate('data.advancedSettings.courier.maxRequestsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.maxRequestsTitle',
         defaultMessage: 'Max Concurrent Shard Requests',
       }),
       value: 0,
       type: 'number',
-      description: i18n.translate('data.advancedSettings.courier.maxRequestsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.maxRequestsText',
         defaultMessage:
           'Controls the {maxRequestsLink} setting used for _msearch requests sent by OpenSearch Dashboards. ' +
           'Set to 0 to disable this config and use the OpenSearch default.',
@@ -299,12 +323,14 @@ export function getUiSettings(
       schema: schema.number(),
     },
     [UI_SETTINGS.COURIER_BATCH_SEARCHES]: {
-      name: i18n.translate('data.advancedSettings.courier.batchSearchesTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.batchSearchesTitle',
         defaultMessage: 'Batch concurrent searches',
       }),
       value: false,
       type: 'boolean',
-      description: i18n.translate('data.advancedSettings.courier.batchSearchesText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.batchSearchesText',
         defaultMessage: `When disabled, dashboard panels will load individually, and search requests will terminate when users navigate
            away or update the query. When enabled, dashboard panels will load together when all of the data is loaded, and
            searches will not terminate.`,
@@ -313,59 +339,74 @@ export function getUiSettings(
       schema: schema.boolean(),
     },
     [UI_SETTINGS.SEARCH_INCLUDE_FROZEN]: {
-      name: 'Search in frozen indices',
-      description: `Will include <a href="https://opensearch.org/docs/latest/opensearch/index-data"
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.inFrozenSearchesTitle',
+        defaultMessage: 'Search in frozen indices',
+      }),
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.courier.inFrozenSearchesText',
+        defaultMessage: `Will include <a href="https://opensearch.org/docs/latest/opensearch/index-data"
         target="_blank" rel="noopener noreferrer">frozen indices</a> in results if enabled. Searching through frozen indices
         might increase the search time.`,
+      }),
       value: false,
       category: ['search'],
       schema: schema.boolean(),
     },
     [UI_SETTINGS.HISTOGRAM_BAR_TARGET]: {
-      name: i18n.translate('data.advancedSettings.histogram.barTargetTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.histogram.barTargetTitle',
         defaultMessage: 'Target bars',
       }),
       value: 50,
-      description: i18n.translate('data.advancedSettings.histogram.barTargetText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.histogram.barTargetText',
         defaultMessage:
           'Attempt to generate around this many bars when using "auto" interval in date histograms',
       }),
       schema: schema.number(),
     },
     [UI_SETTINGS.HISTOGRAM_MAX_BARS]: {
-      name: i18n.translate('data.advancedSettings.histogram.maxBarsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.histogram.maxBarsTitle',
         defaultMessage: 'Maximum bars',
       }),
       value: 100,
-      description: i18n.translate('data.advancedSettings.histogram.maxBarsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.histogram.maxBarsText',
         defaultMessage:
           'Never show more than this many bars in date histograms, scale values if needed',
       }),
       schema: schema.number(),
     },
     [UI_SETTINGS.HISTORY_LIMIT]: {
-      name: i18n.translate('data.advancedSettings.historyLimitTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.historyLimitTitle',
         defaultMessage: 'History limit',
       }),
       value: 10,
-      description: i18n.translate('data.advancedSettings.historyLimitText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.historyLimitText',
         defaultMessage:
           'In fields that have history (e.g. query inputs), show this many recent values',
       }),
       schema: schema.number(),
     },
     [UI_SETTINGS.SHORT_DOTS_ENABLE]: {
-      name: i18n.translate('data.advancedSettings.shortenFieldsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.shortenFieldsTitle',
         defaultMessage: 'Shorten fields',
       }),
       value: false,
-      description: i18n.translate('data.advancedSettings.shortenFieldsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.shortenFieldsText',
         defaultMessage: 'Shorten long fields, for example, instead of foo.bar.baz, show f.b.baz',
       }),
       schema: schema.boolean(),
     },
     [UI_SETTINGS.FORMAT_DEFAULT_TYPE_MAP]: {
-      name: i18n.translate('data.advancedSettings.format.defaultTypeMapTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.defaultTypeMapTitle',
         defaultMessage: 'Field type format name',
       }),
       value: `{
@@ -378,7 +419,8 @@ export function getUiSettings(
   "_default_": { "id": "string", "params": {} }
 }`,
       type: 'json',
-      description: i18n.translate('data.advancedSettings.format.defaultTypeMapText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.defaultTypeMapText',
         defaultMessage:
           'Map of the format name to use by default for each field type. ' +
           '{defaultFormat} is used if the field type is not mentioned explicitly',
@@ -419,12 +461,14 @@ export function getUiSettings(
       }),
     },
     [UI_SETTINGS.FORMAT_NUMBER_DEFAULT_PATTERN]: {
-      name: i18n.translate('data.advancedSettings.format.numberFormatTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.numberFormatTitle',
         defaultMessage: 'Number format',
       }),
       value: '0,0.[000]',
       type: 'string',
-      description: i18n.translate('data.advancedSettings.format.numberFormatText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.numberFormatText',
         defaultMessage: 'Default {numeralFormatLink} for the "number" format',
         description:
           'Part of composite text: data.advancedSettings.format.numberFormatText + ' +
@@ -441,12 +485,14 @@ export function getUiSettings(
       schema: schema.string(),
     },
     [UI_SETTINGS.FORMAT_PERCENT_DEFAULT_PATTERN]: {
-      name: i18n.translate('data.advancedSettings.format.percentFormatTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.percentFormatTitle',
         defaultMessage: 'Percent format',
       }),
       value: '0,0.[000]%',
       type: 'string',
-      description: i18n.translate('data.advancedSettings.format.percentFormatText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.percentFormatText',
         defaultMessage: 'Default {numeralFormatLink} for the "percent" format',
         description:
           'Part of composite text: data.advancedSettings.format.percentFormatText + ' +
@@ -463,12 +509,14 @@ export function getUiSettings(
       schema: schema.string(),
     },
     [UI_SETTINGS.FORMAT_BYTES_DEFAULT_PATTERN]: {
-      name: i18n.translate('data.advancedSettings.format.bytesFormatTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.bytesFormatTitle',
         defaultMessage: 'Bytes format',
       }),
       value: '0,0.[0]b',
       type: 'string',
-      description: i18n.translate('data.advancedSettings.format.bytesFormatText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.bytesFormatText',
         defaultMessage: 'Default {numeralFormatLink} for the "bytes" format',
         description:
           'Part of composite text: data.advancedSettings.format.bytesFormatText + ' +
@@ -485,12 +533,14 @@ export function getUiSettings(
       schema: schema.string(),
     },
     [UI_SETTINGS.FORMAT_CURRENCY_DEFAULT_PATTERN]: {
-      name: i18n.translate('data.advancedSettings.format.currencyFormatTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.currencyFormatTitle',
         defaultMessage: 'Currency format',
       }),
       value: '($0,0.[00])',
       type: 'string',
-      description: i18n.translate('data.advancedSettings.format.currencyFormatText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.currencyFormatText',
         defaultMessage: 'Default {numeralFormatLink} for the "currency" format',
         description:
           'Part of composite text: data.advancedSettings.format.currencyFormatText + ' +
@@ -507,7 +557,8 @@ export function getUiSettings(
       schema: schema.string(),
     },
     [UI_SETTINGS.FORMAT_NUMBER_DEFAULT_LOCALE]: {
-      name: i18n.translate('data.advancedSettings.format.formattingLocaleTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.formattingLocaleTitle',
         defaultMessage: 'Formatting locale',
       }),
       value: 'en',
@@ -516,7 +567,8 @@ export function getUiSettings(
       optionLabels: Object.fromEntries(
         numeralLanguages.map((language: Record<string, any>) => [language.id, language.name])
       ),
-      description: i18n.translate('data.advancedSettings.format.formattingLocaleText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.format.formattingLocaleText',
         defaultMessage: `{numeralLanguageLink} locale`,
         description:
           'Part of composite text: data.advancedSettings.format.formattingLocale.numeralLanguageLinkText + ' +
@@ -536,18 +588,22 @@ export function getUiSettings(
       schema: schema.string(),
     },
     [UI_SETTINGS.DATA_WITH_LONG_NUMERALS]: {
-      name: i18n.translate('data.advancedSettings.data.withLongNumeralsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.data.withLongNumeralsTitle',
         defaultMessage: 'Extend Numeric Precision',
       }),
       value: true,
-      description: i18n.translate('data.advancedSettings.data.withLongNumeralsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.data.withLongNumeralsText',
         defaultMessage:
-          "Turn on for precise handling of extremely large numbers. Turn off to optimize performance when high precision for large values isn't required.",
+          'Turn on for precise handling of extremely large numbers. ' +
+          "Turn off to optimize performance when high precision for large values isn't required.",
       }),
       schema: schema.boolean(),
     },
     [UI_SETTINGS.TIMEPICKER_REFRESH_INTERVAL_DEFAULTS]: {
-      name: i18n.translate('data.advancedSettings.timepicker.refreshIntervalDefaultsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.timepicker.refreshIntervalDefaultsTitle',
         defaultMessage: 'Time filter refresh interval',
       }),
       value: `{
@@ -555,7 +611,8 @@ export function getUiSettings(
   "value": 0
 }`,
       type: 'json',
-      description: i18n.translate('data.advancedSettings.timepicker.refreshIntervalDefaultsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.timepicker.refreshIntervalDefaultsText',
         defaultMessage: `The timefilter's default refresh interval. The "value" needs to be specified in milliseconds.`,
       }),
       requiresPageReload: true,
@@ -565,7 +622,8 @@ export function getUiSettings(
       }),
     },
     [UI_SETTINGS.TIMEPICKER_TIME_DEFAULTS]: {
-      name: i18n.translate('data.advancedSettings.timepicker.timeDefaultsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.timepicker.timeDefaultsTitle',
         defaultMessage: 'Time filter defaults',
       }),
       value: `{
@@ -573,7 +631,8 @@ export function getUiSettings(
   "to": "now"
 }`,
       type: 'json',
-      description: i18n.translate('data.advancedSettings.timepicker.timeDefaultsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.timepicker.timeDefaultsText',
         defaultMessage:
           'The timefilter selection to use when OpenSearch Dashboards is started without one',
       }),
@@ -584,7 +643,8 @@ export function getUiSettings(
       }),
     },
     [UI_SETTINGS.TIMEPICKER_QUICK_RANGES]: {
-      name: i18n.translate('data.advancedSettings.timepicker.quickRangesTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.timepicker.quickRangesTitle',
         defaultMessage: 'Time filter quick ranges',
       }),
       value: JSON.stringify(
@@ -664,7 +724,8 @@ export function getUiSettings(
         2
       ),
       type: 'json',
-      description: i18n.translate('data.advancedSettings.timepicker.quickRangesText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.timepicker.quickRangesText',
         defaultMessage:
           'The list of ranges to show in the Quick section of the time filter. This should be an array of objects, ' +
           'with each object containing "from", "to" (see {acceptedFormatsLink}), and ' +
@@ -691,44 +752,52 @@ export function getUiSettings(
       ),
     },
     [UI_SETTINGS.INDEXPATTERN_PLACEHOLDER]: {
-      name: i18n.translate('data.advancedSettings.indexPatternPlaceholderTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.indexPatternPlaceholderTitle',
         defaultMessage: 'Index pattern placeholder',
       }),
       value: '',
-      description: i18n.translate('data.advancedSettings.indexPatternPlaceholderText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.indexPatternPlaceholderText',
         defaultMessage:
           'The placeholder for the "Index pattern name" field in "Management > Index Patterns > Create Index Pattern".',
       }),
       schema: schema.string(),
     },
     [UI_SETTINGS.FILTERS_PINNED_BY_DEFAULT]: {
-      name: i18n.translate('data.advancedSettings.pinFiltersTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.pinFiltersTitle',
         defaultMessage: 'Pin filters by default',
       }),
       value: false,
-      description: i18n.translate('data.advancedSettings.pinFiltersText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.pinFiltersText',
         defaultMessage: 'Whether the filters should have a global state (be pinned) by default',
       }),
       schema: schema.boolean(),
     },
     [UI_SETTINGS.FILTERS_EDITOR_SUGGEST_VALUES]: {
-      name: i18n.translate('data.advancedSettings.suggestFilterValuesTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.suggestFilterValuesTitle',
         defaultMessage: 'Filter editor suggest values',
         description: '"Filter editor" refers to the UI you create filters in.',
       }),
       value: true,
-      description: i18n.translate('data.advancedSettings.suggestFilterValuesText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.suggestFilterValuesText',
         defaultMessage:
           'Set this property to false to prevent the filter editor from suggesting values for fields.',
       }),
       schema: schema.boolean(),
     },
     [UI_SETTINGS.QUERY_ENHANCEMENTS_ENABLED]: {
-      name: i18n.translate('data.advancedSettings.query.enhancements.enableTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.query.enhancements.enableTitle',
         defaultMessage: 'Enable query enhancements',
       }),
       value: false,
-      description: i18n.translate('data.advancedSettings.query.enhancements.enableText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.query.enhancements.enableText',
         defaultMessage: `
           <strong>Experimental</strong>:
           Allows users to query data using enhancements where available. If disabled,
@@ -739,14 +808,16 @@ export function getUiSettings(
       schema: schema.boolean(),
     },
     [UI_SETTINGS.QUERY_DATAFRAME_HYDRATION_STRATEGY]: {
-      name: i18n.translate('data.advancedSettings.query.dataFrameHydrationStrategyTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.query.dataFrameHydrationStrategyTitle',
         defaultMessage: 'Data frame hydration strategy',
       }),
       value: 'perSource',
       options: ['perSource', 'perQuery'],
       optionLabels: dataFrameHydrationStrategyOptionLabels,
       type: 'select',
-      description: i18n.translate('data.advancedSettings.dataFrameHydrationStrategyText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.dataFrameHydrationStrategyText',
         defaultMessage: `Allows you to set how often the data frame schema is updated.
           <ul>
             <li><strong>{perSource}:</strong> hydrates the schema when the data source changes.
@@ -770,22 +841,26 @@ export function getUiSettings(
       schema: schema.string(),
     },
     [UI_SETTINGS.SEARCH_QUERY_LANGUAGE_BLOCKLIST]: {
-      name: i18n.translate('data.advancedSettings.searchQueryLanguageBlocklistTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.searchQueryLanguageBlocklistTitle',
         defaultMessage: 'Additional query languages blocklist',
       }),
       value: ['none'],
-      description: i18n.translate('data.advancedSettings.searchQueryLanguageBlocklistText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.searchQueryLanguageBlocklistText',
         defaultMessage: `Additional languages that are blocked from being used in the query editor.
          <strong>Note</strong>: DQL and Lucene will not be blocked even if set.`,
       }),
       schema: schema.arrayOf(schema.string()),
     },
     [UI_SETTINGS.SEARCH_INCLUDE_ALL_FIELDS]: {
-      name: i18n.translate('data.advancedSettings.searchIncludeAllFieldsTitle', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.searchIncludeAllFieldsTitle',
         defaultMessage: 'Include all fields in search request',
       }),
       value: false,
-      description: i18n.translate('data.advancedSettings.searchIncludeAllFieldsText', {
+      description: JSON.stringify({
+        i18nKey: 'data.advancedSettings.searchIncludeAllFieldsText',
         defaultMessage: `
         <strong>Experimental</strong>:
         Adds the <code>"fields": ["*"]</code> property to search request body`,
@@ -794,7 +869,8 @@ export function getUiSettings(
       category: ['search'],
     },
     [UI_SETTINGS.SEARCH_MAX_RECENT_DATASETS]: {
-      name: i18n.translate('data.advancedSettings.searchMaxRecentDatasets', {
+      name: JSON.stringify({
+        i18nKey: 'data.advancedSettings.searchMaxRecentDatasets',
         defaultMessage: 'Maximum datasets in recents list',
       }),
       value: 4,

@@ -63,7 +63,9 @@ export const DiscoverChartContainer = ({ hits, bucketInterval, chartData }: Sear
             content: (
               <EuiPanel>
                 <EuiCompressedSwitch
-                  label="Enable legacy Discover"
+                  label={i18n.translate('discover.options.legacySwitchLabel', {
+                    defaultMessage: 'Enable legacy Discover',
+                  })}
                   checked={useLegacy}
                   data-test-subj="discoverOptionsLegacySwitch"
                   onChange={(e) => {

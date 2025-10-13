@@ -156,7 +156,9 @@ export class VisualizePlugin
 
     core.application.register({
       id: visualizeAppId,
-      title: 'Visualize',
+      title: i18n.translate('visualize.visualizeAppName', {
+        defaultMessage: 'Visualize',
+      }),
       order: 102,
       euiIconType: 'inputOutput',
       workspaceAvailability: WorkspaceAvailability.insideWorkspace,

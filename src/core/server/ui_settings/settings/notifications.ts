@@ -35,12 +35,14 @@ import { UiSettingsParams } from '../../../types';
 export const getNotificationsSettings = (): Record<string, UiSettingsParams> => {
   return {
     'notifications:banner': {
-      name: i18n.translate('core.ui_settings.params.notifications.bannerTitle', {
+      name: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.notifications.bannerTitle',
         defaultMessage: 'Custom banner notification',
       }),
       value: '',
       type: 'markdown',
-      description: i18n.translate('core.ui_settings.params.notifications.bannerText', {
+      description: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.notifications.bannerText',
         defaultMessage:
           'A custom banner intended for temporary notices to all users. {markdownLink}.',
         description:
@@ -60,11 +62,13 @@ export const getNotificationsSettings = (): Record<string, UiSettingsParams> => 
       schema: schema.string(),
     },
     'notifications:lifetime:banner': {
-      name: i18n.translate('core.ui_settings.params.notifications.bannerLifetimeTitle', {
+      name: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.notifications.bannerLifetimeTitle',
         defaultMessage: 'Banner notification lifetime',
       }),
       value: 3000000,
-      description: i18n.translate('core.ui_settings.params.notifications.bannerLifetimeText', {
+      description: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.notifications.bannerLifetimeText',
         defaultMessage:
           'The time in milliseconds which a banner notification will be displayed on-screen for. ' +
           'Setting to {infinityValue} will disable the countdown.',
@@ -77,11 +81,13 @@ export const getNotificationsSettings = (): Record<string, UiSettingsParams> => 
       schema: schema.oneOf([schema.number({ min: 0 }), schema.literal('Infinity')]),
     },
     'notifications:lifetime:error': {
-      name: i18n.translate('core.ui_settings.params.notifications.errorLifetimeTitle', {
+      name: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.notifications.errorLifetimeTitle',
         defaultMessage: 'Error notification lifetime',
       }),
       value: 300000,
-      description: i18n.translate('core.ui_settings.params.notifications.errorLifetimeText', {
+      description: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.notifications.errorLifetimeText',
         defaultMessage:
           'The time in milliseconds which an error notification will be displayed on-screen for. ' +
           'Setting to {infinityValue} will disable.',
@@ -94,11 +100,13 @@ export const getNotificationsSettings = (): Record<string, UiSettingsParams> => 
       schema: schema.oneOf([schema.number({ min: 0 }), schema.literal('Infinity')]),
     },
     'notifications:lifetime:warning': {
-      name: i18n.translate('core.ui_settings.params.notifications.warningLifetimeTitle', {
+      name: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.notifications.warningLifetimeTitle',
         defaultMessage: 'Warning notification lifetime',
       }),
       value: 10000,
-      description: i18n.translate('core.ui_settings.params.notifications.warningLifetimeText', {
+      description: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.notifications.warningLifetimeText',
         defaultMessage:
           'The time in milliseconds which a warning notification will be displayed on-screen for. ' +
           'Setting to {infinityValue} will disable.',
@@ -111,11 +119,13 @@ export const getNotificationsSettings = (): Record<string, UiSettingsParams> => 
       schema: schema.oneOf([schema.number({ min: 0 }), schema.literal('Infinity')]),
     },
     'notifications:lifetime:info': {
-      name: i18n.translate('core.ui_settings.params.notifications.infoLifetimeTitle', {
+      name: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.notifications.infoLifetimeTitle',
         defaultMessage: 'Info notification lifetime',
       }),
       value: 5000,
-      description: i18n.translate('core.ui_settings.params.notifications.infoLifetimeText', {
+      description: JSON.stringify({
+        i18nKey: 'core.ui_settings.params.notifications.infoLifetimeText',
         defaultMessage:
           'The time in milliseconds which an information notification will be displayed on-screen for. ' +
           'Setting to {infinityValue} will disable.',

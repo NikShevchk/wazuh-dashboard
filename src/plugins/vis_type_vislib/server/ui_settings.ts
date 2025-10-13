@@ -28,7 +28,6 @@
  * under the License.
  */
 
-import { i18n } from '@osd/i18n';
 import { schema } from '@osd/config-schema';
 
 import { UiSettingsParams } from 'opensearch-dashboards/server';
@@ -36,12 +35,14 @@ import { DIMMING_OPACITY_SETTING, HEATMAP_MAX_BUCKETS_SETTING } from '../common'
 
 export const uiSettings: Record<string, UiSettingsParams> = {
   [DIMMING_OPACITY_SETTING]: {
-    name: i18n.translate('visTypeVislib.advancedSettings.visualization.dimmingOpacityTitle', {
+    name: JSON.stringify({
+      i18nKey: 'visTypeVislib.advancedSettings.visualization.dimmingOpacityTitle',
       defaultMessage: 'Dimming opacity',
     }),
     value: 0.5,
     type: 'number',
-    description: i18n.translate('visTypeVislib.advancedSettings.visualization.dimmingOpacityText', {
+    description: JSON.stringify({
+      i18nKey: 'visTypeVislib.advancedSettings.visualization.dimmingOpacityText',
       defaultMessage:
         'The opacity of the chart items that are dimmed when highlighting another element of the chart. ' +
         'The lower this number, the more the highlighted element will stand out. ' +
@@ -51,19 +52,18 @@ export const uiSettings: Record<string, UiSettingsParams> = {
     schema: schema.number(),
   },
   [HEATMAP_MAX_BUCKETS_SETTING]: {
-    name: i18n.translate('visTypeVislib.advancedSettings.visualization.heatmap.maxBucketsTitle', {
+    name: JSON.stringify({
+      i18nKey: 'visTypeVislib.advancedSettings.visualization.heatmap.maxBucketsTitle',
       defaultMessage: 'Heatmap maximum buckets',
     }),
     value: 50,
     type: 'number',
-    description: i18n.translate(
-      'visTypeVislib.advancedSettings.visualization.heatmap.maxBucketsText',
-      {
-        defaultMessage:
-          'The maximum number of buckets a single datasource can return. ' +
-          'A higher number might have negative impact on browser rendering performance',
-      }
-    ),
+    description: JSON.stringify({
+      i18nKey: 'visTypeVislib.advancedSettings.visualization.heatmap.maxBucketsText',
+      defaultMessage:
+        'The maximum number of buckets a single datasource can return. ' +
+        'A higher number might have negative impact on browser rendering performance',
+    }),
     category: ['visualization'],
     schema: schema.number(),
   },
