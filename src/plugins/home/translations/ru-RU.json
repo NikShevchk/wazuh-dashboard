@@ -1913,7 +1913,7 @@
     "home.overview.stats.alerts.high": "Высокий",
     "home.overview.stats.alerts.medium": "Средний",
     "home.overview.stats.alerts.low": "Низкий",
-    "home.overview.stats.alerts.severity": "уровень угрозы",
+    "home.overview.stats.alerts.severity": "уровень",
     "home.overview.stats.alerts.ruleLevel": "Уровень правил от ",
     "home.overview.stats.alerts.to": " до ",
     "home.overview.stats.alerts.orHigher": " и выше",
