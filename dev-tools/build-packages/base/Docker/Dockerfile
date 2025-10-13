@@ -1,9 +1,4 @@
-FROM debian:12
-
-RUN apt-get update && apt-get install -y \
-    curl wget sudo git build-essential \
-    devscripts equivs fakeroot debhelper \
-    gnupg jq unzip nodejs yarn python3 python3-pip
+FROM rockylinux:8.10
 
 # Install all the necessary tools to build the packages
 RUN yum clean all && yum update -y
