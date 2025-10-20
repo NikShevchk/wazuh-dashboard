@@ -36,6 +36,11 @@ on:
         type: string
         description: 'Branch/tag/sha for custom plugins'
         required: false
+      reference_tag_release:
+        type: string
+        description: 'Release tag name for GitHub Release (e.g., v4.12.0-dev1)'
+        required: true
+        default: 'dev-build'
         
 jobs:
   prepare-refs:
@@ -45,6 +50,7 @@ jobs:
       dashboard_ref: ${{ steps.set-refs.outputs.dashboard_ref }}
       wazuh_plugins_ref: ${{ steps.set-refs.outputs.wazuh_plugins_ref }}
       security_plugins_ref: ${{ steps.set-refs.outputs.security_plugins_ref }}
+      release_tag: ${{ steps.set-refs.outputs.release_tag }}
     steps:
       - name: Set effective refs
         id: set-refs
@@ -52,7 +58,8 @@ jobs:
           echo "dashboard_ref=${{ inputs.reference_dashboard || github.ref_name }}" >> $GITHUB_OUTPUT
           echo "wazuh_plugins_ref=${{ inputs.reference_wazuh_plugins || 'master' }}" >> $GITHUB_OUTPUT
           echo "security_plugins_ref=${{ inputs.reference_security_plugins || 'master' }}" >> $GITHUB_OUTPUT
-          
+          echo "release_tag=${{ inputs.reference_tag_release }}" >> $GITHUB_OUTPUT
+  
   setup-variables:
     needs: prepare-refs # Зависит от задачи, определяющей ветки
     runs-on: ubuntu-latest
@@ -393,7 +400,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ needs.setup-variables.outputs.VERSION }}
+          tag_name: ${{ inputs.reference_tag_release }}
           name: Wazuh Dashboard ${{ needs.setup-variables.outputs.VERSION }}
           files: ${{ github.workspace }}/artifacts/output/*.deb
         env:
