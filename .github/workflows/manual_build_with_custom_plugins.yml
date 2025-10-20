@@ -380,28 +380,58 @@ jobs:
         run: |
           echo "VERSION=${{ needs.setup-variables.outputs.VERSION }}" >> $GITHUB_ENV
           echo "ARTIFACT_BUILD_NAME=${{ needs.setup-variables.outputs.PACKAGE_NAME }}" >> $GITHUB_ENV
-      - name: Move generated .deb to artifacts folder
+
+          
+      - name: Find and Rename Package
+        id: package-info
         run: |
-          mkdir -p ${{ github.workspace }}/artifacts/output
-          mv ${{ github.workspace }}/dev-tools/build-packages/output/*.deb ${{ github.workspace }}/artifacts/output/
-      - name: List target artifacts
-        run: |
-            ls -lh ${{ github.workspace }}/artifacts/
-            ls -lh ${{ github.workspace }}/artifacts/output/
-      
+          set -x # Оставляем для отладки
+
+          # Правильный путь к директории с результатами
+          OUTPUT_DIR="${{ github.workspace }}/dev-tools/build-packages/output"
+          
+          echo "Searching for package in: $OUTPUT_DIR"
+          
+          # Находим исходный пакет по шаблону с SHA
+          # Используем find, чтобы не зависеть от точного имени
+          OLD_PACKAGE_PATH=$(find "$OUTPUT_DIR" -name "wazuh-dashboard_*_${{ inputs.architecture }}_*.${{ inputs.system }}" | head -n 1)
+
+          if [ -z "$OLD_PACKAGE_PATH" ]; then
+            echo "::error::Generated package with SHA hashes not found in $OUTPUT_DIR"
+            ls -R "$OUTPUT_DIR"
+            exit 1
+          fi
+
+          echo "Original package found: $OLD_PACKAGE_PATH"
+
+          # Создаем новое имя, удаляя часть с SHA
+          NEW_PACKAGE_NAME=$(basename "$OLD_PACKAGE_PATH" | sed -E 's/_[a-f0-9]{7,}-[a-f0-9]{7,}-[a-f0-9]{7,}\.(deb|rpm)$/.\1/')
+          NEW_PACKAGE_PATH="$OUTPUT_DIR/$NEW_PACKAGE_NAME"
+
+          echo "Renaming to: $NEW_PACKAGE_NAME"
+          
+          # Переименовываем файл
+          mv "$OLD_PACKAGE_PATH" "$NEW_PACKAGE_PATH"
+          
+          # Экспортируем правильные пути для следующих шагов
+          echo "path=$NEW_PACKAGE_PATH" >> $GITHUB_OUTPUT
+          echo "name=$NEW_PACKAGE_NAME" >> $GITHUB_OUTPUT
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ needs.setup-variables.outputs.PACKAGE_NAME }}
-          path: ${{ github.workspace }}/artifacts/output/${{ needs.setup-variables.outputs.PACKAGE_NAME }}
+          # Используем output из шага выше
+          name: ${{ steps.package-info.outputs.name }}
+          path: ${{ steps.package-info.outputs.path }}
           retention-days: 30
           overwrite: true
 
       - name: Create GitHub Release
+        # ... ваш шаг релиза, который теперь тоже должен использовать output ...
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ inputs.reference_tag_release }}
-          name: Wazuh Dashboard ${{ needs.setup-variables.outputs.VERSION }}
-          files: ${{ github.workspace }}/artifacts/output/*.deb
+          tag_name: ${{ inputs.reference_tag_release }} # Исправил input на inputs
+          name: Wazuh Dashboard ${{ needs.setup-variables.outputs.VERSION }} # Эта переменная может потребовать коррекции
+          files: ${{ steps.package-info.outputs.path }} # Главное - использовать правильный путь
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
