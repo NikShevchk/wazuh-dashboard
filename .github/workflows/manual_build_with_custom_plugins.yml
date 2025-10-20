@@ -225,6 +225,7 @@ jobs:
         run: |
           set -euo pipefail
           echo "Cloning custom plugins..."
+          mkdir /tmp/custom-plugins
           git clone --depth=1 --branch ${{ inputs.reference_custom_plugins }} \
             https://github.com/ivmerk/integrations.git \
             /tmp/custom-plugins        
