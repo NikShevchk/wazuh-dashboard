@@ -225,10 +225,15 @@ jobs:
         run: |
           set -euo pipefail
           echo "Cloning custom plugins..."
-          mkdir /tmp/custom-plugins
-          git clone --depth=1 --branch ${{ inputs.reference_custom_plugins }} \
+          CUSTOM_PLUGINS_REF="${{ inputs.reference_custom_plugins }}"
+          if [ -z "$CUSTOM_PLUGINS_REF" ]; then
+            echo "No custom plugins reference provided, using 'master' branch"
+            CUSTOM_PLUGINS_REF="master"
+          fi
+          mkdir -p /tmp/custom-plugins
+          git clone --depth=1 --branch "$CUSTOM_PLUGINS_REF" \
             https://github.com/ivmerk/integrations.git \
-            /tmp/custom-plugins        
+            /tmp/custom-plugins  
           echo "Copying into src/plugins..."
           cp -r /tmp/custom-plugins/* ./src/plugins/
           echo "Plugins after copy:"
