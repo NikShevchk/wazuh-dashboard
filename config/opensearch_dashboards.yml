@@ -23,15 +23,15 @@ server.host: 0.0.0.0
 #server.name: "your-hostname"
 
 # The URLs of the OpenSearch instances to use for all your queries.
-#opensearch.hosts: ["https://localhost:9200"]
-#opensearch.username: "admin"
-#opensearch.password: "S7uP3r@eCur3Pa@@"
-#opensearch.ssl.verificationMode: none
-
-opensearch.hosts: ["https://45.136.16.242:9200"]
+opensearch.hosts: ["https://localhost:9200"]
 opensearch.username: "admin"
-opensearch.password: "s?7oP.EGeRDiNroQ2VvCd.ZluWE.hqwk"
+opensearch.password: "S7uP3r@eCur3Pa@@"
 opensearch.ssl.verificationMode: none
+
+#opensearch.hosts: ["https://45.136.16.242:9200"]
+#opensearch.username: "admin"
+#opensearch.password: "s?7oP.EGeRDiNroQ2VvCd.ZluWE.hqwk"
+#opensearch.ssl.verificationMode: none
 
 logging.verbose: true
 # OpenSearch Dashboards uses an index in OpenSearch to store saved searches, visualizations and
