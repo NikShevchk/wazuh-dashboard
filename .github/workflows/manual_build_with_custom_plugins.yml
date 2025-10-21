@@ -237,10 +237,10 @@ jobs:
             echo "No custom plugins reference provided, using 'master' branch"
             CUSTOM_PLUGINS_REF="master"
           fi
-          mkdir -p /tmp/custom-plugins
+          mkdir -p /tmp/custom-plugins/integrations
           git clone --depth=1 --branch "$CUSTOM_PLUGINS_REF" \
             https://github.com/ivmerk/integrations.git \
-            /tmp/custom-plugins  
+            /tmp/custom-plugins/integrations  
           echo "Copying into src/plugins..."
           cp -r /tmp/custom-plugins/* ./src/plugins/
           echo "Plugins after copy:"
