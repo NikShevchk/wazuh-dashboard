@@ -2130,10 +2130,10 @@ exports[`Header handles visibility and lock changes 1`] = `
         },
         "light": Object {
           "type": "default",
-          "url": "/ui/logos/spinner_on_light.svg",
+          "url": "/ui/logos/scopd_spinner_on_light.svg",
         },
         "type": "default",
-        "url": "/ui/logos/spinner_on_light.svg",
+        "url": "/ui/logos/scopd_spinner_on_light.svg",
       },
       "Application": Object {
         "dark": Object {
@@ -2162,14 +2162,14 @@ exports[`Header handles visibility and lock changes 1`] = `
       "Mark": Object {
         "dark": Object {
           "type": "default",
-          "url": "/ui/logos/wazuh_mark_on_dark.svg",
+          "url": "/ui/logos/scopd_logo.svg",
         },
         "light": Object {
           "type": "default",
-          "url": "/ui/logos/wazuh_mark_on_light.svg",
+          "url": "/ui/logos/scopd_logo.svg",
         },
         "type": "default",
-        "url": "/ui/logos/wazuh_mark_on_light.svg",
+        "url": "/ui/logos/scopd_logo.svg",
       },
       "OpenSearch": Object {
         "dark": Object {
@@ -3019,10 +3019,10 @@ exports[`Header handles visibility and lock changes 1`] = `
                         },
                         "light": Object {
                           "type": "default",
-                          "url": "/ui/logos/spinner_on_light.svg",
+                          "url": "/ui/logos/scopd_spinner_on_light.svg",
                         },
                         "type": "default",
-                        "url": "/ui/logos/spinner_on_light.svg",
+                        "url": "/ui/logos/scopd_spinner_on_light.svg",
                       },
                       "Application": Object {
                         "dark": Object {
@@ -3051,14 +3051,14 @@ exports[`Header handles visibility and lock changes 1`] = `
                       "Mark": Object {
                         "dark": Object {
                           "type": "default",
-                          "url": "/ui/logos/wazuh_mark_on_dark.svg",
+                          "url": "/ui/logos/scopd_logo.svg",
                         },
                         "light": Object {
                           "type": "default",
-                          "url": "/ui/logos/wazuh_mark_on_light.svg",
+                          "url": "/ui/logos/scopd_logo.svg",
                         },
                         "type": "default",
-                        "url": "/ui/logos/wazuh_mark_on_light.svg",
+                        "url": "/ui/logos/scopd_logo.svg",
                       },
                       "OpenSearch": Object {
                         "dark": Object {
@@ -3636,10 +3636,10 @@ exports[`Header handles visibility and lock changes 1`] = `
                           },
                           "light": Object {
                             "type": "default",
-                            "url": "/ui/logos/spinner_on_light.svg",
+                            "url": "/ui/logos/scopd_spinner_on_light.svg",
                           },
                           "type": "default",
-                          "url": "/ui/logos/spinner_on_light.svg",
+                          "url": "/ui/logos/scopd_spinner_on_light.svg",
                         },
                         "Application": Object {
                           "dark": Object {
@@ -3668,14 +3668,14 @@ exports[`Header handles visibility and lock changes 1`] = `
                         "Mark": Object {
                           "dark": Object {
                             "type": "default",
-                            "url": "/ui/logos/wazuh_mark_on_dark.svg",
+                            "url": "/ui/logos/scopd_logo.svg",
                           },
                           "light": Object {
                             "type": "default",
-                            "url": "/ui/logos/wazuh_mark_on_light.svg",
+                            "url": "/ui/logos/scopd_logo.svg",
                           },
                           "type": "default",
-                          "url": "/ui/logos/wazuh_mark_on_light.svg",
+                          "url": "/ui/logos/scopd_logo.svg",
                         },
                         "OpenSearch": Object {
                           "dark": Object {
@@ -4506,10 +4506,10 @@ exports[`Header handles visibility and lock changes 1`] = `
                           },
                           "light": Object {
                             "type": "default",
-                            "url": "/ui/logos/spinner_on_light.svg",
+                            "url": "/ui/logos/scopd_spinner_on_light.svg",
                           },
                           "type": "default",
-                          "url": "/ui/logos/spinner_on_light.svg",
+                          "url": "/ui/logos/scopd_spinner_on_light.svg",
                         },
                         "Application": Object {
                           "dark": Object {
@@ -4538,14 +4538,14 @@ exports[`Header handles visibility and lock changes 1`] = `
                         "Mark": Object {
                           "dark": Object {
                             "type": "default",
-                            "url": "/ui/logos/wazuh_mark_on_dark.svg",
+                            "url": "/ui/logos/scopd_logo.svg",
                           },
                           "light": Object {
                             "type": "default",
-                            "url": "/ui/logos/wazuh_mark_on_light.svg",
+                            "url": "/ui/logos/scopd_logo.svg",
                           },
                           "type": "default",
-                          "url": "/ui/logos/wazuh_mark_on_light.svg",
+                          "url": "/ui/logos/scopd_logo.svg",
                         },
                         "OpenSearch": Object {
                           "dark": Object {
@@ -4739,8 +4739,8 @@ exports[`Header handles visibility and lock changes 1`] = `
                                         >
                                           <span
                                             class="logoImage"
-                                            data-euiicon-type="/ui/logos/wazuh_mark_on_light.svg"
-                                            data-test-image-url="/ui/logos/wazuh_mark_on_light.svg"
+                                            data-euiicon-type="/ui/logos/scopd_logo.svg"
+                                            data-test-image-url="/ui/logos/scopd_logo.svg"
                                             data-test-subj="defaultMark"
                                             title="Wazuh dashboard home"
                                           />
@@ -4813,10 +4813,10 @@ exports[`Header handles visibility and lock changes 1`] = `
                                                 },
                                                 "light": Object {
                                                   "type": "default",
-                                                  "url": "/ui/logos/spinner_on_light.svg",
+                                                  "url": "/ui/logos/scopd_spinner_on_light.svg",
                                                 },
                                                 "type": "default",
-                                                "url": "/ui/logos/spinner_on_light.svg",
+                                                "url": "/ui/logos/scopd_spinner_on_light.svg",
                                               },
                                               "Application": Object {
                                                 "dark": Object {
@@ -4845,14 +4845,14 @@ exports[`Header handles visibility and lock changes 1`] = `
                                               "Mark": Object {
                                                 "dark": Object {
                                                   "type": "default",
-                                                  "url": "/ui/logos/wazuh_mark_on_dark.svg",
+                                                  "url": "/ui/logos/scopd_logo.svg",
                                                 },
                                                 "light": Object {
                                                   "type": "default",
-                                                  "url": "/ui/logos/wazuh_mark_on_light.svg",
+                                                  "url": "/ui/logos/scopd_logo.svg",
                                                 },
                                                 "type": "default",
-                                                "url": "/ui/logos/wazuh_mark_on_light.svg",
+                                                "url": "/ui/logos/scopd_logo.svg",
                                               },
                                               "OpenSearch": Object {
                                                 "dark": Object {
@@ -4872,16 +4872,16 @@ exports[`Header handles visibility and lock changes 1`] = `
                                         >
                                           <EuiIcon
                                             className="logoImage"
-                                            data-test-image-url="/ui/logos/wazuh_mark_on_light.svg"
+                                            data-test-image-url="/ui/logos/scopd_logo.svg"
                                             data-test-subj="defaultMark"
                                             size="l"
                                             title="Wazuh dashboard home"
-                                            type="/ui/logos/wazuh_mark_on_light.svg"
+                                            type="/ui/logos/scopd_logo.svg"
                                           >
                                             <span
                                               className="logoImage"
-                                              data-euiicon-type="/ui/logos/wazuh_mark_on_light.svg"
-                                              data-test-image-url="/ui/logos/wazuh_mark_on_light.svg"
+                                              data-euiicon-type="/ui/logos/scopd_logo.svg"
+                                              data-test-image-url="/ui/logos/scopd_logo.svg"
                                               data-test-subj="defaultMark"
                                               size="l"
                                               title="Wazuh dashboard home"
@@ -7501,10 +7501,10 @@ exports[`Header handles visibility and lock changes 1`] = `
             },
             "light": Object {
               "type": "default",
-              "url": "/ui/logos/spinner_on_light.svg",
+              "url": "/ui/logos/scopd_spinner_on_light.svg",
             },
             "type": "default",
-            "url": "/ui/logos/spinner_on_light.svg",
+            "url": "/ui/logos/scopd_spinner_on_light.svg",
           },
           "Application": Object {
             "dark": Object {
@@ -7533,14 +7533,14 @@ exports[`Header handles visibility and lock changes 1`] = `
           "Mark": Object {
             "dark": Object {
               "type": "default",
-              "url": "/ui/logos/wazuh_mark_on_dark.svg",
+              "url": "/ui/logos/scopd_logo.svg",
             },
             "light": Object {
               "type": "default",
-              "url": "/ui/logos/wazuh_mark_on_light.svg",
+              "url": "/ui/logos/scopd_logo.svg",
             },
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_light.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "OpenSearch": Object {
             "dark": Object {
@@ -9405,10 +9405,10 @@ exports[`Header renders application header without title and breadcrumbs 1`] = `
         },
         "light": Object {
           "type": "default",
-          "url": "/ui/logos/spinner_on_light.svg",
+          "url": "/ui/logos/scopd_spinner_on_light.svg",
         },
         "type": "default",
-        "url": "/ui/logos/spinner_on_light.svg",
+        "url": "/ui/logos/scopd_spinner_on_light.svg",
       },
       "Application": Object {
         "dark": Object {
@@ -9437,14 +9437,14 @@ exports[`Header renders application header without title and breadcrumbs 1`] = `
       "Mark": Object {
         "dark": Object {
           "type": "default",
-          "url": "/ui/logos/wazuh_mark_on_dark.svg",
+          "url": "/ui/logos/scopd_logo.svg",
         },
         "light": Object {
           "type": "default",
-          "url": "/ui/logos/wazuh_mark_on_light.svg",
+          "url": "/ui/logos/scopd_logo.svg",
         },
         "type": "default",
-        "url": "/ui/logos/wazuh_mark_on_light.svg",
+        "url": "/ui/logos/scopd_logo.svg",
       },
       "OpenSearch": Object {
         "dark": Object {
@@ -10998,10 +10998,10 @@ exports[`Header renders application header without title and breadcrumbs 1`] = `
             },
             "light": Object {
               "type": "default",
-              "url": "/ui/logos/spinner_on_light.svg",
+              "url": "/ui/logos/scopd_spinner_on_light.svg",
             },
             "type": "default",
-            "url": "/ui/logos/spinner_on_light.svg",
+            "url": "/ui/logos/scopd_spinner_on_light.svg",
           },
           "Application": Object {
             "dark": Object {
@@ -11030,14 +11030,14 @@ exports[`Header renders application header without title and breadcrumbs 1`] = `
           "Mark": Object {
             "dark": Object {
               "type": "default",
-              "url": "/ui/logos/wazuh_mark_on_dark.svg",
+              "url": "/ui/logos/scopd_logo.svg",
             },
             "light": Object {
               "type": "default",
-              "url": "/ui/logos/wazuh_mark_on_light.svg",
+              "url": "/ui/logos/scopd_logo.svg",
             },
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_light.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "OpenSearch": Object {
             "dark": Object {
@@ -13332,10 +13332,10 @@ exports[`Header renders condensed header 1`] = `
         },
         "light": Object {
           "type": "default",
-          "url": "/ui/logos/spinner_on_light.svg",
+          "url": "/ui/logos/scopd_spinner_on_light.svg",
         },
         "type": "default",
-        "url": "/ui/logos/spinner_on_light.svg",
+        "url": "/ui/logos/scopd_spinner_on_light.svg",
       },
       "Application": Object {
         "dark": Object {
@@ -13364,14 +13364,14 @@ exports[`Header renders condensed header 1`] = `
       "Mark": Object {
         "dark": Object {
           "type": "default",
-          "url": "/ui/logos/wazuh_mark_on_dark.svg",
+          "url": "/ui/logos/scopd_logo.svg",
         },
         "light": Object {
           "type": "default",
-          "url": "/ui/logos/wazuh_mark_on_light.svg",
+          "url": "/ui/logos/scopd_logo.svg",
         },
         "type": "default",
-        "url": "/ui/logos/wazuh_mark_on_light.svg",
+        "url": "/ui/logos/scopd_logo.svg",
       },
       "OpenSearch": Object {
         "dark": Object {
@@ -14374,10 +14374,10 @@ exports[`Header renders condensed header 1`] = `
                           },
                           "light": Object {
                             "type": "default",
-                            "url": "/ui/logos/spinner_on_light.svg",
+                            "url": "/ui/logos/scopd_spinner_on_light.svg",
                           },
                           "type": "default",
-                          "url": "/ui/logos/spinner_on_light.svg",
+                          "url": "/ui/logos/scopd_spinner_on_light.svg",
                         },
                         "Application": Object {
                           "dark": Object {
@@ -14406,14 +14406,14 @@ exports[`Header renders condensed header 1`] = `
                         "Mark": Object {
                           "dark": Object {
                             "type": "default",
-                            "url": "/ui/logos/wazuh_mark_on_dark.svg",
+                            "url": "/ui/logos/scopd_logo.svg",
                           },
                           "light": Object {
                             "type": "default",
-                            "url": "/ui/logos/wazuh_mark_on_light.svg",
+                            "url": "/ui/logos/scopd_logo.svg",
                           },
                           "type": "default",
-                          "url": "/ui/logos/wazuh_mark_on_light.svg",
+                          "url": "/ui/logos/scopd_logo.svg",
                         },
                         "OpenSearch": Object {
                           "dark": Object {
@@ -14563,8 +14563,8 @@ exports[`Header renders condensed header 1`] = `
                                         >
                                           <span
                                             class="logoImage"
-                                            data-euiicon-type="/ui/logos/wazuh_mark_on_light.svg"
-                                            data-test-image-url="/ui/logos/wazuh_mark_on_light.svg"
+                                            data-euiicon-type="/ui/logos/scopd_logo.svg"
+                                            data-test-image-url="/ui/logos/scopd_logo.svg"
                                             data-test-subj="defaultMark"
                                             title="Wazuh dashboard home"
                                           />
@@ -14641,10 +14641,10 @@ exports[`Header renders condensed header 1`] = `
                                                 },
                                                 "light": Object {
                                                   "type": "default",
-                                                  "url": "/ui/logos/spinner_on_light.svg",
+                                                  "url": "/ui/logos/scopd_spinner_on_light.svg",
                                                 },
                                                 "type": "default",
-                                                "url": "/ui/logos/spinner_on_light.svg",
+                                                "url": "/ui/logos/scopd_spinner_on_light.svg",
                                               },
                                               "Application": Object {
                                                 "dark": Object {
@@ -14673,14 +14673,14 @@ exports[`Header renders condensed header 1`] = `
                                               "Mark": Object {
                                                 "dark": Object {
                                                   "type": "default",
-                                                  "url": "/ui/logos/wazuh_mark_on_dark.svg",
+                                                  "url": "/ui/logos/scopd_logo.svg",
                                                 },
                                                 "light": Object {
                                                   "type": "default",
-                                                  "url": "/ui/logos/wazuh_mark_on_light.svg",
+                                                  "url": "/ui/logos/scopd_logo.svg",
                                                 },
                                                 "type": "default",
-                                                "url": "/ui/logos/wazuh_mark_on_light.svg",
+                                                "url": "/ui/logos/scopd_logo.svg",
                                               },
                                               "OpenSearch": Object {
                                                 "dark": Object {
@@ -14700,16 +14700,16 @@ exports[`Header renders condensed header 1`] = `
                                         >
                                           <EuiIcon
                                             className="logoImage"
-                                            data-test-image-url="/ui/logos/wazuh_mark_on_light.svg"
+                                            data-test-image-url="/ui/logos/scopd_logo.svg"
                                             data-test-subj="defaultMark"
                                             size="l"
                                             title="Wazuh dashboard home"
-                                            type="/ui/logos/wazuh_mark_on_light.svg"
+                                            type="/ui/logos/scopd_logo.svg"
                                           >
                                             <span
                                               className="logoImage"
-                                              data-euiicon-type="/ui/logos/wazuh_mark_on_light.svg"
-                                              data-test-image-url="/ui/logos/wazuh_mark_on_light.svg"
+                                              data-euiicon-type="/ui/logos/scopd_logo.svg"
+                                              data-test-image-url="/ui/logos/scopd_logo.svg"
                                               data-test-subj="defaultMark"
                                               size="l"
                                               title="Wazuh dashboard home"
@@ -17320,10 +17320,10 @@ exports[`Header renders condensed header 1`] = `
             },
             "light": Object {
               "type": "default",
-              "url": "/ui/logos/spinner_on_light.svg",
+              "url": "/ui/logos/scopd_spinner_on_light.svg",
             },
             "type": "default",
-            "url": "/ui/logos/spinner_on_light.svg",
+            "url": "/ui/logos/scopd_spinner_on_light.svg",
           },
           "Application": Object {
             "dark": Object {
@@ -17352,14 +17352,14 @@ exports[`Header renders condensed header 1`] = `
           "Mark": Object {
             "dark": Object {
               "type": "default",
-              "url": "/ui/logos/wazuh_mark_on_dark.svg",
+              "url": "/ui/logos/scopd_logo.svg",
             },
             "light": Object {
               "type": "default",
-              "url": "/ui/logos/wazuh_mark_on_light.svg",
+              "url": "/ui/logos/scopd_logo.svg",
             },
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_light.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "OpenSearch": Object {
             "dark": Object {
@@ -18875,10 +18875,10 @@ exports[`Header renders page header with application title 1`] = `
         },
         "light": Object {
           "type": "default",
-          "url": "/ui/logos/spinner_on_light.svg",
+          "url": "/ui/logos/scopd_spinner_on_light.svg",
         },
         "type": "default",
-        "url": "/ui/logos/spinner_on_light.svg",
+        "url": "/ui/logos/scopd_spinner_on_light.svg",
       },
       "Application": Object {
         "dark": Object {
@@ -18907,14 +18907,14 @@ exports[`Header renders page header with application title 1`] = `
       "Mark": Object {
         "dark": Object {
           "type": "default",
-          "url": "/ui/logos/wazuh_mark_on_dark.svg",
+          "url": "/ui/logos/scopd_logo.svg",
         },
         "light": Object {
           "type": "default",
-          "url": "/ui/logos/wazuh_mark_on_light.svg",
+          "url": "/ui/logos/scopd_logo.svg",
         },
         "type": "default",
-        "url": "/ui/logos/wazuh_mark_on_light.svg",
+        "url": "/ui/logos/scopd_logo.svg",
       },
       "OpenSearch": Object {
         "dark": Object {
@@ -21045,10 +21045,10 @@ exports[`Header renders page header with application title 1`] = `
             },
             "light": Object {
               "type": "default",
-              "url": "/ui/logos/spinner_on_light.svg",
+              "url": "/ui/logos/scopd_spinner_on_light.svg",
             },
             "type": "default",
-            "url": "/ui/logos/spinner_on_light.svg",
+            "url": "/ui/logos/scopd_spinner_on_light.svg",
           },
           "Application": Object {
             "dark": Object {
@@ -21077,14 +21077,14 @@ exports[`Header renders page header with application title 1`] = `
           "Mark": Object {
             "dark": Object {
               "type": "default",
-              "url": "/ui/logos/wazuh_mark_on_dark.svg",
+              "url": "/ui/logos/scopd_logo.svg",
             },
             "light": Object {
               "type": "default",
-              "url": "/ui/logos/wazuh_mark_on_light.svg",
+              "url": "/ui/logos/scopd_logo.svg",
             },
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_light.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "OpenSearch": Object {
             "dark": Object {
@@ -23379,10 +23379,10 @@ exports[`Header toggles primary navigation menu when clicked 1`] = `
         },
         "light": Object {
           "type": "default",
-          "url": "/ui/logos/spinner_on_light.svg",
+          "url": "/ui/logos/scopd_spinner_on_light.svg",
         },
         "type": "default",
-        "url": "/ui/logos/spinner_on_light.svg",
+        "url": "/ui/logos/scopd_spinner_on_light.svg",
       },
       "Application": Object {
         "dark": Object {
@@ -23411,14 +23411,14 @@ exports[`Header toggles primary navigation menu when clicked 1`] = `
       "Mark": Object {
         "dark": Object {
           "type": "default",
-          "url": "/ui/logos/wazuh_mark_on_dark.svg",
+          "url": "/ui/logos/scopd_logo.svg",
         },
         "light": Object {
           "type": "default",
-          "url": "/ui/logos/wazuh_mark_on_light.svg",
+          "url": "/ui/logos/scopd_logo.svg",
         },
         "type": "default",
-        "url": "/ui/logos/wazuh_mark_on_light.svg",
+        "url": "/ui/logos/scopd_logo.svg",
       },
       "OpenSearch": Object {
         "dark": Object {
@@ -24421,10 +24421,10 @@ exports[`Header toggles primary navigation menu when clicked 1`] = `
                           },
                           "light": Object {
                             "type": "default",
-                            "url": "/ui/logos/spinner_on_light.svg",
+                            "url": "/ui/logos/scopd_spinner_on_light.svg",
                           },
                           "type": "default",
-                          "url": "/ui/logos/spinner_on_light.svg",
+                          "url": "/ui/logos/scopd_spinner_on_light.svg",
                         },
                         "Application": Object {
                           "dark": Object {
@@ -24453,14 +24453,14 @@ exports[`Header toggles primary navigation menu when clicked 1`] = `
                         "Mark": Object {
                           "dark": Object {
                             "type": "default",
-                            "url": "/ui/logos/wazuh_mark_on_dark.svg",
+                            "url": "/ui/logos/scopd_logo.svg",
                           },
                           "light": Object {
                             "type": "default",
-                            "url": "/ui/logos/wazuh_mark_on_light.svg",
+                            "url": "/ui/logos/scopd_logo.svg",
                           },
                           "type": "default",
-                          "url": "/ui/logos/wazuh_mark_on_light.svg",
+                          "url": "/ui/logos/scopd_logo.svg",
                         },
                         "OpenSearch": Object {
                           "dark": Object {
@@ -24610,8 +24610,8 @@ exports[`Header toggles primary navigation menu when clicked 1`] = `
                                         >
                                           <span
                                             class="logoImage"
-                                            data-euiicon-type="/ui/logos/wazuh_mark_on_light.svg"
-                                            data-test-image-url="/ui/logos/wazuh_mark_on_light.svg"
+                                            data-euiicon-type="/ui/logos/scopd_logo.svg"
+                                            data-test-image-url="/ui/logos/scopd_logo.svg"
                                             data-test-subj="defaultMark"
                                             title="Wazuh dashboard home"
                                           />
@@ -24688,10 +24688,10 @@ exports[`Header toggles primary navigation menu when clicked 1`] = `
                                                 },
                                                 "light": Object {
                                                   "type": "default",
-                                                  "url": "/ui/logos/spinner_on_light.svg",
+                                                  "url": "/ui/logos/scopd_spinner_on_light.svg",
                                                 },
                                                 "type": "default",
-                                                "url": "/ui/logos/spinner_on_light.svg",
+                                                "url": "/ui/logos/scopd_spinner_on_light.svg",
                                               },
                                               "Application": Object {
                                                 "dark": Object {
@@ -24720,14 +24720,14 @@ exports[`Header toggles primary navigation menu when clicked 1`] = `
                                               "Mark": Object {
                                                 "dark": Object {
                                                   "type": "default",
-                                                  "url": "/ui/logos/wazuh_mark_on_dark.svg",
+                                                  "url": "/ui/logos/scopd_logo.svg",
                                                 },
                                                 "light": Object {
                                                   "type": "default",
-                                                  "url": "/ui/logos/wazuh_mark_on_light.svg",
+                                                  "url": "/ui/logos/scopd_logo.svg",
                                                 },
                                                 "type": "default",
-                                                "url": "/ui/logos/wazuh_mark_on_light.svg",
+                                                "url": "/ui/logos/scopd_logo.svg",
                                               },
                                               "OpenSearch": Object {
                                                 "dark": Object {
@@ -24747,16 +24747,16 @@ exports[`Header toggles primary navigation menu when clicked 1`] = `
                                         >
                                           <EuiIcon
                                             className="logoImage"
-                                            data-test-image-url="/ui/logos/wazuh_mark_on_light.svg"
+                                            data-test-image-url="/ui/logos/scopd_logo.svg"
                                             data-test-subj="defaultMark"
                                             size="l"
                                             title="Wazuh dashboard home"
-                                            type="/ui/logos/wazuh_mark_on_light.svg"
+                                            type="/ui/logos/scopd_logo.svg"
                                           >
                                             <span
                                               className="logoImage"
-                                              data-euiicon-type="/ui/logos/wazuh_mark_on_light.svg"
-                                              data-test-image-url="/ui/logos/wazuh_mark_on_light.svg"
+                                              data-euiicon-type="/ui/logos/scopd_logo.svg"
+                                              data-test-image-url="/ui/logos/scopd_logo.svg"
                                               data-test-subj="defaultMark"
                                               size="l"
                                               title="Wazuh dashboard home"
@@ -27367,10 +27367,10 @@ exports[`Header toggles primary navigation menu when clicked 1`] = `
             },
             "light": Object {
               "type": "default",
-              "url": "/ui/logos/spinner_on_light.svg",
+              "url": "/ui/logos/scopd_spinner_on_light.svg",
             },
             "type": "default",
-            "url": "/ui/logos/spinner_on_light.svg",
+            "url": "/ui/logos/scopd_spinner_on_light.svg",
           },
           "Application": Object {
             "dark": Object {
@@ -27399,14 +27399,14 @@ exports[`Header toggles primary navigation menu when clicked 1`] = `
           "Mark": Object {
             "dark": Object {
               "type": "default",
-              "url": "/ui/logos/wazuh_mark_on_dark.svg",
+              "url": "/ui/logos/scopd_logo.svg",
             },
             "light": Object {
               "type": "default",
-              "url": "/ui/logos/wazuh_mark_on_light.svg",
+              "url": "/ui/logos/scopd_logo.svg",
             },
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_light.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "OpenSearch": Object {
             "dark": Object {

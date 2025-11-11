@@ -610,10 +610,10 @@ Array [
         <img
           alt="OpenSearch Dashboards logo"
           class="loadingLogo"
-          data-test-image-url="/ui/logos/spinner_on_light.svg"
+          data-test-image-url="/ui/logos/scopd_spinner_on_light.svg"
           data-test-subj="defaultLogo"
           loading="eager"
-          src="/ui/logos/spinner_on_light.svg"
+          src="/ui/logos/scopd_spinner_on_light.svg"
         />
       </div>
       <div
@@ -630,9 +630,9 @@ Array [
     <img
       alt="OpenSearch Dashboards logo"
       class="legacyBrowserErrorLogo"
-      data-test-image-url="/ui/logos/wazuh_mark_on_light.svg"
+      data-test-image-url="/ui/logos/scopd_logo.svg"
       data-test-subj="default logo"
-      src="/ui/logos/wazuh_mark_on_light.svg"
+      src="/ui/logos/scopd_logo.svg"
     />
     <h2
       class="osdWelcomeTitle"
@@ -1003,10 +1003,10 @@ Array [
         <img
           alt="custom title logo"
           class="loadingLogo"
-          data-test-image-url="/ui/logos/spinner_on_light.svg"
+          data-test-image-url="/ui/logos/scopd_spinner_on_light.svg"
           data-test-subj="defaultLogo"
           loading="eager"
-          src="/ui/logos/spinner_on_light.svg"
+          src="/ui/logos/scopd_spinner_on_light.svg"
         />
       </div>
       <div
@@ -1023,9 +1023,9 @@ Array [
     <img
       alt="custom title logo"
       class="legacyBrowserErrorLogo"
-      data-test-image-url="/ui/logos/wazuh_mark_on_light.svg"
+      data-test-image-url="/ui/logos/scopd_logo.svg"
       data-test-subj="default logo"
-      src="/ui/logos/wazuh_mark_on_light.svg"
+      src="/ui/logos/scopd_logo.svg"
     />
     <h2
       class="osdWelcomeTitle"
@@ -1133,10 +1133,10 @@ Array [
         <img
           alt="OpenSearch Dashboards logo"
           class="loadingLogo"
-          data-test-image-url="/ui/logos/spinner_on_light.svg"
+          data-test-image-url="/ui/logos/scopd_spinner_on_light.svg"
           data-test-subj="defaultLogo"
           loading="eager"
-          src="/ui/logos/spinner_on_light.svg"
+          src="/ui/logos/scopd_spinner_on_light.svg"
         />
       </div>
       <div
@@ -1153,9 +1153,9 @@ Array [
     <img
       alt="OpenSearch Dashboards logo"
       class="legacyBrowserErrorLogo"
-      data-test-image-url="/ui/logos/wazuh_mark_on_light.svg"
+      data-test-image-url="/ui/logos/scopd_logo.svg"
       data-test-subj="default logo"
-      src="/ui/logos/wazuh_mark_on_light.svg"
+      src="/ui/logos/scopd_logo.svg"
     />
     <h2
       class="osdWelcomeTitle"
@@ -1263,10 +1263,10 @@ Array [
         <img
           alt="OpenSearch Dashboards logo"
           class="loadingLogo"
-          data-test-image-url="/ui/logos/spinner_on_light.svg"
+          data-test-image-url="/ui/logos/scopd_spinner_on_light.svg"
           data-test-subj="defaultLogo"
           loading="eager"
-          src="/ui/logos/spinner_on_light.svg"
+          src="/ui/logos/scopd_spinner_on_light.svg"
         />
       </div>
       <div
@@ -1283,9 +1283,9 @@ Array [
     <img
       alt="OpenSearch Dashboards logo"
       class="legacyBrowserErrorLogo"
-      data-test-image-url="/ui/logos/wazuh_mark_on_light.svg"
+      data-test-image-url="/ui/logos/scopd_logo.svg"
       data-test-subj="default logo"
-      src="/ui/logos/wazuh_mark_on_light.svg"
+      src="/ui/logos/scopd_logo.svg"
     />
     <h2
       class="osdWelcomeTitle"

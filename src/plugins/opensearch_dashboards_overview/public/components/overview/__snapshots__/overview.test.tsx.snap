@@ -192,10 +192,10 @@ exports[`Overview renders with news without solutions and without features 1`] =
           },
           "light": Object {
             "type": "default",
-            "url": "/ui/logos/spinner_on_light.svg",
+            "url": "/ui/logos/scopd_spinner_on_light.svg",
           },
           "type": "default",
-          "url": "/ui/logos/spinner_on_light.svg",
+          "url": "/ui/logos/scopd_spinner_on_light.svg",
         },
         "Application": Object {
           "dark": Object {
@@ -224,14 +224,14 @@ exports[`Overview renders with news without solutions and without features 1`] =
         "Mark": Object {
           "dark": Object {
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_dark.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "light": Object {
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_light.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "type": "default",
-          "url": "/ui/logos/wazuh_mark_on_light.svg",
+          "url": "/ui/logos/scopd_logo.svg",
         },
         "OpenSearch": Object {
           "dark": Object {
@@ -793,10 +793,10 @@ exports[`Overview renders with news, solutions, and features 1`] = `
           },
           "light": Object {
             "type": "default",
-            "url": "/ui/logos/spinner_on_light.svg",
+            "url": "/ui/logos/scopd_spinner_on_light.svg",
           },
           "type": "default",
-          "url": "/ui/logos/spinner_on_light.svg",
+          "url": "/ui/logos/scopd_spinner_on_light.svg",
         },
         "Application": Object {
           "dark": Object {
@@ -825,14 +825,14 @@ exports[`Overview renders with news, solutions, and features 1`] = `
         "Mark": Object {
           "dark": Object {
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_dark.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "light": Object {
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_light.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "type": "default",
-          "url": "/ui/logos/wazuh_mark_on_light.svg",
+          "url": "/ui/logos/scopd_logo.svg",
         },
         "OpenSearch": Object {
           "dark": Object {
@@ -1278,10 +1278,10 @@ exports[`Overview renders with news, with solutions, and without features 1`] = 
           },
           "light": Object {
             "type": "default",
-            "url": "/ui/logos/spinner_on_light.svg",
+            "url": "/ui/logos/scopd_spinner_on_light.svg",
           },
           "type": "default",
-          "url": "/ui/logos/spinner_on_light.svg",
+          "url": "/ui/logos/scopd_spinner_on_light.svg",
         },
         "Application": Object {
           "dark": Object {
@@ -1310,14 +1310,14 @@ exports[`Overview renders with news, with solutions, and without features 1`] = 
         "Mark": Object {
           "dark": Object {
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_dark.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "light": Object {
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_light.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "type": "default",
-          "url": "/ui/logos/wazuh_mark_on_light.svg",
+          "url": "/ui/logos/scopd_logo.svg",
         },
         "OpenSearch": Object {
           "dark": Object {
@@ -1763,10 +1763,10 @@ exports[`Overview renders with news, without solutions, and with features 1`] = 
           },
           "light": Object {
             "type": "default",
-            "url": "/ui/logos/spinner_on_light.svg",
+            "url": "/ui/logos/scopd_spinner_on_light.svg",
           },
           "type": "default",
-          "url": "/ui/logos/spinner_on_light.svg",
+          "url": "/ui/logos/scopd_spinner_on_light.svg",
         },
         "Application": Object {
           "dark": Object {
@@ -1795,14 +1795,14 @@ exports[`Overview renders with news, without solutions, and with features 1`] = 
         "Mark": Object {
           "dark": Object {
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_dark.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "light": Object {
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_light.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "type": "default",
-          "url": "/ui/logos/wazuh_mark_on_light.svg",
+          "url": "/ui/logos/scopd_logo.svg",
         },
         "OpenSearch": Object {
           "dark": Object {
@@ -2308,10 +2308,10 @@ exports[`Overview renders without news and features, with solutions 1`] = `
           },
           "light": Object {
             "type": "default",
-            "url": "/ui/logos/spinner_on_light.svg",
+            "url": "/ui/logos/scopd_spinner_on_light.svg",
           },
           "type": "default",
-          "url": "/ui/logos/spinner_on_light.svg",
+          "url": "/ui/logos/scopd_spinner_on_light.svg",
         },
         "Application": Object {
           "dark": Object {
@@ -2340,14 +2340,14 @@ exports[`Overview renders without news and features, with solutions 1`] = `
         "Mark": Object {
           "dark": Object {
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_dark.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "light": Object {
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_light.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "type": "default",
-          "url": "/ui/logos/wazuh_mark_on_light.svg",
+          "url": "/ui/logos/scopd_logo.svg",
         },
         "OpenSearch": Object {
           "dark": Object {
@@ -2972,10 +2972,10 @@ exports[`Overview renders without news and solutions, with features 1`] = `
           },
           "light": Object {
             "type": "default",
-            "url": "/ui/logos/spinner_on_light.svg",
+            "url": "/ui/logos/scopd_spinner_on_light.svg",
           },
           "type": "default",
-          "url": "/ui/logos/spinner_on_light.svg",
+          "url": "/ui/logos/scopd_spinner_on_light.svg",
         },
         "Application": Object {
           "dark": Object {
@@ -3004,14 +3004,14 @@ exports[`Overview renders without news and solutions, with features 1`] = `
         "Mark": Object {
           "dark": Object {
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_dark.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "light": Object {
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_light.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "type": "default",
-          "url": "/ui/logos/wazuh_mark_on_light.svg",
+          "url": "/ui/logos/scopd_logo.svg",
         },
         "OpenSearch": Object {
           "dark": Object {
@@ -3696,10 +3696,10 @@ exports[`Overview renders without news, solutions, and features 1`] = `
           },
           "light": Object {
             "type": "default",
-            "url": "/ui/logos/spinner_on_light.svg",
+            "url": "/ui/logos/scopd_spinner_on_light.svg",
           },
           "type": "default",
-          "url": "/ui/logos/spinner_on_light.svg",
+          "url": "/ui/logos/scopd_spinner_on_light.svg",
         },
         "Application": Object {
           "dark": Object {
@@ -3728,14 +3728,14 @@ exports[`Overview renders without news, solutions, and features 1`] = `
         "Mark": Object {
           "dark": Object {
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_dark.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "light": Object {
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_light.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "type": "default",
-          "url": "/ui/logos/wazuh_mark_on_light.svg",
+          "url": "/ui/logos/scopd_logo.svg",
         },
         "OpenSearch": Object {
           "dark": Object {
@@ -4476,10 +4476,10 @@ exports[`Overview renders without news, with solutions and features 1`] = `
           },
           "light": Object {
             "type": "default",
-            "url": "/ui/logos/spinner_on_light.svg",
+            "url": "/ui/logos/scopd_spinner_on_light.svg",
           },
           "type": "default",
-          "url": "/ui/logos/spinner_on_light.svg",
+          "url": "/ui/logos/scopd_spinner_on_light.svg",
         },
         "Application": Object {
           "dark": Object {
@@ -4508,14 +4508,14 @@ exports[`Overview renders without news, with solutions and features 1`] = `
         "Mark": Object {
           "dark": Object {
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_dark.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "light": Object {
             "type": "default",
-            "url": "/ui/logos/wazuh_mark_on_light.svg",
+            "url": "/ui/logos/scopd_logo.svg",
           },
           "type": "default",
-          "url": "/ui/logos/wazuh_mark_on_light.svg",
+          "url": "/ui/logos/scopd_logo.svg",
         },
         "OpenSearch": Object {
           "dark": Object {

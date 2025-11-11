@@ -155,10 +155,10 @@ exports[`Dashboard top nav render in embed mode 1`] = `
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/spinner_on_light.svg",
+                    "url": "/ui/logos/scopd_spinner_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/spinner_on_light.svg",
+                  "url": "/ui/logos/scopd_spinner_on_light.svg",
                 },
                 "Application": Object {
                   "dark": Object {
@@ -187,14 +187,14 @@ exports[`Dashboard top nav render in embed mode 1`] = `
                 "Mark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/wazuh_mark_on_dark.svg",
+                    "url": "/ui/logos/scopd_logo.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/wazuh_mark_on_light.svg",
+                    "url": "/ui/logos/scopd_logo.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/wazuh_mark_on_light.svg",
+                  "url": "/ui/logos/scopd_logo.svg",
                 },
                 "OpenSearch": Object {
                   "dark": Object {
@@ -1267,10 +1267,10 @@ exports[`Dashboard top nav render in embed mode, and force hide filter bar 1`] =
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/spinner_on_light.svg",
+                    "url": "/ui/logos/scopd_spinner_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/spinner_on_light.svg",
+                  "url": "/ui/logos/scopd_spinner_on_light.svg",
                 },
                 "Application": Object {
                   "dark": Object {
@@ -1299,14 +1299,14 @@ exports[`Dashboard top nav render in embed mode, and force hide filter bar 1`] =
                 "Mark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/wazuh_mark_on_dark.svg",
+                    "url": "/ui/logos/scopd_logo.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/wazuh_mark_on_light.svg",
+                    "url": "/ui/logos/scopd_logo.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/wazuh_mark_on_light.svg",
+                  "url": "/ui/logos/scopd_logo.svg",
                 },
                 "OpenSearch": Object {
                   "dark": Object {
@@ -2379,10 +2379,10 @@ exports[`Dashboard top nav render in embed mode, components can be forced show b
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/spinner_on_light.svg",
+                    "url": "/ui/logos/scopd_spinner_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/spinner_on_light.svg",
+                  "url": "/ui/logos/scopd_spinner_on_light.svg",
                 },
                 "Application": Object {
                   "dark": Object {
@@ -2411,14 +2411,14 @@ exports[`Dashboard top nav render in embed mode, components can be forced show b
                 "Mark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/wazuh_mark_on_dark.svg",
+                    "url": "/ui/logos/scopd_logo.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/wazuh_mark_on_light.svg",
+                    "url": "/ui/logos/scopd_logo.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/wazuh_mark_on_light.svg",
+                  "url": "/ui/logos/scopd_logo.svg",
                 },
                 "OpenSearch": Object {
                   "dark": Object {
@@ -3491,10 +3491,10 @@ exports[`Dashboard top nav render in full screen mode with appended URL param bu
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/spinner_on_light.svg",
+                    "url": "/ui/logos/scopd_spinner_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/spinner_on_light.svg",
+                  "url": "/ui/logos/scopd_spinner_on_light.svg",
                 },
                 "Application": Object {
                   "dark": Object {
@@ -3523,14 +3523,14 @@ exports[`Dashboard top nav render in full screen mode with appended URL param bu
                 "Mark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/wazuh_mark_on_dark.svg",
+                    "url": "/ui/logos/scopd_logo.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/wazuh_mark_on_light.svg",
+                    "url": "/ui/logos/scopd_logo.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/wazuh_mark_on_light.svg",
+                  "url": "/ui/logos/scopd_logo.svg",
                 },
                 "OpenSearch": Object {
                   "dark": Object {
@@ -4603,10 +4603,10 @@ exports[`Dashboard top nav render in full screen mode, no componenets should be 
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/spinner_on_light.svg",
+                    "url": "/ui/logos/scopd_spinner_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/spinner_on_light.svg",
+                  "url": "/ui/logos/scopd_spinner_on_light.svg",
                 },
                 "Application": Object {
                   "dark": Object {
@@ -4635,14 +4635,14 @@ exports[`Dashboard top nav render in full screen mode, no componenets should be 
                 "Mark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/wazuh_mark_on_dark.svg",
+                    "url": "/ui/logos/scopd_logo.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/wazuh_mark_on_light.svg",
+                    "url": "/ui/logos/scopd_logo.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/wazuh_mark_on_light.svg",
+                  "url": "/ui/logos/scopd_logo.svg",
                 },
                 "OpenSearch": Object {
                   "dark": Object {
@@ -5715,10 +5715,10 @@ exports[`Dashboard top nav render with all components 1`] = `
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/spinner_on_light.svg",
+                    "url": "/ui/logos/scopd_spinner_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/spinner_on_light.svg",
+                  "url": "/ui/logos/scopd_spinner_on_light.svg",
                 },
                 "Application": Object {
                   "dark": Object {
@@ -5747,14 +5747,14 @@ exports[`Dashboard top nav render with all components 1`] = `
                 "Mark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/wazuh_mark_on_dark.svg",
+                    "url": "/ui/logos/scopd_logo.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/wazuh_mark_on_light.svg",
+                    "url": "/ui/logos/scopd_logo.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/wazuh_mark_on_light.svg",
+                  "url": "/ui/logos/scopd_logo.svg",
                 },
                 "OpenSearch": Object {
                   "dark": Object {

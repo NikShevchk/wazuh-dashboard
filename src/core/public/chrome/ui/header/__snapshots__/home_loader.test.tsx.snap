@@ -27,10 +27,10 @@ exports[`Home loader displays a EuiToolTip 1`] = `
               },
               "light": Object {
                 "type": "default",
-                "url": "/ui/logos/spinner_on_light.svg",
+                "url": "/ui/logos/scopd_spinner_on_light.svg",
               },
               "type": "default",
-              "url": "/ui/logos/spinner_on_light.svg",
+              "url": "/ui/logos/scopd_spinner_on_light.svg",
             },
             "Application": Object {
               "dark": Object {
@@ -59,14 +59,14 @@ exports[`Home loader displays a EuiToolTip 1`] = `
             "Mark": Object {
               "dark": Object {
                 "type": "default",
-                "url": "/ui/logos/wazuh_mark_on_dark.svg",
+                "url": "/ui/logos/scopd_logo.svg",
               },
               "light": Object {
                 "type": "default",
-                "url": "/ui/logos/wazuh_mark_on_light.svg",
+                "url": "/ui/logos/scopd_logo.svg",
               },
               "type": "default",
-              "url": "/ui/logos/wazuh_mark_on_light.svg",
+              "url": "/ui/logos/scopd_logo.svg",
             },
             "OpenSearch": Object {
               "dark": Object {
@@ -134,10 +134,10 @@ exports[`Home loader shows the loading indicator if loading count > 0 1`] = `
               },
               "light": Object {
                 "type": "default",
-                "url": "/ui/logos/spinner_on_light.svg",
+                "url": "/ui/logos/scopd_spinner_on_light.svg",
               },
               "type": "default",
-              "url": "/ui/logos/spinner_on_light.svg",
+              "url": "/ui/logos/scopd_spinner_on_light.svg",
             },
             "Application": Object {
               "dark": Object {
@@ -166,14 +166,14 @@ exports[`Home loader shows the loading indicator if loading count > 0 1`] = `
             "Mark": Object {
               "dark": Object {
                 "type": "default",
-                "url": "/ui/logos/wazuh_mark_on_dark.svg",
+                "url": "/ui/logos/scopd_logo.svg",
               },
               "light": Object {
                 "type": "default",
-                "url": "/ui/logos/wazuh_mark_on_light.svg",
+                "url": "/ui/logos/scopd_logo.svg",
               },
               "type": "default",
-              "url": "/ui/logos/wazuh_mark_on_light.svg",
+              "url": "/ui/logos/scopd_logo.svg",
             },
             "OpenSearch": Object {
               "dark": Object {
