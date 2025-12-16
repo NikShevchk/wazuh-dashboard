@@ -22,10 +22,12 @@ server.host: 0.0.0.0
 # The OpenSearch Dashboards server's name.  This is used for display purposes.
 #server.name: "your-hostname"
 
+opensearch_security.enabled: false
 # The URLs of the OpenSearch instances to use for all your queries.
-opensearch.hosts: ["https://localhost:9200"]
-opensearch.username: "admin"
-opensearch.password: "S7uP3r@eCur3Pa@@"
+#opensearch.hosts: ["http://192.168.65.7:9200"]
+opensearch.hosts: ["http://192.168.1.165:9200"]
+opensearch.username: ""
+opensearch.password: ""
 opensearch.ssl.verificationMode: none
 
 #opensearch.hosts: ["https://45.136.16.242:9200"]
@@ -185,7 +187,7 @@ csp.rules: ["script-src 'unsafe-inline' 'unsafe-eval' 'self' localhost:5601 loca
 
 # Specifies locale to be used for all localizable strings, dates and number formats.
 # Supported languages are the following: English - en , by default , Chinese - zh-CN .
-i18n.locale: "ru-RU"
+#i18n.locale: "ru-RU"
 
 # Set the allowlist to check input graphite Url. Allowlist is the default check list.
 #vis_type_timeline.graphiteAllowedUrls: ['https://www.hostedgraphite.com/UID/ACCESS_KEY/graphite']

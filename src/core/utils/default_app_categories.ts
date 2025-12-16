@@ -33,6 +33,16 @@ import { AppCategory } from '../types';
 
 /** @internal */
 export const DEFAULT_APP_CATEGORIES: Record<string, AppCategory> = Object.freeze({
+  integrations: {
+    id: 'integrations',
+    order: 50,
+    get label() {
+      return i18n.translate('core.ui.integrationsNavList.label', {
+        defaultMessage: 'Integrations',
+      });
+    },
+    euiIconType: 'visLine',
+  },
   explore: {
     id: 'explore',
     get label() {
