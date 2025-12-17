@@ -294,10 +294,16 @@ jobs:
       # Остальные параметры, которые ожидает dev-environment.yml
       command: 'yarn build'
       artifact_name: 'wazuh-dashboard-plugins'
+
   build-scopd-plugins:
     needs: [prepare-refs, setup-variables]
     name: Build Scopd Custom Plugins
     uses: ivmerk/custom/.github/workflows/dev-environment.yml@master
+    with:
+      reference: ${{ needs.prepare-refs.outputs.scopd_plugins_ref }}
+      # Остальные параметры, которые ожидает dev-environment.yml
+      command: 'yarn build'
+      artifact_name: 'wazuh-dashboard-plugins'
 
   build-security-plugin:
     needs: [prepare-refs, setup-variables]
@@ -337,6 +343,13 @@ jobs:
         with:
           pattern: wazuh-security-dashboards-plugin_4.12.0-03*.zip
           path: ${{ github.workspace }}/artifacts/security-plugin
+          merge-multiple: true
+
+      - name: Download scopd plugin's artifact
+        uses: actions/download-artifact@v4
+        with:
+          pattern: wazuh-dashboard-plugins_wazuh_4.12.0-03*.zip
+          path: ${{ github.workspace }}/artifacts/plugins
           merge-multiple: true
 
       - name: Download main plugin's artifact
