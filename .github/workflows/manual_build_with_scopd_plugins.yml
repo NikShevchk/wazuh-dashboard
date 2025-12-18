@@ -348,7 +348,7 @@ jobs:
       - name: Download scopd plugin's artifact
         uses: actions/download-artifact@v4
         with:
-          pattern: wazuh-dashboard-plugins_wazuh_4.12.0-03*.zip
+          pattern: wazuh-dashboard-plugins_custom_4.12.0-03*.zip
           path: ${{ github.workspace }}/artifacts/plugins
           merge-multiple: true
 
