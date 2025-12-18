@@ -378,6 +378,13 @@ jobs:
           echo "::group::Contents of artifacts/"
           ls -R ${{ github.workspace }}/artifacts
           echo "::endgroup::"
+          
+      - name: Debug plugins
+        run: |
+          echo "::group::Contents of artifacts/plugins"
+          ls -R ${{ github.workspace }}/artifacts/plugins
+          echo "::endgroup::"
+          
       - name: Zip plugins
         run: |
           zip -r -j ${{ github.workspace }}/artifacts/wazuh-package.zip ${{ github.workspace }}/artifacts/plugins
