@@ -382,7 +382,7 @@ jobs:
       - name: Debug plugins
         run: |
           echo "::group::Contents of artifacts/plugins"
-          ls -R ${{ github.workspace }}/artifacts/plugins
+          ls -lR ${{ github.workspace }}/artifacts/plugins
           echo "::endgroup::"
           
       - name: Zip plugins
