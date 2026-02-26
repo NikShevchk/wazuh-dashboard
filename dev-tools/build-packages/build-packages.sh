@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
 current_path="$( cd $(dirname $0) ; pwd -P )"
 root_dir="${current_path}/../.."
@@ -95,41 +95,62 @@ build_tar() {
   cp ${root_dir}/VERSION.json ${dockerfile_path}
   docker build -t ${container_name} ${dockerfile_path} || return 1
   docker run -t --rm -v ${tmp_dir}/:/tmp:Z -v ${output_dir}/:/output:Z\
-  ${container_name} ${version} ${revision} ${architecture} ${verbose}|| return 1
+  ${container_name} ${version} ${revision} ${architecture} ${verbose} || return 1
   cd ..
 }
 
 build_rpm() {
   log "Building rpm package..."
-  cd ./rpm
-  dockerfile_path="${current_path}/rpm/Docker"
-  container_name="dashboard-rpm-builder"
-  cp -r ${package_config_dir} ${tmp_dir}
-  cp ./rpm-builder.sh ${dockerfile_path}
-  cp ./wazuh-dashboard.spec ${dockerfile_path}
-  docker build -t ${container_name} ${dockerfile_path} || return 1
-  docker run -t --rm -v ${tmp_dir}/:/tmp:Z -v ${output_dir}/:/output:Z\
-  ${container_name} ${version} ${revision} ${architecture}\
-  ${commit_sha} ${production} ${verbose}|| return 1
-  cd ../
+
+  local workdir="${current_path}/rpm"
+  local dockerfile_path="${workdir}/Docker"
+  local container_name="dashboard-rpm-builder"
+
+  cd "$workdir" || return 1
+
+  cp -r "${package_config_dir}" "${tmp_dir}" || return 1
+  cp ./rpm-builder.sh "${dockerfile_path}/" || return 1
+  cp ./wazuh-dashboard.spec "${dockerfile_path}/" || return 1
+
+  docker build -t "${container_name}" "${dockerfile_path}" || return 1
+
+  docker run -t --rm \
+    -v "${tmp_dir}/:/tmp:Z" \
+    -v "${output_dir}/:/output:Z" \
+    "${container_name}" \
+    "${version}" "${revision}" "${architecture}" \
+    "${commit_sha}" "${production}" "${verbose}" \
+    || return 1
+
+  cd "${current_path}" || return 1
 }
 
 
 build_deb() {
   log "Building deb package..."
-  cd ./deb
-  dockerfile_path="${current_path}/deb/Docker"
-  container_name="dashboard-deb-builder"
-  cp -r ${package_config_dir} ${tmp_dir}
-  cp ./deb-builder.sh ${dockerfile_path}
-  cp -r ./debian ${dockerfile_path}
-  docker build -t ${container_name} ${dockerfile_path} || return 1
-  docker run -t --rm -v ${tmp_dir}/:/tmp:Z -v ${output_dir}/:/output:Z \
-  ${container_name} ${version} ${revision} ${architecture}\
-  ${commit_sha} ${production} ${verbose}|| return 1
-  cd ..
-}
 
+  local workdir="${current_path}/deb"
+  local dockerfile_path="${workdir}/Docker"
+  local container_name="dashboard-deb-builder"
+
+  cd "$workdir" || return 1
+
+  cp -r "${package_config_dir}" "${tmp_dir}" || return 1
+  cp ./deb-builder.sh "${dockerfile_path}/" || return 1
+  cp -r ./debian "${dockerfile_path}/" || return 1
+
+  docker build -t "${container_name}" "${dockerfile_path}" || return 1
+
+  docker run -t --rm \
+    -v "${tmp_dir}/:/tmp:Z" \
+    -v "${output_dir}/:/output:Z" \
+    "${container_name}" \
+    "${version}" "${revision}" "${architecture}" \
+    "${commit_sha}" "${production}" "${verbose}" \
+    || return 1
+
+  cd "${current_path}" || return 1
+}
 
 
 
@@ -145,12 +166,12 @@ build(){
 
   if [ $deb == "yes" ]; then
     echo "Building deb package..."
-    build_deb
+    build_deb || return 1
   fi
 
   if [ $rpm == "yes" ]; then
     echo "Building rpm package..."
-    build_rpm
+    build_rpm || return 1
   fi
 
   if [ "$tar" == "no" ]; then
