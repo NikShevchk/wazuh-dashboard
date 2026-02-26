@@ -206,94 +206,48 @@ help() {
 main() {
     echo $0 "$@"
 
-    while [ -n "${1}" ]; do
-        case "${1}" in
-        "-c" | "--commit-sha")
-            if [ -n "${2}" ]; then
-                commit_sha="${2}"
-                shift 2
-            else
-                help 0
-            fi
-            ;;
-        "-h" | "--help")
-            help 0
-            ;;
-        "-a" | "--app")
-            if [ -n "$2" ]; then
-                app="$2"
-                shift 2
-            else
-                help 1
-            fi
-            ;;
-        "-s" | "--security")
-            if [ -n "${2}" ]; then
-                security="${2}"
-                shift 2
-            else
-                help 0
-            fi
-            ;;
-        "-b" | "--base")
-            if [ -n "${2}" ]; then
-                base="${2}"
-                shift 2
-            else
-                help 0
-            fi
-            ;;
-        "-r" | "--revision")
-            if [ -n "${2}" ]; then
-                revision="${2}"
-                shift 2
-            fi
-            ;;
-        "--production")
-            production="yes"
-            shift 1
-            ;;
-        "--all-platforms")
-            all_platforms="yes"
-            shift 1
-            ;;
-        "--deb")
-            deb="yes"
-            shift 1
-            ;;
-        "--rpm")
-            rpm="yes"
-            shift 1
-            ;;
-        "--tar")
-            tar="yes"
-            shift 1
-            ;;
-        "--arm")
-            architecture="arm64"
-            shift 1
-            ;;
-        "--silent")
-            verbose="silent"
-            shift 1
-            ;;
-        "--debug")
-            verbose="debug"
-            shift 1
-            ;;
-
-        "-o" | "--output")
-            if [ -n "${2}" ]; then
-                output="${2}"
-                shift 2
-            fi
-            ;;
-        *)
-            echo "Unknown option: ${1}"
-            help 1
-            ;;
-        esac
-    done
+   while [ -n "${1-}" ]; do
+  case "${1}" in
+    "-c"|"--commit-sha")
+      [ -n "${2-}" ] || help 1
+      commit_sha="${2}"
+      shift 2
+      ;;
+    "-a"|"--app")
+      [ -n "${2-}" ] || help 1
+      app="${2}"
+      shift 2
+      ;;
+    "-b"|"--base")
+      [ -n "${2-}" ] || help 1
+      base="${2}"
+      shift 2
+      ;;
+    "-s"|"--security")
+      [ -n "${2-}" ] || help 1
+      security="${2}"
+      shift 2
+      ;;
+    "-r"|"--revision")
+      [ -n "${2-}" ] || help 1
+      revision="${2}"
+      shift 2
+      ;;
+    "--production") production="yes"; shift ;;
+    "--all-platforms") all_platforms="yes"; shift ;;
+    "--deb") deb="yes"; shift ;;
+    "--rpm") rpm="yes"; shift ;;
+    "--tar") tar="yes"; shift ;;
+    "--arm") architecture="arm64"; shift ;;
+    "--silent") verbose="silent"; shift ;;
+    "--debug") verbose="debug"; shift ;;
+    "-h"|"--help") help 0 ;;
+    *)
+      echo "Unknown option: ${1}"
+      help 1
+      ;;
+  esac
+done
 
     if [ -z "$app" ] || [ -z "$base" ] || [ -z "$security" ]; then
         echo "You must specify the app, base and security."
