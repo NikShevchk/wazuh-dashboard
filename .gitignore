@@ -80,3 +80,5 @@ snapshots.js
 /dev-tools/build-packages/base-packages-to-base/packages
 
 *.zip
+
+CLAUDE.md
