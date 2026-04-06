@@ -104,13 +104,13 @@ jobs:
 
       - uses: actions/checkout@v4
         with:
-          repository: ivmerk/custom
+          repository: NikShevchk/custom
           ref: ${{ needs.prepare-refs.outputs.scopd_plugins_ref }}
           path: ./scopd-plugins
 
       - uses: actions/checkout@v4
         with:
-          repository: ivmerk/wazuh-security-dashboards-plugin
+          repository: NikShevchk/wazuh-security-dashboards-plugin
           ref: ${{ needs.prepare-refs.outputs.security_plugins_ref }}
           path: ./wazuh-security-plugin
 
@@ -255,7 +255,7 @@ jobs:
           fi
           mkdir -p /tmp/integrations-plugins/integrations
           git clone --depth=1 --branch "$INTEGRATIONS_PLUGINS_REF" \
-            https://github.com/ivmerk/integrations.git \
+            https://github.com/NikShevchk/integrations.git \
             /tmp/integrations-plugins/integrations
           echo "Copying into src/plugins..."
           cp -r /tmp/integrations-plugins/* ./src/plugins/
@@ -273,7 +273,7 @@ jobs:
           fi
           mkdir -p /tmp/scopdai-plugin/scopd_ai
           git clone --depth=1 --branch "$INTEGRATIONS_PLUGINS_REF" \
-            https://github.com/ivmerk/scopd_ai.git \
+            https://github.com/NikShevchk/scopd_ai.git \
             /tmp/scopdai-plugin/scopd_ai
           echo "Copying into src/plugins..."
           cp -r /tmp/scopdai-plugin/* ./src/plugins/
@@ -320,7 +320,7 @@ jobs:
   build-scopd-plugins:
     needs: [prepare-refs, setup-variables]
     name: Build Scopd Custom Plugins
-    uses: ivmerk/custom/.github/workflows/dev-environment.yml@master
+    uses: NikShevchk/custom/.github/workflows/dev-environment.yml@master
     with:
       reference: ${{ needs.prepare-refs.outputs.scopd_plugins_ref }}
       # Остальные параметры, которые ожидает dev-environment.yml
@@ -330,7 +330,7 @@ jobs:
   build-security-plugin:
     needs: [prepare-refs, setup-variables]
     name: Build Security Plugin
-    uses: ivmerk/wazuh-security-dashboards-plugin/.github/workflows/dev-environment.yml@master
+    uses: NikShevchk/wazuh-security-dashboards-plugin/.github/workflows/dev-environment.yml@master
     with:
       # И здесь делаем то же самое
       reference: ${{ needs.prepare-refs.outputs.security_plugins_ref }}
