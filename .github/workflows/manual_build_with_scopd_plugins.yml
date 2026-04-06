@@ -92,13 +92,13 @@ jobs:
       - name: Checkout ALL source repositories
         uses: actions/checkout@v4
         with:
-          repository: ivmerk/wazuh-dashboard
+          repository: NikShevchk/wazuh-dashboard
           ref: ${{ needs.prepare-refs.outputs.dashboard_ref }}
           path: ./wazuh-dashboard
 
       - uses: actions/checkout@v4
         with:
-          repository: ivmerk/wazuh-dashboard-plugins
+          repository: NikShevchk/wazuh-dashboard-plugins
           ref: ${{ needs.prepare-refs.outputs.wazuh_plugins_ref }}
           path: ./wazuh-dashboard-plugins
 
@@ -201,7 +201,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          repository: ivmerk/wazuh-dashboard
+          repository: NikShevchk/wazuh-dashboard
           path: ./artifacts
           ref: ${{ needs.prepare-refs.outputs.dashboard_ref }}
 
@@ -308,7 +308,7 @@ jobs:
   build-main-plugins:
     needs: [prepare-refs, setup-variables]
     name: Build Main Plugins
-    uses: ivmerk/wazuh-dashboard-plugins/.github/workflows/dev-environment.yml@master
+    uses: NikShevchk/wazuh-dashboard-plugins/.github/workflows/dev-environment.yml@master
     # Примечание: можно заменить @master на конкретный тег, например, @v4.8.0 для большей стабильности
     with:
       # Мы передаем в reusable workflow ту ветку, которую нужно собрать
@@ -421,7 +421,7 @@ jobs:
           ls -al ${{ github.workspace }}/dev-tools
       - name: Clone dev-tools
         run: |
-          git clone --depth=1 https://github.com/ivmerk/wazuh-dashboard.git temp-dashboard
+          git clone --depth=1 https://github.com/NikShevchk/wazuh-dashboard.git temp-dashboard
           cp -r temp-dashboard/dev-tools ${{ github.workspace }}
 
       - name: Build package
